@@ -1,0 +1,14 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/mainActivityTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Hello World"
+            android:textSize="34sp"/>
+
+    </RelativeLayout>
+   </layout>
