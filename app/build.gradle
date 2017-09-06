@@ -38,4 +38,6 @@ dependencies {
     //DynamoDB
     compile 'com.amazonaws:aws-android-sdk-ddb:2.2.+'
     compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.2.+'
+    // Timber
+    compile 'com.jakewharton.timber:timber:4.5.1'
 }
