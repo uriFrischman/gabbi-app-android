@@ -9,6 +9,10 @@ public class User {
     private String lastName;
     private boolean isGabbi;
 
+    public User() {
+
+    }
+
     public User(int user_id, String firstName, String lastName, boolean isGabbi) {
         this.user_id = user_id;
         this.firstName = firstName;
