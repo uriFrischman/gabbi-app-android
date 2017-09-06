@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gabbi App</string>
+
+    <string name="exception_user_does_not_exists">User does not exist</string>
 </resources>
