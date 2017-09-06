@@ -5,9 +5,11 @@ import android.util.Log;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.User;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppDynamoDBMapper;
+import static com.frischman.uri.gabbiapp.GabbiApp.getAppStringUtil;
 
 public class AWSDynamoDBUtil {
     private static final String TAG = "AWSDynamoDBUtil";
@@ -24,11 +26,15 @@ public class AWSDynamoDBUtil {
         return getAppDynamoDBMapper().load(User.class, id);
     }
 
+    public static void saveObject(Object object) {
+        getAppDynamoDBMapper().save(object);
+    }
+
     public static void deleteUser(User user) {
         try {
             getAppDynamoDBMapper().delete(user);
         } catch (Exception e) {
-            Log.d(TAG, "User does not exist");
+            Log.d(TAG, getAppStringUtil().getString(R.string.exception_user_does_not_exists));
         }
     }
 
@@ -37,7 +43,7 @@ public class AWSDynamoDBUtil {
             User userToDelete = getAppDynamoDBMapper().load(User.class, id);
             getAppDynamoDBMapper().delete(userToDelete);
         } catch (Exception e) {
-            Log.d(TAG, "User does not exist");
+            Log.d(TAG, getAppStringUtil().getString(R.string.exception_user_does_not_exists));
         }
     }
 }
