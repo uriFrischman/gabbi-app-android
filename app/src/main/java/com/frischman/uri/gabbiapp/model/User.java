@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.model;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
 
@@ -54,5 +54,15 @@ public class User {
 
     public void setIsGabbi(boolean isGabbi) {
         this.isGabbi = isGabbi;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isGabbi=" + isGabbi +
+                '}';
     }
 }
