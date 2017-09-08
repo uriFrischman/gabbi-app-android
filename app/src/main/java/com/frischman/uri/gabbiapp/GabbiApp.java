@@ -1,6 +1,8 @@
 package com.frischman.uri.gabbiapp;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
@@ -18,10 +20,9 @@ import static com.frischman.uri.gabbiapp.utility.AWSDynamoDBUtil.getDynamoDBMapp
 public class GabbiApp extends Application {
 
     private CognitoCachingCredentialsProvider mCredentialsProvider;
-    private static AmazonDynamoDBClient mAmazonDynamoDBClient;
     private static DynamoDBMapper mDynamoDBMapper;
 
-    private static StringUtil mStringUtil;
+    private static Context mContext;
 
     private static final String TAG = "GabbiApp";
     private SnappyDBUtil mSnappyDBUtil;
@@ -30,7 +31,7 @@ public class GabbiApp extends Application {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "App starting");
-        mStringUtil = new StringUtil(this);
+        setContext(this);
         setSnappyDBUtil();
         setCredentialsProvider();
         connectToDynamoDB();
@@ -48,15 +49,20 @@ public class GabbiApp extends Application {
         mDynamoDBMapper = getDynamoDBMapper(mAmazonDynamoDBClient);
     }
 
-    public static AmazonDynamoDBClient getAppDynamoDBClient() {
-        return mAmazonDynamoDBClient;
-    }
-
     public static DynamoDBMapper getAppDynamoDBMapper() {
         return mDynamoDBMapper;
     }
 
-    public static StringUtil getAppStringUtil() {
-        return mStringUtil;
+    public void setContext(Context context) {
+        mContext = context;
+    }
+
+    public static Context getAppContext() {
+        return mContext;
+    }
+
+    public static Resources getAppResources() {
+        return getAppContext().getResources();
+    }
     }
 }
