@@ -9,12 +9,18 @@ import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.frischman.uri.gabbiapp.model.Sefer;
 import com.frischman.uri.gabbiapp.utility.SnappyDBUtil;
 import com.frischman.uri.gabbiapp.utility.StringUtil;
+import com.google.gson.Gson;
+import com.snappydb.DB;
+import com.snappydb.SnappydbException;
 
 import static com.frischman.uri.gabbiapp.utility.AWSCognitoUtil.getCognitoCachingCredentialsProvider;
 import static com.frischman.uri.gabbiapp.utility.AWSDynamoDBUtil.getAmazonDynamoDBClient;
 import static com.frischman.uri.gabbiapp.utility.AWSDynamoDBUtil.getDynamoDBMapper;
+import static com.frischman.uri.gabbiapp.utility.FileUtil.rawFileToString;
+import static com.frischman.uri.gabbiapp.utility.SnappyDBUtil.getDBWithName;
 
 
 public class GabbiApp extends Application {
@@ -37,6 +43,9 @@ public class GabbiApp extends Application {
         setSnappyDBUtil();
         setCredentialsProvider();
         connectToDynamoDB();
+        addTorahToSnappyDB();
+    }
+
     private void setSnappyDBUtil() {
         mSnappyDBUtil = new SnappyDBUtil(getAppContext());
     }
@@ -69,5 +78,33 @@ public class GabbiApp extends Application {
     public static Resources getAppResources() {
         return getAppContext().getResources();
     }
+
+    private void addTorahToSnappyDB() {
+        String bereishit = rawFileToString(R.raw.bereishit);
+        String shemot = rawFileToString(R.raw.shemot);
+        String vayikra = rawFileToString(R.raw.vayikra);
+        String bamidbar = rawFileToString(R.raw.bamidbar);
+        String devarim = rawFileToString(R.raw.devarim);
+
+        Gson gson = new Gson();
+
+        Sefer seferBereishit = gson.fromJson(bereishit, Sefer.class);
+        Sefer seferShemot = gson.fromJson(shemot, Sefer.class);
+        Sefer seferVayikra = gson.fromJson(vayikra, Sefer.class);
+        Sefer seferBamidbar = gson.fromJson(bamidbar, Sefer.class);
+        Sefer seferDevarim = gson.fromJson(devarim, Sefer.class);
+
+        DB torahDatabse = getDBWithName(getString(R.string.database_name_torah));
+
+        try {
+            torahDatabse.put(getString(R.string.database_key_bereishit), seferBereishit);
+            torahDatabse.put(getString(R.string.database_key_shemot), seferShemot);
+            torahDatabse.put(getString(R.string.database_key_vayikra), seferVayikra);
+            torahDatabse.put(getString(R.string.database_key_bamidbar), seferBamidbar);
+            torahDatabse.put(getString(R.string.database_key_devarim), seferDevarim);
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+        }
     }
+
 }
