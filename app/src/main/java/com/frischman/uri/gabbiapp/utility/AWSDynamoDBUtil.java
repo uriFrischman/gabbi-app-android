@@ -9,7 +9,7 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.User;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppDynamoDBMapper;
-import static com.frischman.uri.gabbiapp.GabbiApp.getAppStringUtil;
+import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 public class AWSDynamoDBUtil {
     private static final String TAG = "AWSDynamoDBUtil";
@@ -34,7 +34,7 @@ public class AWSDynamoDBUtil {
         try {
             getAppDynamoDBMapper().delete(user);
         } catch (Exception e) {
-            Log.d(TAG, getAppStringUtil().getString(R.string.exception_user_does_not_exists));
+            Log.d(TAG, getString(R.string.exception_user_does_not_exists));
         }
     }
 
@@ -43,7 +43,7 @@ public class AWSDynamoDBUtil {
             User userToDelete = getAppDynamoDBMapper().load(User.class, id);
             getAppDynamoDBMapper().delete(userToDelete);
         } catch (Exception e) {
-            Log.d(TAG, getAppStringUtil().getString(R.string.exception_user_does_not_exists));
+            Log.d(TAG, getString(R.string.exception_user_does_not_exists));
         }
     }
 }
