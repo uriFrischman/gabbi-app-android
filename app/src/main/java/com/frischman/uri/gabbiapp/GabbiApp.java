@@ -7,6 +7,7 @@ import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.frischman.uri.gabbiapp.utility.SnappyDBUtil;
 import com.frischman.uri.gabbiapp.utility.StringUtil;
 
 import static com.frischman.uri.gabbiapp.utility.AWSCognitoUtil.getCognitoCachingCredentialsProvider;
@@ -23,14 +24,19 @@ public class GabbiApp extends Application {
     private static StringUtil mStringUtil;
 
     private static final String TAG = "GabbiApp";
+    private SnappyDBUtil mSnappyDBUtil;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "App starting");
         mStringUtil = new StringUtil(this);
+        setSnappyDBUtil();
         setCredentialsProvider();
         connectToDynamoDB();
+    private void setSnappyDBUtil() {
+        mSnappyDBUtil = new SnappyDBUtil(getAppContext());
+    }
     }
 
     private void setCredentialsProvider() {
