@@ -2,4 +2,10 @@
     <string name="app_name">Gabbi App</string>
 
     <string name="exception_user_does_not_exists">User does not exist</string>
+
+    <string name="torah_bereishit">Bereishit</string>
+    <string name="torah_shemot">Shemot</string>
+    <string name="torah_vayikra">Vayikra</string>
+    <string name="torah_bamidbar">Bamidbar</string>
+    <string name="torah_devarim">Devarim</string>
 </resources>
