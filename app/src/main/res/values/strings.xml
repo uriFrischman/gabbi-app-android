@@ -8,4 +8,12 @@
     <string name="torah_vayikra">Vayikra</string>
     <string name="torah_bamidbar">Bamidbar</string>
     <string name="torah_devarim">Devarim</string>
+
+    <string name="database_name_torah">Torah</string>
+
+    <string name="database_key_bereishit">bereishit</string>
+    <string name="database_key_shemot">shemot</string>
+    <string name="database_key_vayikra">vayikra</string>
+    <string name="database_key_bamidbar">bamidbar</string>
+    <string name="database_key_devarim">devarim</string>
 </resources>
