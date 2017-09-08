@@ -6,7 +6,7 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.frischman.uri.gabbiapp.R;
-import com.frischman.uri.gabbiapp.User;
+import com.frischman.uri.gabbiapp.model.User;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppDynamoDBMapper;
 import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
