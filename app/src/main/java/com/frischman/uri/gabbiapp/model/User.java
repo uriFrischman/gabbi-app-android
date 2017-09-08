@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.model;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
 
@@ -21,11 +21,11 @@ public class User {
     }
 
     @DynamoDBHashKey(attributeName = "user_id")
-    public int getUser_id() {
+    public int getUserId() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUserId(int user_id) {
         this.user_id = user_id;
     }
 
@@ -54,5 +54,15 @@ public class User {
 
     public void setIsGabbi(boolean isGabbi) {
         this.isGabbi = isGabbi;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isGabbi=" + isGabbi +
+                '}';
     }
 }
