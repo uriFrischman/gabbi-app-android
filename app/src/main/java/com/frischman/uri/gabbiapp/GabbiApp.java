@@ -31,8 +31,6 @@ public class GabbiApp extends Application {
     private static Context mContext;
 
     private static final String TAG = "GabbiApp";
-    private SnappyDBUtil mSnappyDBUtil;
-    private StringUtil mStringUtil;
 
     @Override
     public void onCreate() {
@@ -47,11 +45,11 @@ public class GabbiApp extends Application {
     }
 
     private void setSnappyDBUtil() {
-        mSnappyDBUtil = new SnappyDBUtil(getAppContext());
+        SnappyDBUtil mSnappyDBUtil = new SnappyDBUtil(getAppContext());
     }
 
     private void setStringUtil() {
-        mStringUtil = new StringUtil(getAppContext());
+        StringUtil mStringUtil = new StringUtil(getAppContext());
     }
 
     private void setCredentialsProvider() {
