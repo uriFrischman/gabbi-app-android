@@ -26,22 +26,27 @@ public class GabbiApp extends Application {
 
     private static final String TAG = "GabbiApp";
     private SnappyDBUtil mSnappyDBUtil;
+    private StringUtil mStringUtil;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "App starting");
         setContext(this);
+        setStringUtil();
         setSnappyDBUtil();
         setCredentialsProvider();
         connectToDynamoDB();
     private void setSnappyDBUtil() {
         mSnappyDBUtil = new SnappyDBUtil(getAppContext());
     }
+
+    private void setStringUtil() {
+        mStringUtil = new StringUtil(getAppContext());
     }
 
     private void setCredentialsProvider() {
-        mCredentialsProvider = getCognitoCachingCredentialsProvider(this, mStringUtil.getString(R.string.aws_userpool_identity_pool_id), Regions.US_EAST_1);
+        mCredentialsProvider = getCognitoCachingCredentialsProvider(this, getString(R.string.aws_userpool_identity_pool_id), Regions.US_EAST_1);
     }
 
     private void connectToDynamoDB() {
