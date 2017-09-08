@@ -50,7 +50,7 @@ public class GabbiApp extends Application {
     }
 
     private void connectToDynamoDB() {
-        mAmazonDynamoDBClient = getAmazonDynamoDBClient(mCredentialsProvider);
+        AmazonDynamoDBClient mAmazonDynamoDBClient = getAmazonDynamoDBClient(mCredentialsProvider);
         mDynamoDBMapper = getDynamoDBMapper(mAmazonDynamoDBClient);
     }
 
