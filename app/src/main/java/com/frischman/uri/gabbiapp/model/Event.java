@@ -1,12 +1,20 @@
 package com.frischman.uri.gabbiapp.model;
 
 
+import android.support.annotation.NonNull;
+
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
+import com.frischman.uri.gabbiapp.R;
+
+import java.util.Date;
+
+import static com.frischman.uri.gabbiapp.utility.DateUtil.getDateFromString;
+import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 @DynamoDBTable(tableName = "Events")
-public class Event {
+public class Event implements Comparable<Event> {
     private String eventName;
     private String eventDate;
     private int numberOfAliyahs;
@@ -66,5 +74,12 @@ public class Event {
                 ", numberOfAliyahs=" + numberOfAliyahs +
                 ", numberOfAliyahsTaken=" + numberOfAliyahsTaken +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NonNull Event o) {
+        Date currentEventDate = getDateFromString(this.getEventDate(), getString(R.string.event_date_format));
+        Date otherEventDate = getDateFromString(o.getEventDate(), getString(R.string.event_date_format));
+        return currentEventDate.compareTo(otherEventDate);
     }
 }
