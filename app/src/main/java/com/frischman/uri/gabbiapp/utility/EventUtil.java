@@ -21,7 +21,7 @@ public class EventUtil {
 
         List<Event> allEvents = new ArrayList<>();
 
-        ScanRequest scanRequest = new ScanRequest("Events");
+        ScanRequest scanRequest = new ScanRequest(getString(R.string.dynamoDB_table_events));
 
         ScanResult scanResult = getAppAmazonDynamoDBClient().scan(scanRequest);
         for (Map<String, AttributeValue> item: scanResult.getItems()) {
