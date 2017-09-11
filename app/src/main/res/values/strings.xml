@@ -16,4 +16,12 @@
     <string name="database_key_vayikra">vayikra</string>
     <string name="database_key_bamidbar">bamidbar</string>
     <string name="database_key_devarim">devarim</string>
+
+    <string name="event_date_format">dd-MMM-yyyy</string>
+
+    <string name="dynamoDB_table_events">Events</string>
+    <string name="key_event_name">event_name</string>
+    <string name="key_event_date">event_date</string>
+    <string name="key_num_aliyahs">num_aliyahs</string>
+    <string name="key_num_aliyahs_taken">num_aliyahs_taken</string>
 </resources>

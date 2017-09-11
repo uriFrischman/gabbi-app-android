@@ -25,8 +25,9 @@ import static com.frischman.uri.gabbiapp.utility.SnappyDBUtil.getDBWithName;
 
 public class GabbiApp extends Application {
 
-    private CognitoCachingCredentialsProvider mCredentialsProvider;
+    private static CognitoCachingCredentialsProvider mCredentialsProvider;
     private static DynamoDBMapper mDynamoDBMapper;
+    private static AmazonDynamoDBClient mAmazonDynamoDBClient;
 
     private static Context mContext;
 
@@ -57,8 +58,12 @@ public class GabbiApp extends Application {
     }
 
     private void connectToDynamoDB() {
-        AmazonDynamoDBClient mAmazonDynamoDBClient = getAmazonDynamoDBClient(mCredentialsProvider);
+        mAmazonDynamoDBClient = getAmazonDynamoDBClient(mCredentialsProvider);
         mDynamoDBMapper = getDynamoDBMapper(mAmazonDynamoDBClient);
+    }
+
+    public static AmazonDynamoDBClient getAppAmazonDynamoDBClient() {
+        return mAmazonDynamoDBClient;
     }
 
     public static DynamoDBMapper getAppDynamoDBMapper() {
