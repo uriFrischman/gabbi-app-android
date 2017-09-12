@@ -23,6 +23,8 @@ public class FileUtil {
         } finally {
             try {
                 br.close();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
