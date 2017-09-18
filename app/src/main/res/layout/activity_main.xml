@@ -10,5 +10,11 @@
             android:text="Hello World"
             android:textSize="34sp"/>
 
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/mainActivityTitle"
+            android:id="@+id/recyclerViewListOfEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
     </RelativeLayout>
    </layout>
