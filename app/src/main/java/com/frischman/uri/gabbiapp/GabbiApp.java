@@ -3,6 +3,7 @@ package com.frischman.uri.gabbiapp;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
@@ -85,6 +86,10 @@ public class GabbiApp extends Application {
 
     public static Looper getAppMainLooper() {
         return Looper.getMainLooper();
+    }
+
+    public static void loadRunnableOnToMainLooper(Runnable runnable) {
+        new Handler(getAppMainLooper()).post(runnable);
     }
 
     private void addTorahToSnappyDB() {
