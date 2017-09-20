@@ -2,7 +2,7 @@ package com.frischman.uri.gabbiapp.model;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBIndexHashKey;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBRangeKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 
 @DynamoDBTable(tableName = "Aliyahs")
@@ -38,7 +38,7 @@ public class Aliyah {
         this.aliyahName = aliyahName;
     }
 
-    @DynamoDBIndexHashKey(attributeName = "aliyah_event")
+    @DynamoDBRangeKey(attributeName = "aliyah_event")
     public String getAliyahEvent() {
         return aliyahEvent;
     }
