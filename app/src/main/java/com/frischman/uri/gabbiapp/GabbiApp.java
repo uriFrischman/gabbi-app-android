@@ -3,6 +3,7 @@ package com.frischman.uri.gabbiapp;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Looper;
 import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
@@ -80,6 +81,10 @@ public class GabbiApp extends Application {
 
     public static Resources getAppResources() {
         return getAppContext().getResources();
+    }
+
+    public static Looper getAppMainLooper() {
+        return Looper.getMainLooper();
     }
 
     private void addTorahToSnappyDB() {
