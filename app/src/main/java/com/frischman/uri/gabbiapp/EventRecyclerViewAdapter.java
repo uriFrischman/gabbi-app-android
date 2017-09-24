@@ -33,7 +33,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String eventName = mEventList.get(position).getEventName();
-        holder.mTextView.setText(eventName);
+        holder.mEventName.setText(eventName);
+        holder.mNumAliyahsLeft.setText(String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken()));
 
     }
 
@@ -58,12 +59,16 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView mTextView;
+        public TextView mEventName;
+        public TextView mNumAliyahsLeft;
 
         public ViewHolder(View v) {
             super(v);
-            mTextView = (TextView) v.findViewById(R.id.eventName);
-            mTextView.setOnClickListener(this);
+            mEventName = (TextView) v.findViewById(R.id.eventName);
+            v.setOnClickListener(this);
+
+            mNumAliyahsLeft = (TextView) v.findViewById(R.id.numAliyahsLeft);
+
         }
 
 

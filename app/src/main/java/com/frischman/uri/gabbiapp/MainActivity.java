@@ -2,6 +2,7 @@ package com.frischman.uri.gabbiapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.model.Event;
 
@@ -29,13 +31,18 @@ public class MainActivity extends AppCompatActivity implements EventRecyclerView
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
     private RecyclerView mRecyclerView;
     private EventRecyclerViewAdapter.ItemClickListener mItemClickListener;
+    private ActivityMainBinding mBinding;
 
     private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding.mainActivityTitle.setText("Helo Url");
+
 
         mItemClickListener = new EventRecyclerViewAdapter.ItemClickListener() {
             @Override

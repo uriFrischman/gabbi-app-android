@@ -1,20 +1,25 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/mainActivityTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Hello World"
-            android:textSize="34sp"/>
+            android:textSize="34sp" />
 
         <android.support.v7.widget.RecyclerView
-            android:layout_below="@id/mainActivityTitle"
             android:id="@+id/recyclerViewListOfEvents"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mainActivityTitle"></android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
-   </layout>
+</layout>
