@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         @Override
         public List<Event> loadInBackground() {
             Log.d("loadInBackground", "reached");
-            return getAllEvents();
+            return getAllEvents(false);
         }
 
         @Override
