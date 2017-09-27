@@ -6,7 +6,6 @@ import com.snappydb.DB;
 import com.snappydb.DBFactory;
 import com.snappydb.SnappydbException;
 
-
 public class SnappyDBUtil {
 
     private static Context mContext;

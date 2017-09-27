@@ -1,5 +1,6 @@
 package com.frischman.uri.gabbiapp.utility;
 
+import android.text.format.DateUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,5 +19,14 @@ public class DateUtil {
             e.printStackTrace();
         }
         return date;
+    }
+
+    public static boolean isDateToday(Date date) {
+        return new DateUtils().isToday(date.getTime());
+    }
+
+    public static boolean isDateAfterToday(Date date) {
+        Date today = new Date();
+        return date.after(today);
     }
 }
