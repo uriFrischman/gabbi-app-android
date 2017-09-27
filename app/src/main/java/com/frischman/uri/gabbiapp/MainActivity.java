@@ -84,10 +84,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setAdapter(mEventRecyclerViewAdapter);
         mEventRecyclerViewAdapter.setItemClickListener(mItemClickListener);
-        getSupportLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<List<Event>>)this).forceLoad();
-
-
-
+        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
 
     }
 
