@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.snappydb.DB;
 import com.snappydb.SnappydbException;
 
+import java.util.List;
+
 import static com.frischman.uri.gabbiapp.utility.FileUtil.rawFileToString;
 import static com.frischman.uri.gabbiapp.utility.SnappyDBUtil.getDBWithName;
 import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
@@ -37,6 +39,24 @@ public class TorahUtil {
             torahDatabse.put(getString(R.string.database_key_devarim), seferDevarim);
         } catch (SnappydbException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String getPasuk(String seferKey, int perek, int pasuk)  {
+        try {
+            return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.get(perek -1).get(pasuk -1).toString();
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<String> getPerek(String seferKey, int perek) {
+        try {
+            return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.get(perek - 1);
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
