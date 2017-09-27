@@ -9,15 +9,19 @@ import com.frischman.uri.gabbiapp.model.Event;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppAmazonDynamoDBClient;
+import static com.frischman.uri.gabbiapp.utility.DateUtil.getDateFromString;
+import static com.frischman.uri.gabbiapp.utility.DateUtil.isDateAfterToday;
+import static com.frischman.uri.gabbiapp.utility.DateUtil.isDateToday;
 import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 public class EventUtil {
 
-    public static List<Event> getAllEvents() {
+    public static List<Event> getAllEvents(boolean containPastEvents) {
 
         List<Event> allEvents = new ArrayList<>();
 
@@ -30,7 +34,16 @@ public class EventUtil {
             int numAliyahs = Integer.valueOf(item.get(getString(R.string.key_num_aliyahs)).getN());
             int numAliyahsTaken= Integer.valueOf(item.get(getString(R.string.key_num_aliyahs_taken)).getN());
             Event currentEvent = new Event(eventName, eventDate, numAliyahs, numAliyahsTaken);
-            allEvents.add(currentEvent);
+            if (containPastEvents) {
+                allEvents.add(currentEvent);
+            } else {
+                Date date = getDateFromString(eventDate, getString(R.string.event_date_format));
+                if (isDateToday(date) || isDateAfterToday(date)) {
+                    allEvents.add(currentEvent);
+                } else {
+                    continue;
+                }
+            }
         }
 
         Collections.sort(allEvents);
