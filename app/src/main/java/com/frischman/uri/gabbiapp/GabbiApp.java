@@ -24,7 +24,6 @@ import static com.frischman.uri.gabbiapp.utility.AWSDynamoDBUtil.getDynamoDBMapp
 import static com.frischman.uri.gabbiapp.utility.FileUtil.rawFileToString;
 import static com.frischman.uri.gabbiapp.utility.SnappyDBUtil.getDBWithName;
 
-
 public class GabbiApp extends Application {
 
     private static CognitoCachingCredentialsProvider mCredentialsProvider;

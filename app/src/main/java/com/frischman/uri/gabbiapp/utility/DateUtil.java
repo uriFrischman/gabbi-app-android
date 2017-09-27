@@ -1,6 +1,5 @@
 package com.frischman.uri.gabbiapp.utility;
 
-
 import android.text.format.DateUtils;
 
 import java.text.DateFormat;

@@ -1,6 +1,5 @@
 package com.frischman.uri.gabbiapp.utility;
 
-
 import android.util.Log;
 
 import com.frischman.uri.gabbiapp.R;

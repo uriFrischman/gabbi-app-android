@@ -1,6 +1,5 @@
 package com.frischman.uri.gabbiapp.model;
 
-
 import android.support.annotation.NonNull;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;

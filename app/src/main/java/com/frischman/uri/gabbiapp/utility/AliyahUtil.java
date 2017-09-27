@@ -1,6 +1,5 @@
 package com.frischman.uri.gabbiapp.utility;
 
-
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 import com.amazonaws.services.dynamodbv2.model.QueryResult;
@@ -33,7 +32,7 @@ public class AliyahUtil {
                 .withExpressionAttributeValues(attributeValues);
 
         QueryResult result = getAppAmazonDynamoDBClient().query(request);
-        
+
         return getListOfAliyahsFromQueryResult(result);
     }
 

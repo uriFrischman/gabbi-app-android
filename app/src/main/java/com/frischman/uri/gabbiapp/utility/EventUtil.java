@@ -1,6 +1,5 @@
 package com.frischman.uri.gabbiapp.utility;
 
-
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
@@ -28,11 +27,11 @@ public class EventUtil {
         ScanRequest scanRequest = new ScanRequest(getString(R.string.dynamoDB_table_events));
 
         ScanResult scanResult = getAppAmazonDynamoDBClient().scan(scanRequest);
-        for (Map<String, AttributeValue> item: scanResult.getItems()) {
+        for (Map<String, AttributeValue> item : scanResult.getItems()) {
             String eventName = String.valueOf(item.get(getString(R.string.key_event_name)).getS());
             String eventDate = String.valueOf(item.get(getString(R.string.key_event_date)).getS());
             int numAliyahs = Integer.valueOf(item.get(getString(R.string.key_num_aliyahs)).getN());
-            int numAliyahsTaken= Integer.valueOf(item.get(getString(R.string.key_num_aliyahs_taken)).getN());
+            int numAliyahsTaken = Integer.valueOf(item.get(getString(R.string.key_num_aliyahs_taken)).getN());
             Event currentEvent = new Event(eventName, eventDate, numAliyahs, numAliyahsTaken);
             if (containPastEvents) {
                 allEvents.add(currentEvent);

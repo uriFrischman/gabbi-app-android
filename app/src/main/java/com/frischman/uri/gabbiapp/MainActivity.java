@@ -24,25 +24,21 @@ import static com.frischman.uri.gabbiapp.GabbiApp.loadRunnableOnToMainLooper;
 import static com.frischman.uri.gabbiapp.utility.AliyahUtil.getAllAliyahsFromEvent;
 import static com.frischman.uri.gabbiapp.utility.EventUtil.getAllEvents;
 
-
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Event>> {
 
+    private static final String TAG = "MainActivity";
     private Context mContext = this;
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
     private RecyclerView mRecyclerView;
     private EventRecyclerViewAdapter.ItemClickListener mItemClickListener;
     private ActivityMainBinding mBinding;
 
-    private static final String TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mBinding.mainActivityTitle.setText("Helo Url");
-
 
         mItemClickListener = new EventRecyclerViewAdapter.ItemClickListener() {
             @Override
@@ -71,11 +67,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 };
                 Thread myThread = new Thread(x);
                 myThread.start();
-
-
-
-
-
             }
         };
 
@@ -105,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public static class FetchData extends AsyncTaskLoader<List<Event>> {
-
 
         public FetchData(Context context) {
             super(context);

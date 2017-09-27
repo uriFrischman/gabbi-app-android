@@ -8,6 +8,6 @@ import com.amazonaws.regions.Regions;
 public class AWSCognitoUtil {
 
     public static CognitoCachingCredentialsProvider getCognitoCachingCredentialsProvider(Context context, String userPoolId, Regions region) {
-        return new CognitoCachingCredentialsProvider(context, userPoolId,region);
+        return new CognitoCachingCredentialsProvider(context, userPoolId, region);
     }
 }

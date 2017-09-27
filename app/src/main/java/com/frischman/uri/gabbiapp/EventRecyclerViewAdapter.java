@@ -11,7 +11,6 @@ import com.frischman.uri.gabbiapp.model.Event;
 
 import java.util.List;
 
-
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder> {
 
     private List<Event> mEventList;
@@ -42,7 +41,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         return mEventList.get(position);
     }
 
-    public void addListOfEvents(List<Event> listOfEvents){
+    public void addListOfEvents(List<Event> listOfEvents) {
         mEventList = listOfEvents;
         this.notifyDataSetChanged();
     }
@@ -57,7 +56,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView mEventName;
         public TextView mNumAliyahsLeft;
@@ -70,7 +69,6 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             mNumAliyahsLeft = (TextView) v.findViewById(R.id.numAliyahsLeft);
 
         }
-
 
         @Override
         public void onClick(View v) {
