@@ -100,8 +100,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<Event>> loader, List<Event> data) {
         mEventRecyclerViewAdapter.addListOfEvents(data);
         Log.d("data", data.toString());
-//        loader.startLoading();
-//        mEventRecyclerViewAdapter.setItemClickListener((EventRecyclerViewAdapter.ItemClickListener) mContext);
     }
 
     @Override
