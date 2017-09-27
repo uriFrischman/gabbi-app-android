@@ -25,7 +25,7 @@ import static com.frischman.uri.gabbiapp.utility.AliyahUtil.getAllAliyahsFromEve
 import static com.frischman.uri.gabbiapp.utility.EventUtil.getAllEvents;
 
 
-public class MainActivity extends AppCompatActivity implements EventRecyclerViewAdapter.ItemClickListener, LoaderManager.LoaderCallbacks<List<Event>> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Event>> {
 
     private Context mContext = this;
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
@@ -107,12 +107,6 @@ public class MainActivity extends AppCompatActivity implements EventRecyclerView
     @Override
     public void onLoaderReset(Loader<List<Event>> loader) {
 
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        String x = "You clicked on " + mEventRecyclerViewAdapter.getItem(position).getEventName();
-        Log.d("x", x);
     }
 
     public static class FetchData extends AsyncTaskLoader<List<Event>> {
