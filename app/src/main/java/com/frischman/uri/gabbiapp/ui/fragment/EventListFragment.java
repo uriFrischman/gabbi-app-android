@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frischman.uri.gabbiapp.EventRecyclerViewAdapter;
+import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
