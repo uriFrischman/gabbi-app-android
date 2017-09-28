@@ -8,13 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/mainActivityTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="34sp" />
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewListOfEvents"
             android:layout_width="match_parent"

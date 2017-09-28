@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mBinding.mainActivityTitle.setText("Helo Url");
 
         mItemClickListener = new EventRecyclerViewAdapter.ItemClickListener() {
             @Override
