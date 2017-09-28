@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.ui.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.frischman.uri.gabbiapp.EventRecyclerViewAdapter;
+import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.model.Event;
