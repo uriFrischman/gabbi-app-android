@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.model.Event;
 
 import java.util.List;
@@ -24,9 +25,8 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.event_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        View view = mLayoutInflater.inflate(R.layout.view_event_row, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -34,7 +34,6 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         String eventName = mEventList.get(position).getEventName();
         holder.mEventName.setText(eventName);
         holder.mNumAliyahsLeft.setText(String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken()));
-
     }
 
     public Event getItem(int position) {
@@ -56,18 +55,16 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView mEventName;
-        public TextView mNumAliyahsLeft;
+        TextView mEventName;
+        TextView mNumAliyahsLeft;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             mEventName = (TextView) v.findViewById(R.id.eventName);
-            v.setOnClickListener(this);
-
             mNumAliyahsLeft = (TextView) v.findViewById(R.id.numAliyahsLeft);
-
+            v.setOnClickListener(this);
         }
 
         @Override

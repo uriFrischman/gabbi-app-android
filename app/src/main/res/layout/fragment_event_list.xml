@@ -8,12 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/eventList"
-            android:name="com.frischman.uri.gabbiapp.ui.fragment.EventListFragment"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewListOfEvents"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 </layout>
