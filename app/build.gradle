@@ -52,4 +52,6 @@ dependencies {
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
     //RecyclerView
     compile 'com.android.support:recyclerview-v7:25.4.0'
+    //AutoFitTextView
+    compile 'me.grantland:autofittextview:0.2.1'
 }

@@ -34,6 +34,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         String eventName = mEventList.get(position).getEventName();
         holder.mEventName.setText(eventName);
         holder.mNumAliyahsLeft.setText(String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken()));
+        holder.mEventDate.setText(mEventList.get(position).getEventDate());
     }
 
     public Event getItem(int position) {
@@ -59,11 +60,13 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
         TextView mEventName;
         TextView mNumAliyahsLeft;
+        TextView mEventDate;
 
         ViewHolder(View v) {
             super(v);
             mEventName = (TextView) v.findViewById(R.id.eventName);
             mNumAliyahsLeft = (TextView) v.findViewById(R.id.numAliyahsLeft);
+            mEventDate = (TextView) v.findViewById(R.id.eventDate);
             v.setOnClickListener(this);
         }
 
