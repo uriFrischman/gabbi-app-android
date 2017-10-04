@@ -61,17 +61,18 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
             }
         });
 
-        return rootView;
     }
 
     @Override
     public Loader<List<Event>> onCreateLoader(int id, Bundle args) {
+        mBinding.eventListProgressText.setVisibility(View.VISIBLE);
         return new EventsLoader(getActivity().getApplicationContext(), false);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Event>> loader, List<Event> data) {
         mEventRecyclerViewAdapter.addListOfEvents(data);
+        mBinding.eventListProgressText.setVisibility(View.GONE);
     }
 
     @Override
