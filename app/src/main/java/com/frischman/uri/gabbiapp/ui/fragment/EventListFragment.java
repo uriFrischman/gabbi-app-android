@@ -43,10 +43,17 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
 
         View rootView = mBinding.getRoot();
 
+        initRecyclerView();
+
+        return rootView;
+    }
+
+    private void initRecyclerView() {
+
         mEventRecyclerViewAdapter = new EventRecyclerViewAdapter(getActivity().getApplicationContext(), null);
         mBinding.recyclerViewListOfEvents.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.recyclerViewListOfEvents.setAdapter(mEventRecyclerViewAdapter);
-        mBinding.recyclerViewListOfEvents.addItemDecoration(new DividerItemDecoration(rootView.getContext(), DividerItemDecoration.VERTICAL));
+        mBinding.recyclerViewListOfEvents.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
         mEventRecyclerViewAdapter.setItemClickListener(new EventRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
