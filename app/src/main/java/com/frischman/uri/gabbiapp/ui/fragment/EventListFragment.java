@@ -6,17 +6,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 
 import java.util.List;
 
@@ -27,6 +28,12 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
 
     private FragmentEventListBinding mBinding;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+    }
 
     @Nullable
     @Override
@@ -46,8 +53,6 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
                 Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
             }
         });
-        
-        getActivity().getSupportLoaderManager().initLoader(0, null, this).forceLoad();
 
         return rootView;
     }
