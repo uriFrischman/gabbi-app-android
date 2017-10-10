@@ -9,7 +9,8 @@
     <color name="yellow">#f2ff40</color>
     <color name="white">#ffffff</color>
 
-    <color name="event_text_color">#FF1763D6</color>
+    <color name="event_row_event_name_color">#FF1763D6</color>
+    <color name="event_row_date_color">#999797</color>
 
 
 </resources>

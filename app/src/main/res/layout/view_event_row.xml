@@ -8,8 +8,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:layout_margin="10sp"
-    android:layout_marginTop="5sp"
     android:background="@color/white"
     android:orientation="horizontal"
     android:padding="20sp"
@@ -20,16 +18,33 @@
         android:layout_height="match_parent"
         android:layout_weight="0.8">
 
-        <TextView
-            android:id="@+id/eventName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textAlignment="center"
-            android:textColor="@color/event_text_color"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="Hello" />
+            android:orientation="vertical"
+            android:layout_centerVertical="true">
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/eventName"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/event_row_event_name_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Hello" />
+
+            <TextView
+                android:id="@+id/eventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/event_row_date_color"
+                android:textSize="12sp"
+                tools:text="Hello" />
+
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 
