@@ -18,7 +18,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     private LayoutInflater mLayoutInflater;
     private ItemClickListener mItemClickListener;
 
-    public EventRecyclerViewAdapter(Context context, List<Event> eventList) {
+    public EventRecyclerViewAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
         mEventList = eventList;
     }
