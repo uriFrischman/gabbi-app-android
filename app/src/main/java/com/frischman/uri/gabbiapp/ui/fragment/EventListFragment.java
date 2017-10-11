@@ -84,6 +84,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onLoadFinished(Loader<List<Event>> loader, List<Event> data) {
+        mEventRecyclerViewAdapter.initUnFilteredList(data);
         mEventRecyclerViewAdapter.addListOfEvents(data);
         mBinding.eventListProgressText.setVisibility(View.GONE);
     }

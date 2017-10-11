@@ -46,6 +46,9 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         this.notifyDataSetChanged();
     }
 
+    public void initUnFilteredList(List<Event> unfilteredEventList) {
+        mUnfilteredEventList = unfilteredEventList;
+    }
     @Override
     public int getItemCount() {
         if (mEventList != null) {
