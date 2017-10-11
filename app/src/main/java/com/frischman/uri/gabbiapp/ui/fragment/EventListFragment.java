@@ -21,7 +21,7 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
-import com.frischman.uri.gabbiapp.ui.HidingScrollListener;
+import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 
 import java.util.ArrayList;

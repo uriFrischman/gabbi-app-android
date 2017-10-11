@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp.ui;
+package com.frischman.uri.gabbiapp.ui.listener;
 
 import android.support.v7.widget.RecyclerView;
 
