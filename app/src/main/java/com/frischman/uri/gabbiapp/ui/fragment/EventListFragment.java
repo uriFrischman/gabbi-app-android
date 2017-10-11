@@ -50,7 +50,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         View rootView = mBinding.getRoot();
 
         initRecyclerView();
-        initSearchViewListener();
+        initSearchView();
 
         return rootView;
     }
@@ -83,8 +83,9 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
 
     }
 
-    private void initSearchViewListener() {
+    private void initSearchView() {
         mBinding.eventSearch.setOnQueryTextListener(this);
+        mBinding.eventSearch.setVisibility(View.GONE);
     }
 
     @Override
@@ -98,6 +99,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mEventRecyclerViewAdapter.initUnFilteredList(data);
         mEventRecyclerViewAdapter.addListOfEvents(data);
         mBinding.eventListProgressText.setVisibility(View.GONE);
+        mBinding.eventSearch.setVisibility(View.VISIBLE);
     }
 
     @Override
