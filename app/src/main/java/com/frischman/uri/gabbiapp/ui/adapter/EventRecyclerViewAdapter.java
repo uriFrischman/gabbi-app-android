@@ -49,6 +49,11 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public void initUnFilteredList(List<Event> unfilteredEventList) {
         mUnfilteredEventList = unfilteredEventList;
     }
+
+    public List<Event> getUnfilteredList() {
+        return mUnfilteredEventList;
+    }
+
     @Override
     public int getItemCount() {
         if (mEventList != null) {
