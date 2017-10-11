@@ -20,7 +20,6 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     public EventRecyclerViewAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
-        mEventList = eventList;
     }
 
     @Override
