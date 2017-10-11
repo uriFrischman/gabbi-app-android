@@ -8,21 +8,27 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.ui.HidingScrollListener;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>> {
+public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>>, SearchView.OnQueryTextListener {
 
     private static final String TAG = "EventListFragment";
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
@@ -44,6 +50,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         View rootView = mBinding.getRoot();
 
         initRecyclerView();
+        initSearchViewListener();
 
         return rootView;
     }
@@ -76,6 +83,10 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
 
     }
 
+    private void initSearchViewListener() {
+        mBinding.eventSearch.setOnQueryTextListener(this);
+    }
+
     @Override
     public Loader<List<Event>> onCreateLoader(int id, Bundle args) {
         mBinding.eventListProgressText.setVisibility(View.VISIBLE);
@@ -92,5 +103,46 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
     @Override
     public void onLoaderReset(Loader<List<Event>> loader) {
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        List<Event> eventList = filterEventList(newText);
+        mEventRecyclerViewAdapter.addListOfEvents(eventList);
+        mEventRecyclerViewAdapter.notifyDataSetChanged();
+        return true;
+    }
+
+    private List<Event> filterEventList(String query) {
+
+        List<Event> queriedList = new ArrayList<>();
+
+        if (query.length() != 0) {
+
+            if (query.length() > mBinding.eventSearch.getQuery().length()) {
+                addQueriedEventsToList(mEventRecyclerViewAdapter.getEventList(), queriedList, query);
+
+            } else {
+                addQueriedEventsToList(mEventRecyclerViewAdapter.getUnfilteredList(), queriedList, query);
+            }
+
+            return queriedList;
+
+        } else {
+            return  mEventRecyclerViewAdapter.getUnfilteredList();
+        }
+    }
+
+    private void addQueriedEventsToList(List<Event> eventList, List<Event> listToAddEvent, String query) {
+        for (Event event : eventList) {
+            if (event.getEventName().toLowerCase().contains(query.toLowerCase())) {
+                listToAddEvent.add(event);
+            }
+        }
     }
 }
