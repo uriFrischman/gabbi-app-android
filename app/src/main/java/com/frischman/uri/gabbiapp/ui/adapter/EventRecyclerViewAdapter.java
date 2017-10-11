@@ -15,6 +15,7 @@ import java.util.List;
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder> {
 
     private List<Event> mEventList;
+    private List<Event> mUnfilteredEventList;
     private LayoutInflater mLayoutInflater;
     private ItemClickListener mItemClickListener;
 
@@ -61,6 +62,10 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             return 0;
         }
 
+    }
+
+    public List<Event> getEventList() {
+        return mEventList;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
