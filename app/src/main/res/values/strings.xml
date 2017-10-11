@@ -24,4 +24,6 @@
     <string name="key_event_date">event_date</string>
     <string name="key_num_aliyahs">num_aliyahs</string>
     <string name="key_num_aliyahs_taken">num_aliyahs_taken</string>
+
+    <string name="loading">Loading</string>
 </resources>
