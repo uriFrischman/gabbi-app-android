@@ -60,6 +60,19 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
                 Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
             }
         });
+        mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+                mBinding.eventSearchContainer.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateDecelerateInterpolator());
+                mBinding.recyclerViewListOfEvents.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateInterpolator());
+            }
+
+            @Override
+            public void onShow() {
+                mBinding.eventSearchContainer.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+                mBinding.recyclerViewListOfEvents.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+            }
+        });
 
     }
 
