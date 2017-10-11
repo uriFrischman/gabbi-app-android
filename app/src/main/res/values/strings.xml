@@ -26,4 +26,6 @@
     <string name="key_num_aliyahs_taken">num_aliyahs_taken</string>
 
     <string name="loading">Loading</string>
+
+    <string name="event_searchview_query_hint">Search For An Event</string>
 </resources>

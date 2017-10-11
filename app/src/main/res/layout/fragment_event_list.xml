@@ -22,6 +22,7 @@
             android:id="@+id/eventSearch"
             android:layout_width="match_parent"
             android:layout_height="50sp"/>
+                app:defaultQueryHint="@string/event_searchview_query_hint"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewListOfEvents"
