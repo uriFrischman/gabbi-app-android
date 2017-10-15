@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,17 +12,34 @@
         <TextView
             android:id="@+id/eventListProgressText"
             android:layout_width="match_parent"
-            android:text="Loading"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textSize="30sp"
-            android:visibility="gone"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/eventSearchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/eventSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:background="@drawable/background_event_searchview"
+                app:defaultQueryHint="@string/event_searchview_query_hint"/>
+
+        </RelativeLayout>
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewListOfEvents"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventSearchContainer"/>
 
     </RelativeLayout>
 </layout>

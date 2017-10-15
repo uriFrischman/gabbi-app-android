@@ -45,8 +45,6 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.5.1'
     //Gson
     compile 'com.google.code.gson:gson:2.8.1'
-    //Guava
-    compile 'com.google.guava:guava:23.0-android'
     //SnappyDB
     compile 'com.snappydb:snappydb-lib:0.4.0'
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
