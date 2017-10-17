@@ -3,9 +3,13 @@ package com.frischman.uri.gabbiapp.ui.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
+
+import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
+import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
 public class MainActivity extends AppCompatActivity {
 
