@@ -14,6 +14,7 @@ import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding mBinding;
+
     @Override
     public void onBackPressed() {
         if (mBinding.slidingLayout.getPanelState() == PanelState.EXPANDED) {
