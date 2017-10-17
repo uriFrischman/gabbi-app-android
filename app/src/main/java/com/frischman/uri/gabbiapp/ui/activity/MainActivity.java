@@ -7,7 +7,10 @@ import android.view.View;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
+import com.frischman.uri.gabbiapp.ui.fragment.EventListFragment;
+import com.frischman.uri.gabbiapp.ui.fragment.ZmanimFragment;
 
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new EventListFragment(), false);
 
         initPanelSlideUpMenu();
 
@@ -38,6 +42,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mBinding.viewMenu.eventsFragmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new EventListFragment(), true);
+            }
+        });
+
+        mBinding.viewMenu.CloseMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+            }
+        });
+
+        mBinding.viewMenu.ZmanimButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new ZmanimFragment(), true);
+            }
+        });
     }
 
     private void initPanelSlideUpMenu() {

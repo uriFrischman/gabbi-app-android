@@ -1,0 +1,16 @@
+package com.frischman.uri.gabbiapp.utility;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
+public class FragmentUtil {
+
+    public static void replaceViewWithFragment(FragmentManager fragmentManager, int viewId, Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction().replace(viewId, fragment);
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
+    }
+}
