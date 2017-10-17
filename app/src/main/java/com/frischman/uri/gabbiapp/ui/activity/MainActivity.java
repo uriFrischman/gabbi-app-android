@@ -23,11 +23,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        initPanelSlideUpMenu();
+
         mBinding.fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.EXPANDED);
             }
         });
+
+    }
+
+    private void initPanelSlideUpMenu() {
+
+        mBinding.slidingLayout.setPanelHeight(0);
+
+        mBinding.slidingLayout.addPanelSlideListener(new PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, PanelState previousState, PanelState newState) {
+                if (newState == PanelState.COLLAPSED) {
+                    mBinding.slidingLayout.setPanelHeight(0);
+                }
+            }
+        });
+
+
     }
 }
