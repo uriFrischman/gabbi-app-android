@@ -10,6 +10,14 @@ import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding mBinding;
+    @Override
+    public void onBackPressed() {
+        if (mBinding.slidingLayout.getPanelState() == PanelState.EXPANDED) {
+            mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
