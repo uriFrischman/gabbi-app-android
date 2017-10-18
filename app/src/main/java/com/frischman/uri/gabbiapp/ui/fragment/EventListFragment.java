@@ -68,8 +68,6 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
-//                mBinding.eventSearchContainer.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateDecelerateInterpolator());
-//                mBinding.recyclerViewListOfEvents.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateInterpolator());
             }
 
             @Override
