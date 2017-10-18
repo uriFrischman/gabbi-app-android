@@ -31,9 +31,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new EventListFragment(), false);
+        replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new EventListFragment(), false);
 
         initPanelSlideUpMenu();
+        initMenuButtons();
+
+    }
+
+    private void initMenuButtons() {
 
         mBinding.fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-                replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new EventListFragment(), true);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new EventListFragment(), true);
             }
         });
 
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-                replaceViewWithFragment(getSupportFragmentManager(), R.id.eventList, new ZmanimFragment(), true);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new ZmanimFragment(), true);
             }
         });
     }
@@ -83,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }
