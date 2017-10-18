@@ -13,16 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
-import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
+import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +68,6 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
-                mBinding.eventSearchContainer.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateDecelerateInterpolator());
-                mBinding.recyclerViewListOfEvents.animate().translationY(-mBinding.eventSearchContainer.getHeight()).setInterpolator(new AccelerateInterpolator());
             }
 
             @Override
