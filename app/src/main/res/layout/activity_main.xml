@@ -18,9 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/eventList"
-            android:name="com.frischman.uri.gabbiapp.ui.fragment.EventListFragment"
+        <RelativeLayout
+            android:id="@+id/mainFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_event_list" />
@@ -37,7 +36,7 @@
         </RelativeLayout>
 
 
-      <include layout="@layout/view_menu"/>
+      <include layout="@layout/view_menu" android:id="@+id/viewMenu"/>
 
             </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
