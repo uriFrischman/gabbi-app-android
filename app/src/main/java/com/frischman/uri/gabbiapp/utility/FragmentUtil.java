@@ -13,4 +13,9 @@ public class FragmentUtil {
         }
         transaction.commit();
     }
+
+    public static void removeFragmentFromView(FragmentManager fragmentManager, int viewId) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction().remove(fragmentManager.findFragmentById(viewId));
+        transaction.commit();
+    }
 }
