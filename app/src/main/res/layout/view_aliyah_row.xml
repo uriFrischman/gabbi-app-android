@@ -1,0 +1,35 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="aliyah"
+            type="com.frischman.uri.gabbiapp.model.Aliyah"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            tools:text="Aliyah Name"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:id="@+id/aliyahName"
+            android:text="@{aliyah.getAliyahName()}"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/aliyah_num_psukim, aliyah.getNumPsukim())}"/>
+
+    </LinearLayout>
+
+
+</layout>

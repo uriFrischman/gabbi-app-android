@@ -13,17 +13,9 @@
 
         <TextView
             android:id="@+id/popup_title"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Load Aliyahs"
-            android:layout_centerInParent="true"
-            android:layout_below="@+id/popup_title"
-            android:id="@+id/button_load_aliyahs"/>
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -31,6 +23,14 @@
             android:text="Close"
             android:layout_alignParentRight="true"
             android:id="@+id/button_event_popup_close"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/event_aliyah_list"
+            android:layout_marginTop="40sp"
+            android:layout_below="@id/button_event_popup_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
 
     </RelativeLayout>
 
