@@ -18,4 +18,12 @@ public class FragmentUtil {
         FragmentTransaction transaction = fragmentManager.beginTransaction().remove(fragmentManager.findFragmentById(viewId));
         transaction.commit();
     }
+
+    public static boolean checkIfViewHasFragment(FragmentManager fragmentManager, int viewId) {
+        if (fragmentManager.findFragmentById(viewId) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
