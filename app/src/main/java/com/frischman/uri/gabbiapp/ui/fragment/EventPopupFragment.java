@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.util.Log;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,12 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventPopupBinding;
 import com.frischman.uri.gabbiapp.loader.AliyahLoader;
 import com.frischman.uri.gabbiapp.model.Aliyah;
+import com.frischman.uri.gabbiapp.ui.adapter.EventPopUpRecyclerViewAdapter;
 
 import java.util.List;
 import java.util.Random;
 
+import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.getActivityMainBinding;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 
 public class EventPopupFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Aliyah>> {
@@ -41,6 +44,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
         initRecyclerView();
 
         mBinding.popupTitle.setText(mEventName);
+        getActivityMainBinding().fabButton.setVisibility(View.GONE);
 
         getActivity().getSupportLoaderManager().initLoader(new Random().nextInt(), null, this).forceLoad();
 
@@ -48,6 +52,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
             @Override
             public void onClick(View v) {
                 removeFragmentFromView(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container);
+                getActivityMainBinding().fabButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -74,5 +79,11 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
 
     @Override
     public void onLoaderReset(Loader<List<Aliyah>> loader) {
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        getActivityMainBinding().fabButton.setVisibility(View.VISIBLE);
     }
 }

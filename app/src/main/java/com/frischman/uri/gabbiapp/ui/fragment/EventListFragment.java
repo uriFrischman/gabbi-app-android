@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
@@ -25,6 +26,7 @@ import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 
 public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>>, SearchView.OnQueryTextListener {
