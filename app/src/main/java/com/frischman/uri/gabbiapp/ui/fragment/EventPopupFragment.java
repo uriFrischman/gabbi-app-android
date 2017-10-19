@@ -30,11 +30,15 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
     private String mEventName;
     private List<Aliyah> mAliyahList;
 
+    private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_popup, container, false);
         mEventName = getArguments().getString("eventName");
+
+        initRecyclerView();
 
         mBinding.popupTitle.setText(mEventName);
 
@@ -57,6 +61,13 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
         return mBinding.getRoot();
     }
 
+    private void initRecyclerView() {
+        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext());
+        mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
+        mBinding.eventAliyahList.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
+    }
+
     @Override
     public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
         return new AliyahLoader(getActivity().getApplicationContext(), mEventName);
@@ -65,6 +76,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
     @Override
     public void onLoadFinished(Loader<List<Aliyah>> loader, List<Aliyah> data) {
         mAliyahList = data;
+        mEventPopUpRecyclerViewAdapter.addAliyahs(data);
     }
 
     @Override
