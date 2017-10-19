@@ -63,12 +63,16 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mEventRecyclerViewAdapter.setItemClickListener(new EventRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
-                Bundle args = new Bundle();
-                args.putString("eventName", mEventRecyclerViewAdapter.getItem(position).getEventName());
-                EventPopupFragment fragment = new EventPopupFragment();
-                fragment.setArguments(args);
-                replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
+                if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
+                    Bundle args = new Bundle();
+                    args.putString("eventName", mEventRecyclerViewAdapter.getItem(position).getEventName());
+                    EventPopupFragment fragment = new EventPopupFragment();
+                    fragment.setArguments(args);
+                    replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
+                }
             }
         });
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
