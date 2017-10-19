@@ -44,13 +44,6 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
 
         getActivity().getSupportLoaderManager().initLoader(new Random().nextInt(), null, this).forceLoad();
 
-        mBinding.buttonLoadAliyahs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: " + mAliyahList.toString());
-            }
-        });
-
         mBinding.buttonEventPopupClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
