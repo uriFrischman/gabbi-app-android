@@ -16,7 +16,7 @@ import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding mBinding;
+    private static ActivityMainBinding mBinding;
 
     @Override
     public void onBackPressed() {
@@ -88,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    public static ActivityMainBinding getActivityMainBinding() {
+        return mBinding;
     }
 }
