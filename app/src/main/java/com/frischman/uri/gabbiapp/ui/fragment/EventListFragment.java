@@ -25,6 +25,7 @@ import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 
 public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>>, SearchView.OnQueryTextListener {
 
@@ -63,6 +64,11 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
             @Override
             public void onItemClick(View view, int position) {
                 Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
+                Bundle args = new Bundle();
+                args.putString("eventName", mEventRecyclerViewAdapter.getItem(position).getEventName());
+                EventPopupFragment fragment = new EventPopupFragment();
+                fragment.setArguments(args);
+                replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
             }
         });
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
