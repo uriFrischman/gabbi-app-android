@@ -7,15 +7,23 @@
             name="aliyah"
             type="com.frischman.uri.gabbiapp.model.Aliyah"/>
 
+        <variable
+            name="intUtil"
+            type="com.frischman.uri.gabbiapp.utility.IntegerUtil" />
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:paddingTop="40sp"
+        android:paddingBottom="40sp"
+        android:weightSum="1"
+        android:background="@{intUtil.intToBoolean(aliyah.getAliyahTaken()) ? @color/aliyah_row_aliyah_not_available_background : @color/aliyah_row_aliyah_available_background}">
 
         <TextView
+            android:textColor="@android:color/black"
             tools:text="Aliyah Name"
             android:layout_width="0dp"
             android:layout_weight="0.5"
@@ -24,10 +32,12 @@
             android:text="@{aliyah.getAliyahName()}"/>
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/aliyah_num_psukim, aliyah.getNumPsukim())}"/>
+            android:text="@{String.format(@string/aliyah_num_psukim, aliyah.getNumPsukim())}"
+            tools:text="25 psukim"/>
 
     </LinearLayout>
 
