@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     private List<Event> mEventList;
     private List<Event> mUnfilteredEventList;
     private LayoutInflater mLayoutInflater;
-    private ItemClickListener mItemClickListener;
+    private RecyclerViewItemClick mItemClickListener;
 
     public EventRecyclerViewAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
@@ -84,15 +85,12 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
         @Override
         public void onClick(View v) {
-            mItemClickListener.onItemClick(v, getAdapterPosition());
+            mItemClickListener.onClick(v, getAdapterPosition());
         }
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener(RecyclerViewItemClick itemClickListener) {
         mItemClickListener = itemClickListener;
     }
 
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 }

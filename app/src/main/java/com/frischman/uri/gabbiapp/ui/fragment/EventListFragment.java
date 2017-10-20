@@ -20,6 +20,7 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 
@@ -62,9 +63,9 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mBinding.recyclerViewListOfEvents.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.recyclerViewListOfEvents.setAdapter(mEventRecyclerViewAdapter);
         mBinding.recyclerViewListOfEvents.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-        mEventRecyclerViewAdapter.setItemClickListener(new EventRecyclerViewAdapter.ItemClickListener() {
+        mEventRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
             @Override
-            public void onItemClick(View view, int position) {
+            public void onClick(View v, int position) {
                 if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
                 } else {
