@@ -23,8 +23,4 @@ public class AliyahLoader extends AsyncTaskLoader<List<Aliyah>> {
     public List<Aliyah> loadInBackground() {
         return getAllAliyahsFromEvent(mEventName);
     }
-
-    public String getEventName() {
-        return mEventName;
-    }
 }
