@@ -38,6 +38,10 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
         this.notifyDataSetChanged();
     }
 
+    public Aliyah getAliyah(int index) {
+        return mAliyahList.get(index);
+    }
+
     @Override
     public int getItemCount() {
         return mAliyahList == null ? 0 : mAliyahList.size();
