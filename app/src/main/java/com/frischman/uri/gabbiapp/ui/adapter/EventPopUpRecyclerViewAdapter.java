@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ViewAliyahRowBinding;
 import com.frischman.uri.gabbiapp.model.Aliyah;
+import com.frischman.uri.gabbiapp.utility.IntegerUtil;
 
 import java.util.List;
 
@@ -16,9 +17,11 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
 
     private LayoutInflater mLayoutInflater;
     private List<Aliyah> mAliyahList;
+    private IntegerUtil mIntegerUtil;
 
     public EventPopUpRecyclerViewAdapter(Context context) {
         mLayoutInflater = LayoutInflater.from(context);
+        mIntegerUtil = new IntegerUtil();
     }
 
     @Override
@@ -30,6 +33,7 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mBinding.setAliyah(mAliyahList.get(position));
+        holder.mBinding.setIntUtil(mIntegerUtil);
 
     }
 
