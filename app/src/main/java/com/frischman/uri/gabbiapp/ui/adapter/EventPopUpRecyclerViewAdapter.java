@@ -37,7 +37,6 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mBinding.setAliyah(mAliyahList.get(position));
         holder.mBinding.setIntUtil(mIntegerUtil);
-
     }
 
     public void addAliyahs(List<Aliyah> aliyahList) {

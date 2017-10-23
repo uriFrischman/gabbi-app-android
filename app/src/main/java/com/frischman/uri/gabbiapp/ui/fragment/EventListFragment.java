@@ -113,9 +113,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Event>> loader) {
-
-    }
+    public void onLoaderReset(Loader<List<Event>> loader) {}
 
     @Override
     public boolean onQueryTextSubmit(String query) {

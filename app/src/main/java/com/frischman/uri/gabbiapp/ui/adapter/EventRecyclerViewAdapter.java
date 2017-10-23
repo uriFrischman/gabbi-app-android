@@ -57,12 +57,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     @Override
     public int getItemCount() {
-        if (mEventList != null) {
-            return mEventList.size();
-        } else {
-            return 0;
-        }
-
+        return mEventList != null ? mEventList.size() : 0;
     }
 
     public List<Event> getEventList() {
