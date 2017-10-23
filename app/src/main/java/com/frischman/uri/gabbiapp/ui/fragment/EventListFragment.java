@@ -69,9 +69,10 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
                 if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
+                    String eventName = mEventRecyclerViewAdapter.getItem(position).getEventName();
+                    Log.d(TAG, "You clicked on event: " + eventName);
                     Bundle args = new Bundle();
-                    args.putString("eventName", mEventRecyclerViewAdapter.getItem(position).getEventName());
+                    args.putString(getString(R.string.bundle_argument_event_name), eventName);
                     EventPopupFragment fragment = new EventPopupFragment();
                     fragment.setArguments(args);
                     replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);

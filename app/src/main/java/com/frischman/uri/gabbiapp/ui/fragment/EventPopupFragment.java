@@ -44,7 +44,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_popup, container, false);
-        mEventName = getArguments().getString("eventName");
+        mEventName = getArguments().getString(getString(R.string.bundle_argument_event_name));
 
         initRecyclerView();
 
