@@ -1,13 +1,14 @@
 package com.frischman.uri.gabbiapp.ui.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.frischman.uri.gabbiapp.R;
+import com.frischman.uri.gabbiapp.databinding.ViewEventRowBinding;
 import com.frischman.uri.gabbiapp.model.Event;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 
@@ -26,16 +27,19 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.view_event_row, parent, false);
-        return new ViewHolder(view);
+        ViewEventRowBinding binding = DataBindingUtil.inflate(mLayoutInflater, R.layout.view_event_row, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String eventName = mEventList.get(position).getEventName();
-        holder.mEventName.setText(eventName);
-        holder.mNumAliyahsLeft.setText(String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken()));
-        holder.mEventDate.setText(mEventList.get(position).getEventDate());
+        String numAliyahsLeft = String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken());
+        String eventDate = mEventList.get(position).getEventDate();
+
+        holder.mBinding.eventName.setText(eventName);
+        holder.mBinding.numAliyahsLeft.setText(numAliyahsLeft);
+        holder.mBinding.eventDate.setText(eventDate);
     }
 
     public Event getItem(int position) {
@@ -66,16 +70,12 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mEventName;
-        TextView mNumAliyahsLeft;
-        TextView mEventDate;
+        ViewEventRowBinding mBinding;
 
-        ViewHolder(View v) {
-            super(v);
-            mEventName = (TextView) v.findViewById(R.id.eventName);
-            mNumAliyahsLeft = (TextView) v.findViewById(R.id.numAliyahsLeft);
-            mEventDate = (TextView) v.findViewById(R.id.eventDate);
-            v.setOnClickListener(this);
+        ViewHolder(ViewEventRowBinding binding) {
+            super(binding.getRoot());
+            mBinding = binding;
+            mBinding.getRoot().setOnClickListener(this);
         }
 
         @Override
