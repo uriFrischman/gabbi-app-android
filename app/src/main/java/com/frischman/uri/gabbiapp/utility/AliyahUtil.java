@@ -8,6 +8,7 @@ import com.amazonaws.services.dynamodbv2.model.QueryResult;
 import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemResult;
+import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.model.User;
 
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppAmazonDynamoDBClient;
+import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 import static com.frischman.uri.gabbiapp.utility.UserUtil.getUserWithId;
 
 public class AliyahUtil {
@@ -32,8 +34,8 @@ public class AliyahUtil {
         attributeValues.put(":v_event", new AttributeValue().withS(eventName));
 
         QueryRequest request = new QueryRequest()
-                .withTableName("Aliyahs")
-                .withIndexName("aliyah_event-aliyah_name-index")
+                .withTableName(getString(R.string.dynamoDB_table_aliyahs))
+                .withIndexName(getString(R.string.dynamoDB_aliyahs_index_name))
                 .withKeyConditionExpression("#e = :v_event")
                 .withExpressionAttributeNames(attributeNames)
                 .withExpressionAttributeValues(attributeValues);
@@ -48,13 +50,13 @@ public class AliyahUtil {
         Iterator<Map<String, AttributeValue>> iter = result.getItems().iterator();
         while (iter.hasNext()) {
             Map<String, AttributeValue> currentItem = iter.next();
-            String aliyahEvent = currentItem.get("aliyah_event").getS();
-            String aliyahName = currentItem.get("aliyah_name").getS();
-            String reading = currentItem.get("reading").getS();
-            String aliyahNumber = currentItem.get("aliyah_number").getS();
-            int aliyahTaken = Integer.valueOf(currentItem.get("aliyah_taken").getN());
-            String aliyahReader = currentItem.get("aliyah_reader").getS();
-            String numPsukim = currentItem.get("num_psukim").getS();
+            String aliyahEvent = currentItem.get(getString(R.string.key_aliyah_event)).getS();
+            String aliyahName = currentItem.get(getString(R.string.key_aliyah_name)).getS();
+            String reading = currentItem.get(getString(R.string.key_reading)).getS();
+            String aliyahNumber = currentItem.get(getString(R.string.key_aliyah_number)).getS();
+            int aliyahTaken = Integer.valueOf(currentItem.get(getString(R.string.key_aliyah_taken)).getN());
+            String aliyahReader = currentItem.get(getString(R.string.key_aliyah_reader)).getS();
+            String numPsukim = currentItem.get(getString(R.string.key_aliyah_number)).getS();
             Aliyah aliyah = new Aliyah(aliyahName, aliyahEvent, aliyahReader, aliyahTaken, numPsukim, reading, aliyahNumber);
             listOfAliyahs.add(aliyah);
         }
@@ -74,14 +76,14 @@ public class AliyahUtil {
                     Log.d(TAG, "run: The id of the current user is " + aliyahClamingUser.getFirstName());
 
                     HashMap<String, AttributeValue> key = new HashMap<>();
-                    key.put("aliyah_name", new AttributeValue().withS(aliyah.getAliyahName()));
+                    key.put(getString(R.string.key_aliyah_name), new AttributeValue().withS(aliyah.getAliyahName()));
 
                     HashMap<String, AttributeValue> expressionAttributeValues = new HashMap<>();
                     expressionAttributeValues.put(":aliyah_reader", new AttributeValue().withS(user.getFirstName() + " " + user.getLastName()));
                     expressionAttributeValues.put(":aliyah_taken", new AttributeValue().withN("1"));
 
                     UpdateItemRequest updateItemRequest = new UpdateItemRequest()
-                            .withTableName("Aliyahs")
+                            .withTableName(getString(R.string.dynamoDB_table_aliyahs))
                             .withKey(key)
                             .withUpdateExpression("set aliyah_taken = :aliyah_taken, aliyah_reader = :aliyah_reader")
                             .withExpressionAttributeValues(expressionAttributeValues)
