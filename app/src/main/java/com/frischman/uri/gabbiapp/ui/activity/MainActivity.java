@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static ActivityMainBinding getActivityMainBinding() {
-        return mBinding;
+    public static void setFabButtonVisibility(int visibility) {
+        mBinding.fabButton.setVisibility(visibility);
     }
 }

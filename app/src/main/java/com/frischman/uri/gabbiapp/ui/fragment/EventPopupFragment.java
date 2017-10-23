@@ -24,7 +24,7 @@ import com.frischman.uri.gabbiapp.ui.adapter.EventPopUpRecyclerViewAdapter;
 import java.util.List;
 import java.util.Random;
 
-import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.getActivityMainBinding;
+import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.AliyahUtil.claimAliyah;
 import static com.frischman.uri.gabbiapp.utility.AliyahUtil.isAliyahTaken;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
@@ -49,7 +49,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
         initRecyclerView();
 
         mBinding.popupTitle.setText(mEventName);
-        getActivityMainBinding().fabButton.setVisibility(View.GONE);
+        setFabButtonVisibility(View.GONE);
 
         getActivity().getSupportLoaderManager().initLoader(new Random().nextInt(), null, this).forceLoad();
 
@@ -57,7 +57,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
             @Override
             public void onClick(View v) {
                 removeFragmentFromView(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container);
-                getActivityMainBinding().fabButton.setVisibility(View.VISIBLE);
+                setFabButtonVisibility(View.VISIBLE);
             }
         });
 
@@ -101,6 +101,6 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        getActivityMainBinding().fabButton.setVisibility(View.VISIBLE);
+        setFabButtonVisibility(View.VISIBLE);
     }
 }
