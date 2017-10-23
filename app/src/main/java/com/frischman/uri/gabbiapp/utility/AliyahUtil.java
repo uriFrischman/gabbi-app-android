@@ -56,7 +56,7 @@ public class AliyahUtil {
             String aliyahNumber = currentItem.get(getString(R.string.key_aliyah_number)).getS();
             int aliyahTaken = Integer.valueOf(currentItem.get(getString(R.string.key_aliyah_taken)).getN());
             String aliyahReader = currentItem.get(getString(R.string.key_aliyah_reader)).getS();
-            String numPsukim = currentItem.get(getString(R.string.key_aliyah_number)).getS();
+            String numPsukim = currentItem.get(getString(R.string.key_num_psukim)).getS();
             Aliyah aliyah = new Aliyah(aliyahName, aliyahEvent, aliyahReader, aliyahTaken, numPsukim, reading, aliyahNumber);
             listOfAliyahs.add(aliyah);
         }
