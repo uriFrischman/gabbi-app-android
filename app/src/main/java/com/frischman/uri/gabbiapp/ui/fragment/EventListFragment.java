@@ -14,17 +14,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
 import com.frischman.uri.gabbiapp.loader.EventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 
 public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>>, SearchView.OnQueryTextListener {
 
@@ -59,10 +63,20 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mBinding.recyclerViewListOfEvents.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.recyclerViewListOfEvents.setAdapter(mEventRecyclerViewAdapter);
         mBinding.recyclerViewListOfEvents.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-        mEventRecyclerViewAdapter.setItemClickListener(new EventRecyclerViewAdapter.ItemClickListener() {
+        mEventRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
             @Override
-            public void onItemClick(View view, int position) {
-                Log.d(TAG, "You clicked on event: " + mEventRecyclerViewAdapter.getItem(position).getEventName());
+            public void onClick(View v, int position) {
+                if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
+                } else {
+                    String eventName = mEventRecyclerViewAdapter.getItem(position).getEventName();
+                    Log.d(TAG, "You clicked on event: " + eventName);
+                    Bundle args = new Bundle();
+                    args.putString(getString(R.string.bundle_argument_event_name), eventName);
+                    EventPopupFragment fragment = new EventPopupFragment();
+                    fragment.setArguments(args);
+                    replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
+                }
             }
         });
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
@@ -99,9 +113,7 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Event>> loader) {
-
-    }
+    public void onLoaderReset(Loader<List<Event>> loader) {}
 
     @Override
     public boolean onQueryTextSubmit(String query) {

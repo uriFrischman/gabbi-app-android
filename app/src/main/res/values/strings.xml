@@ -25,7 +25,20 @@
     <string name="key_num_aliyahs">num_aliyahs</string>
     <string name="key_num_aliyahs_taken">num_aliyahs_taken</string>
 
+    <string name="dynamoDB_table_aliyahs">Aliyahs</string>
+    <string name="dynamoDB_aliyahs_index_name">aliyah_event-aliyah_name-index</string>
+    <string name="key_aliyah_name">aliyah_name</string>
+    <string name="key_aliyah_event">aliyah_event</string>
+    <string name="key_reading">reading</string>
+    <string name="key_aliyah_reader">aliyah_reader</string>
+    <string name="key_aliyah_number">aliyah_number</string>
+    <string name="key_aliyah_taken">aliyah_taken</string>
+    <string name="key_num_psukim">num_psukim</string>
+
     <string name="loading">Loading</string>
 
     <string name="event_searchview_query_hint">Search For An Event</string>
+
+    <string name="aliyah_num_psukim">%s psukim</string>
+    <string name="bundle_argument_event_name">eventName</string>
 </resources>

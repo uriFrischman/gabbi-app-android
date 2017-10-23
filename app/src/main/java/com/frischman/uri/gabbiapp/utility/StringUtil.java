@@ -7,7 +7,7 @@ public class StringUtil {
     private static Context mContext;
 
     public StringUtil(Context context) {
-        this.mContext = context;
+        mContext = context;
     }
 
     public static String getString(int id) {

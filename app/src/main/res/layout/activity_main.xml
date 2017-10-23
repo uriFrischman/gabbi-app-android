@@ -1,5 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,33 +14,43 @@
         sothree:umanoPanelHeight="68dp"
         sothree:umanoShadowHeight="4dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/mainFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_event_list" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="30sp"
-            android:layout_marginRight="30sp"
-            android:id="@+id/fab_button"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/mainFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_event_list"/>
+
+            <FrameLayout
+                android:id="@+id/framelayout_overlay_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="30sp"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="30sp"
+                android:layout_marginRight="30sp"/>
+
 
         </RelativeLayout>
 
 
-      <include layout="@layout/view_menu" android:id="@+id/viewMenu"/>
+        <include
+            android:id="@+id/viewMenu"
+            layout="@layout/view_menu"/>
 
-            </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
 </layout>
