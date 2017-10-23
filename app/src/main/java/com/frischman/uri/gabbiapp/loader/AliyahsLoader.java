@@ -9,12 +9,12 @@ import java.util.List;
 
 import static com.frischman.uri.gabbiapp.utility.AliyahUtil.getAllAliyahsFromEvent;
 
-public class AliyahLoader extends AsyncTaskLoader<List<Aliyah>> {
+public class AliyahsLoader extends AsyncTaskLoader<List<Aliyah>> {
 
-    private static final String TAG = "AliyahLoader";
+    private static final String TAG = "AliyahsLoader";
     private String mEventName;
 
-    public AliyahLoader(Context context, String eventName) {
+    public AliyahsLoader(Context context, String eventName) {
         super(context);
         mEventName = eventName;
     }

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventPopupBinding;
-import com.frischman.uri.gabbiapp.loader.AliyahLoader;
+import com.frischman.uri.gabbiapp.loader.AliyahsLoader;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
@@ -85,7 +85,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
 
     @Override
     public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
-        return new AliyahLoader(getActivity().getApplicationContext(), mEventName);
+        return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
     }
 
     @Override
