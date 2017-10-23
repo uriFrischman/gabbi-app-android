@@ -64,7 +64,7 @@ public class AliyahUtil {
     }
 
     public static boolean isAliyahTaken(Aliyah aliyah) {
-        return aliyah.getAliyahTaken() == 0 ? false : true;
+        return aliyah.getAliyahTaken() != 0;
     }
 
     public static void claimAliyah(final User user, final Aliyah aliyah) {

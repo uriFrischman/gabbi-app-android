@@ -20,10 +20,6 @@ public class FragmentUtil {
     }
 
     public static boolean checkIfViewHasFragment(FragmentManager fragmentManager, int viewId) {
-        if (fragmentManager.findFragmentById(viewId) == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return fragmentManager.findFragmentById(viewId) != null;
     }
 }
