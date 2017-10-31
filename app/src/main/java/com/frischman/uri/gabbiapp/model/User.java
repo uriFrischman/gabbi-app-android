@@ -10,16 +10,22 @@ public class User {
     private String firstName;
     private String lastName;
     private boolean isGabbi;
+    public String email;
+    public String phoneNumber;
+    public String password;
 
     public User() {
 
     }
 
-    public User(int user_id, String firstName, String lastName, boolean isGabbi) {
+    public User(int user_id, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
         this.user_id = user_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isGabbi = isGabbi;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     @DynamoDBHashKey(attributeName = "user_id")
@@ -58,6 +64,33 @@ public class User {
         this.isGabbi = isGabbi;
     }
 
+    @DynamoDBAttribute(attributeName = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @DynamoDBAttribute(attributeName = "phone_number")
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @DynamoDBAttribute(attributeName = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -65,6 +98,8 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", isGabbi=" + isGabbi +
+                ", email='" + email + '\'' +
+                ", phoneNumber=" + phoneNumber +
                 '}';
     }
 }
