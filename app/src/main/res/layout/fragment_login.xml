@@ -1,0 +1,40 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/login_inputs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/login_username_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/login_password_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_username_field"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/login_fragment_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_password_field"
+            android:layout_marginTop="20dp"
+            android:text="Login"/>
+
+
+    </RelativeLayout>
+
+
+</layout>
