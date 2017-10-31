@@ -17,8 +17,14 @@ public class AWSDynamoDBUtil {
         return new DynamoDBMapper(client);
     }
 
-    public static void saveObject(Object object) {
-        getAppDynamoDBMapper().save(object);
+    public static void saveObject(final Object object) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getAppDynamoDBMapper().save(object);
+
+            }
+        }).start();
     }
 
 }
