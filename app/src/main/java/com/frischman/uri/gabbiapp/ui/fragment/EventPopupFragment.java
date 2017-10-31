@@ -74,7 +74,7 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
             public void onClick(View v, int position) {
                 Aliyah aliyah = mEventPopUpRecyclerViewAdapter.getAliyah(position);
                 if (!isAliyahTaken(aliyah)) {
-                    User user = new User(1, "Uri", "Frischman", true);
+                    User user = new User(1, "Uri", "Frischman", true, "a", "b", "c");
                     claimAliyah(user, aliyah);
                 } else {
                     Log.d(TAG, "onClick: The aliyah is already taken");
