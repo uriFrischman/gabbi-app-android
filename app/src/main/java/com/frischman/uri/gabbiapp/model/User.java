@@ -7,6 +7,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 @DynamoDBTable(tableName = "Users")
 public class User {
     private int user_id;
+    private String username;
     private String firstName;
     private String lastName;
     private boolean isGabbi;
@@ -18,8 +19,9 @@ public class User {
 
     }
 
-    public User(int user_id, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
+    public User(int user_id, String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
         this.user_id = user_id;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isGabbi = isGabbi;
@@ -89,6 +91,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isGabbi() {
+        return isGabbi;
+    }
+
+    public void setGabbi(boolean gabbi) {
+        isGabbi = gabbi;
     }
 
     @Override
