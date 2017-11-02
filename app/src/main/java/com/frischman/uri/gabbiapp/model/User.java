@@ -93,6 +93,7 @@ public class User {
         this.password = password;
     }
 
+    @DynamoDBAttribute(attributeName = "user_name")
     public String getUsername() {
         return username;
     }
@@ -101,6 +102,7 @@ public class User {
         this.username = username;
     }
 
+    @DynamoDBAttribute(attributeName = "is_gabbi")
     public boolean isGabbi() {
         return isGabbi;
     }
@@ -113,11 +115,13 @@ public class User {
     public String toString() {
         return "User{" +
                 "user_id=" + user_id +
+                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", isGabbi=" + isGabbi +
                 ", email='" + email + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
