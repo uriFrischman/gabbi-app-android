@@ -11,9 +11,9 @@ public class User {
     private String firstName;
     private String lastName;
     private boolean isGabbi;
-    public String email;
-    public String phoneNumber;
-    public String password;
+    private String email;
+    private String phoneNumber;
+    private String password;
 
     public User() {
 
