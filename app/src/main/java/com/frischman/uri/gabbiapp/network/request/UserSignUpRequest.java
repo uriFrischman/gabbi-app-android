@@ -1,4 +1,4 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.network.request;
 
 import com.frischman.uri.gabbiapp.model.User;
 

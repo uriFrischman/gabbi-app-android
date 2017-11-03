@@ -1,6 +1,8 @@
-package com.frischman.uri.gabbiapp;
+package com.frischman.uri.gabbiapp.network.lambda;
 
 import com.amazonaws.mobileconnectors.lambdainvoker.LambdaFunction;
+import com.frischman.uri.gabbiapp.network.request.UserSignUpRequest;
+import com.frischman.uri.gabbiapp.network.response.UserSignUpResonse;
 
 public interface LambdaFunctions {
 

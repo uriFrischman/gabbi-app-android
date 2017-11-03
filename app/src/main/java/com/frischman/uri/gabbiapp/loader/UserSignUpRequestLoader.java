@@ -4,9 +4,9 @@ import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.amazonaws.mobileconnectors.lambdainvoker.LambdaInvokerFactory;
-import com.frischman.uri.gabbiapp.LambdaFunctions;
-import com.frischman.uri.gabbiapp.UserSignUpRequest;
-import com.frischman.uri.gabbiapp.UserSignUpResonse;
+import com.frischman.uri.gabbiapp.network.lambda.LambdaFunctions;
+import com.frischman.uri.gabbiapp.network.request.UserSignUpRequest;
+import com.frischman.uri.gabbiapp.network.response.UserSignUpResonse;
 import com.frischman.uri.gabbiapp.model.User;
 
 import static com.frischman.uri.gabbiapp.GabbiApp.getAppCognitoCachingCredentialsProvider;
