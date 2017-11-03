@@ -14,7 +14,7 @@ import com.frischman.uri.gabbiapp.databinding.FragmentLoginBinding;
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding mBinding;
-
+    private LoginFragment mContext = this;
 
     @Nullable
     @Override
