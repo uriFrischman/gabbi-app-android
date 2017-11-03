@@ -30,6 +30,16 @@ public class User {
         this.password = password;
     }
 
+    public User(String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isGabbi = isGabbi;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
+
     @DynamoDBHashKey(attributeName = "user_id")
     public int getUserId() {
         return user_id;
