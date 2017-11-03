@@ -1,12 +1,17 @@
 package com.frischman.uri.gabbiapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 
+import java.util.Random;
+
 @DynamoDBTable(tableName = "Users")
-public class User {
-    private int user_id;
+public class User implements Parcelable {
+    private int userId;
     private String username;
     private String firstName;
     private String lastName;
@@ -19,8 +24,8 @@ public class User {
 
     }
 
-    public User(int user_id, String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
-        this.user_id = user_id;
+    public User(int userId, String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
+        this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,15 +43,16 @@ public class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.userId = new Random().nextInt(1000);
     }
 
-    @DynamoDBHashKey(attributeName = "user_id")
+    @DynamoDBHashKey(attributeName = "userId")
     public int getUserId() {
-        return user_id;
+        return userId;
     }
 
-    public void setUserId(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @DynamoDBAttribute(attributeName = "first_name")
@@ -124,7 +130,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -133,5 +139,44 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    protected User(Parcel in) {
+        userId = in.readInt();
+        username = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        isGabbi = in.readByte() != 0;
+        email = in.readString();
+        phoneNumber = in.readString();
+        password = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(userId);
+        dest.writeString(username);
+        dest.writeString(lastName);
+        dest.writeString(email);
+        dest.writeString(phoneNumber);
+        dest.writeString(password);
+        dest.writeInt(isGabbi ? 1 : 0);
     }
 }
