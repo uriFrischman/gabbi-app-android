@@ -33,6 +33,14 @@
             android:layout_marginTop="20dp"
             android:text="Login"/>
 
+        <Button
+            android:id="@+id/login_fragment_signup_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_fragment_login_button"
+            android:layout_marginTop="20dp"
+            android:text="Sign Up"/>
+
 
     </RelativeLayout>
 
