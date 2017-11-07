@@ -16,6 +16,7 @@ import com.frischman.uri.gabbiapp.databinding.FragmentLoginBinding;
 import com.frischman.uri.gabbiapp.loader.UserSignUpRequestLoader;
 import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.network.response.UserSignUpResonse;
+import com.frischman.uri.gabbiapp.utility.FragmentUtil;
 
 public class LoginFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResonse> {
 
@@ -28,14 +29,10 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 
-        mBinding.loginFragmentLoginButton.setOnClickListener(new View.OnClickListener() {
+        mBinding.loginFragmentSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User("uriFrischman", "Uri", "Frischman", false, "email@email.com", "phone", "password");
-                Bundle args = new Bundle();
-                args.putParcelable("user", user);
-
-                getActivity().getSupportLoaderManager().restartLoader(0, args, mContext).forceLoad();
+                FragmentUtil.replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.login_activity_container, new SignUpFragment(),true);
             }
         });
 
