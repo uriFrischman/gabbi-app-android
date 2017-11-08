@@ -29,8 +29,12 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false);
+        initializeOnClickListeners();
 
+        return mBinding.getRoot();
+    }
 
+    private void initializeOnClickListeners() {
         mBinding.signupFragmentSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +54,6 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
 
             }
         });
-
-        return mBinding.getRoot();
     }
 
     @Override

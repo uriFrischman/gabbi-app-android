@@ -30,11 +30,15 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
+        initializeOnClickListeners();
 
+        return mBinding.getRoot();
+    }
+
+    private void initializeOnClickListeners() {
         mBinding.loginFragmentLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked!");
                 Bundle args = new Bundle();
                 args.putString("username", mBinding.loginUsernameField.getText().toString());
                 args.putString("password", mBinding.loginPasswordField.getText().toString());
@@ -49,8 +53,6 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
                 replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.login_activity_container, new SignUpFragment(), true);
             }
         });
-
-        return mBinding.getRoot();
     }
 
     @Override
