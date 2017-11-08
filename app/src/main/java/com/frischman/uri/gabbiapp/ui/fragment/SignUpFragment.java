@@ -1,7 +1,6 @@
 package com.frischman.uri.gabbiapp.ui.fragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,9 +17,8 @@ import com.frischman.uri.gabbiapp.loader.UserSignUpRequestLoader;
 import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.network.response.UserSignUpResponse;
 import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
-import com.google.gson.Gson;
 
-import static android.content.Context.MODE_PRIVATE;
+import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.putObjectInSharedPreferences;
 
 public class SignUpFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResponse> {
 
@@ -67,11 +65,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(Loader<UserSignUpResponse> loader, UserSignUpResponse data) {
         if (data.isSuccesfulSignUp()) {
-            SharedPreferences settings = getActivity().getPreferences(MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            final Gson gson = new Gson();
-            editor.putString(getString(R.string.user_info_shared_preferences_key), gson.toJson(data.getUser()));
-            editor.apply();
+            putObjectInSharedPreferences(getActivity(), getString(R.string.user_info_shared_preferences_key), data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
