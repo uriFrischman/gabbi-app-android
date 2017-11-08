@@ -40,8 +40,8 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                args.putString("username", mBinding.loginUsernameField.getText().toString());
-                args.putString("password", mBinding.loginPasswordField.getText().toString());
+                args.putString(getString(R.string.username_bundle_key), mBinding.loginUsernameField.getText().toString());
+                args.putString(getString(R.string.password_bundle_key), mBinding.loginPasswordField.getText().toString());
 
                 getActivity().getSupportLoaderManager().restartLoader(1, args, mContext).forceLoad();
             }
@@ -57,8 +57,8 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public Loader<UserLoginResponse> onCreateLoader(int id, Bundle args) {
-        String username = args.getString("username");
-        String password = args.getString("password");
+        String username = args.getString(getString(R.string.username_bundle_key));
+        String password = args.getString(getString(R.string.password_bundle_key));
         return new UserLoginRequestLoader(getActivity().getApplicationContext(), username, password);
     }
 
