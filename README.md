@@ -4,7 +4,7 @@ A native Android app that simplifies the process of assigning tasks to participa
 
 # Libraries Used (so far)
   - Android SDK
-  - AWS SDK (DynamoDB)
+  - AWS SDK (DynamoDB, Lambda)
   - Gson
   - Guava
   - SnappyDB
