@@ -2,15 +2,15 @@ package com.frischman.uri.gabbiapp.network.response;
 
 import com.frischman.uri.gabbiapp.model.User;
 
-public class UserSignUpResonse {
+public class UserSignUpResponse {
 
     User user;
     boolean succesfulSignUp;
 
-    public UserSignUpResonse() {
+    public UserSignUpResponse() {
     }
 
-    public UserSignUpResonse(User user, boolean succesfulSignUp) {
+    public UserSignUpResponse(User user, boolean succesfulSignUp) {
         this.user = user;
         this.succesfulSignUp = succesfulSignUp;
     }

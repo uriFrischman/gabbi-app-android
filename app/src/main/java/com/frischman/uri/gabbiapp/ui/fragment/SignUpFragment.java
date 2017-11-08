@@ -16,11 +16,11 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentSignupBinding;
 import com.frischman.uri.gabbiapp.loader.UserSignUpRequestLoader;
 import com.frischman.uri.gabbiapp.model.User;
-import com.frischman.uri.gabbiapp.network.response.UserSignUpResonse;
+import com.frischman.uri.gabbiapp.network.response.UserSignUpResponse;
 import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
 import com.google.gson.Gson;
 
-public class SignUpFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResonse> {
+public class SignUpFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResponse> {
 
     private SignUpFragment mContext = this;
     private FragmentSignupBinding mBinding;
@@ -57,13 +57,13 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     @Override
-    public Loader<UserSignUpResonse> onCreateLoader(int id, Bundle args) {
+    public Loader<UserSignUpResponse> onCreateLoader(int id, Bundle args) {
         User user = args.getParcelable("user");
         return new UserSignUpRequestLoader(getActivity().getApplicationContext(), user);
     }
 
     @Override
-    public void onLoadFinished(Loader<UserSignUpResonse> loader, UserSignUpResonse data) {
+    public void onLoadFinished(Loader<UserSignUpResponse> loader, UserSignUpResponse data) {
         if (data.isSuccesfulSignUp()) {
             SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
             SharedPreferences.Editor editor = settings.edit();
@@ -77,7 +77,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     @Override
-    public void onLoaderReset(Loader<UserSignUpResonse> loader) {
+    public void onLoaderReset(Loader<UserSignUpResponse> loader) {
 
     }
 }
