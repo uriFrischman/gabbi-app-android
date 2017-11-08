@@ -46,7 +46,7 @@ public class User implements Parcelable {
         this.userId = new Random().nextInt(1000);
     }
 
-    @DynamoDBHashKey(attributeName = "userId")
+    @DynamoDBHashKey(attributeName = "user_id")
     public int getUserId() {
         return userId;
     }
