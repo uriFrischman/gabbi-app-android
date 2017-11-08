@@ -22,7 +22,6 @@ public class AWSDynamoDBUtil {
             @Override
             public void run() {
                 getAppDynamoDBMapper().save(object);
-
             }
         }).start();
     }
