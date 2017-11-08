@@ -22,7 +22,6 @@ public class UserLoginRequestLoader extends AsyncTaskLoader<UserLoginResponse> {
 
     @Override
     public UserLoginResponse loadInBackground() {
-        final UserLoginRequest userLoginRequestRequest = new UserLoginRequest(username, password);
-        return getLambdaFunctions().userLogin(userLoginRequestRequest);
+        return getLambdaFunctions().userLogin(new UserLoginRequest(username, password));
     }
 }

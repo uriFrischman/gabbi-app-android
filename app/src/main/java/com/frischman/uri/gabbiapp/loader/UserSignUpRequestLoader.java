@@ -20,7 +20,6 @@ public class UserSignUpRequestLoader extends AsyncTaskLoader<UserSignUpResponse>
 
     @Override
     public UserSignUpResponse loadInBackground() {
-        final UserSignUpRequest userSignUpRequest = new UserSignUpRequest(user);
-        return getLambdaFunctions().userSignUp(userSignUpRequest);
+        return getLambdaFunctions().userSignUp(new UserSignUpRequest(user));
     }
 }
