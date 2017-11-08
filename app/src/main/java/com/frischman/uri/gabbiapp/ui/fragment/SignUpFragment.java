@@ -58,8 +58,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
 
     @Override
     public Loader<UserSignUpResponse> onCreateLoader(int id, Bundle args) {
-        User user = args.getParcelable(getString(R.string.user_bundle_key));
-        return new UserSignUpRequestLoader(getActivity().getApplicationContext(), user);
+        return new UserSignUpRequestLoader(getActivity().getApplicationContext(), (User) args.getParcelable(getString(R.string.user_bundle_key)));
     }
 
     @Override

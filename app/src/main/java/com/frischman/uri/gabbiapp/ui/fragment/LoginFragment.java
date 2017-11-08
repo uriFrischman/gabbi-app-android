@@ -57,9 +57,7 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public Loader<UserLoginResponse> onCreateLoader(int id, Bundle args) {
-        String username = args.getString(getString(R.string.username_bundle_key));
-        String password = args.getString(getString(R.string.password_bundle_key));
-        return new UserLoginRequestLoader(getActivity().getApplicationContext(), username, password);
+        return new UserLoginRequestLoader(getActivity().getApplicationContext(), args.getString(getString(R.string.username_bundle_key)), args.getString(getString(R.string.password_bundle_key)));
     }
 
     @Override
