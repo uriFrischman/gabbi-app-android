@@ -1,19 +1,28 @@
 package com.frischman.uri.gabbiapp.ui.fragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentSignupBinding;
+import com.frischman.uri.gabbiapp.loader.UserSignUpRequestLoader;
+import com.frischman.uri.gabbiapp.model.User;
+import com.frischman.uri.gabbiapp.network.response.UserSignUpResonse;
+import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
+import com.google.gson.Gson;
 
+public class SignUpFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResonse> {
 
-public class SignUpFragment extends Fragment {
-
+    private SignUpFragment mContext = this;
     private FragmentSignupBinding mBinding;
 
     @Nullable
@@ -25,11 +34,48 @@ public class SignUpFragment extends Fragment {
         mBinding.signupFragmentSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User user = new User(mBinding.signupFragmentUsername.getText().toString(),
+                        mBinding.signupFragmentFirstname.getText().toString(),
+                        mBinding.signupFragmentLastname.getText().toString(),
+                        mBinding.signupFragmentIsGabbi.isChecked(),
+                        mBinding.signupFragmentEmail.getText().toString(),
+                        mBinding.signupFragmentPhoneNumber.getText().toString(),
+                        mBinding.signupFragmentPassword.getText().toString()
+                );
+
+                Bundle args = new Bundle();
+                args.putParcelable("user", user);
+
+                getActivity().getSupportLoaderManager().restartLoader(0, args, mContext).forceLoad();
+
             }
         });
 
         return mBinding.getRoot();
     }
+
+    @Override
+    public Loader<UserSignUpResonse> onCreateLoader(int id, Bundle args) {
+        User user = args.getParcelable("user");
+        return new UserSignUpRequestLoader(getActivity().getApplicationContext(), user);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<UserSignUpResonse> loader, UserSignUpResonse data) {
+        if (data.isSuccesfulSignUp()) {
+            SharedPreferences settings = getActivity().getSharedPreferences("UserInfo", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            final Gson gson = new Gson();
+            editor.putString("userInfo", gson.toJson(data.getUser()));
+            editor.apply();
+            Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<UserSignUpResonse> loader) {
 
     }
 }
