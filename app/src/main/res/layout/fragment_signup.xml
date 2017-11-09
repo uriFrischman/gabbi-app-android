@@ -1,0 +1,78 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:id="@+id/signup_fragment_firstname"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:id="@+id/signup_fragment_lastname"
+            android:layout_below="@id/signup_fragment_firstname"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:id="@+id/signup_fragment_username"
+            android:layout_below="@id/signup_fragment_lastname"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:id="@+id/signup_fragment_password"
+            android:layout_below="@id/signup_fragment_username"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:id="@+id/signup_fragment_email"
+            android:layout_below="@id/signup_fragment_password"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:id="@+id/signup_fragment_phone_number"
+            android:layout_below="@id/signup_fragment_email"
+            android:inputType="phone"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signup_fragment_phone_number"
+            android:text="Are you a gabbi?"
+            android:id="@+id/signup_fragment_isGabbi"/>
+
+        <Button
+            android:id="@+id/signup_fragment_signup_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/signup_fragment_isGabbi"
+            android:text="Sign Up" />
+
+
+    </RelativeLayout>
+
+
+</layout>

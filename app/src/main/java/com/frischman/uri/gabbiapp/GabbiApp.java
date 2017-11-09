@@ -75,6 +75,10 @@ public class GabbiApp extends Application {
         mCredentialsProvider = getCognitoCachingCredentialsProvider(this, getString(R.string.aws_userpool_identity_pool_id), Regions.US_EAST_1);
     }
 
+    public static CognitoCachingCredentialsProvider getAppCognitoCachingCredentialsProvider() {
+        return mCredentialsProvider;
+    }
+
     private void connectToDynamoDB() {
         mAmazonDynamoDBClient = getAmazonDynamoDBClient(mCredentialsProvider);
         mDynamoDBMapper = getDynamoDBMapper(mAmazonDynamoDBClient);

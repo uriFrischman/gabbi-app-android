@@ -11,7 +11,6 @@ import static com.frischman.uri.gabbiapp.utility.AliyahUtil.getAllAliyahsFromEve
 
 public class AliyahsLoader extends AsyncTaskLoader<List<Aliyah>> {
 
-    private static final String TAG = "AliyahsLoader";
     private String mEventName;
 
     public AliyahsLoader(Context context, String eventName) {
