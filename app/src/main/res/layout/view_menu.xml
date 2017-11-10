@@ -34,9 +34,10 @@
                 android:text="Zmanim"/>
 
             <Button
+                android:id="@+id/GetTextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello World"/>
+                android:text="Get Text"/>
 
         </GridLayout>
 
