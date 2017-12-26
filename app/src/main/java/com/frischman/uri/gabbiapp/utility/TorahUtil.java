@@ -106,4 +106,13 @@ public class TorahUtil {
         }
         return listToReturn;
     }
+
+    public static int getSeferLength(String seferKey) {
+        try {
+            return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.size();
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }
