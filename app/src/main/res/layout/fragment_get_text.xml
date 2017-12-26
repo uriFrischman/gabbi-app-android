@@ -6,17 +6,106 @@
 
 
     <RelativeLayout
-        android:id="@+id/getTextRelativeLayout"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/getTextRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sefer"
+                android:id="@+id/sefer_text"/>
+
+            <Spinner
+                android:id="@+id/sefer_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sefer_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sefer_spinner"
+                android:id="@+id/begin_perek_text"
+                android:text="Begin Perek"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/begin_perek_text"
+                android:id="@+id/begin_perek_spinner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/begin_perek_spinner"
+                android:id="@+id/begin_pasuk_text"
+                android:text="Begin Pasuk"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/begin_pasuk_text"
+                android:id="@+id/begin_pasuk_spinner"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/begin_pasuk_spinner"
+                android:id="@+id/end_perek_text"
+                android:text="End Perek"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/end_perek_text"
+                android:id="@+id/end_perek_spinner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/end_perek_spinner"
+                android:id="@+id/end_pasuk_text"
+                android:text="End Pasuk"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/end_pasuk_text"
+                android:id="@+id/end_pasuk_spinner" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/go_button"
+                android:layout_below="@id/end_pasuk_spinner"
+                android:text="GO!"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/selectorVisibilityButton"
+            android:layout_below="@id/getTextRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show/Hide Selectors"/>
 
         <TextView
             android:id="@+id/getTextTextView"
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
-            android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:text="Get Text"/>
+            android:layout_below="@id/selectorVisibilityButton"
+            android:textColor="@android:color/black"
+            android:maxLines="20"
+            android:scrollbars="vertical"
+            android:textDirection="rtl"
+            android:textSize="20dp"/>
 
     </RelativeLayout>
 
