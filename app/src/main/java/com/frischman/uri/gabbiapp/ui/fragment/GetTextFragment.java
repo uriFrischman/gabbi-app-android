@@ -19,6 +19,9 @@ import java.util.List;
 
 import static com.frischman.uri.gabbiapp.utility.FontUtil.createFontFromAssets;
 import static com.frischman.uri.gabbiapp.utility.IntegerUtil.getRange;
+import static com.frischman.uri.gabbiapp.utility.TorahUtil.MAX_NUMBER_OF_PERAKIM_IN_TORAH;
+import static com.frischman.uri.gabbiapp.utility.TorahUtil.MAX_NUMBER_OF_PSUKIM_IN_PEREK_IN_TORAH;
+import static com.frischman.uri.gabbiapp.utility.TorahUtil.SEFERS;
 import static com.frischman.uri.gabbiapp.utility.TorahUtil.getRangeOfText;
 
 public class GetTextFragment extends Fragment {
@@ -33,12 +36,13 @@ public class GetTextFragment extends Fragment {
         ArrayAdapter<String> sefersAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, SEFERS);
         mBinding.seferSpinner.setAdapter(sefersAdapter);
 
-        ArrayAdapter<Integer> perakimAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, getRange(1, 50));
+        ArrayAdapter<Integer> perakimAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, getRange(1, MAX_NUMBER_OF_PERAKIM_IN_TORAH));
+        ArrayAdapter<Integer> psukimAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, getRange(1, MAX_NUMBER_OF_PSUKIM_IN_PEREK_IN_TORAH));
         mBinding.beginPerekSpinner.setAdapter(perakimAdapter);
         mBinding.endPerekSpinner.setAdapter(perakimAdapter);
 
-        mBinding.beginPasukSpinner.setAdapter(perakimAdapter);
-        mBinding.endPasukSpinner.setAdapter(perakimAdapter);
+        mBinding.beginPasukSpinner.setAdapter(psukimAdapter);
+        mBinding.endPasukSpinner.setAdapter(psukimAdapter);
 
         Typeface font = createFontFromAssets(getActivity().getApplicationContext(), "torah.ttf");
         mBinding.getTextTextView.setTypeface(font);
