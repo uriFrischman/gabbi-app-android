@@ -23,7 +23,6 @@ import static com.frischman.uri.gabbiapp.utility.TorahUtil.getRangeOfText;
 
 public class GetTextFragment extends Fragment {
 
-    final String[] SEFERS = {"Bereishit", "Shmot", "Vayikra", "Bamidbar", "Devarim"};
     FragmentGetTextBinding mBinding;
 
     @Nullable

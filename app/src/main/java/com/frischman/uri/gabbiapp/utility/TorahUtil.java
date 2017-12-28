@@ -17,7 +17,10 @@ import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 public class TorahUtil {
 
-    private static final String TAG = "TorahUtil";
+
+    public static final int MAX_NUMBER_OF_PERAKIM_IN_TORAH = 50;
+    public static final int MAX_NUMBER_OF_PSUKIM_IN_PEREK_IN_TORAH = 69;
+    public static final String[] SEFERS = {"Bereishit", "Shmot", "Vayikra", "Bamidbar", "Devarim"};
 
     public static void addTorahToSnappyDB() {
         String bereishit = rawFileToString(R.raw.bereishit);
