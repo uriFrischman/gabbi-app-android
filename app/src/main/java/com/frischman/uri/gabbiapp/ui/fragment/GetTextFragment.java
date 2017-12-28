@@ -16,6 +16,7 @@ import com.frischman.uri.gabbiapp.databinding.FragmentGetTextBinding;
 
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.utility.FontUtil.createFontFromAssets;
 import static com.frischman.uri.gabbiapp.utility.IntegerUtil.getRange;
 import static com.frischman.uri.gabbiapp.utility.TorahUtil.getRangeOfText;
 
@@ -39,7 +40,7 @@ public class GetTextFragment extends Fragment {
         mBinding.beginPasukSpinner.setAdapter(perakimAdapter);
         mBinding.endPasukSpinner.setAdapter(perakimAdapter);
 
-        Typeface font = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/ShlomoStam.ttf");
+        Typeface font = createFontFromAssets(getActivity().getApplicationContext(), "ShlomoStam.ttf");
         mBinding.getTextTextView.setTypeface(font);
 
         mBinding.getTextTextView.setMovementMethod(new ScrollingMovementMethod());
