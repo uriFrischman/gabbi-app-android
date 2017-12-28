@@ -128,17 +128,14 @@ public class TorahUtil {
             return false;
         }
 
-        int fromPerekLength, toPerekLength;
+        int fromPerekLength = getPerekLength(seferKey, fromPerek) ;
 
         if (fromPerek == toPerek) {
-            fromPerekLength = getPerekLength(seferKey, fromPerek);
-
             if (fromPasuk > toPasuk || fromPasuk > fromPerekLength || toPasuk > fromPerekLength) {
                 return false;
             }
         } else {
-            fromPerekLength = getPerekLength(seferKey, fromPerek);
-            toPerekLength = getPerekLength(seferKey, toPerek);
+            int toPerekLength = getPerekLength(seferKey, toPerek);
 
             if (fromPasuk > fromPerekLength || toPasuk > toPerekLength) {
                 return false;
