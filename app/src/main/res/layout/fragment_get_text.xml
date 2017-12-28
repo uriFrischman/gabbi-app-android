@@ -6,106 +6,105 @@
 
 
     <RelativeLayout
-
+        android:id="@+id/getTextContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/getTextRelativeLayout"
+            android:id="@+id/getTextSpinnersContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/seferText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sefer"
-                android:id="@+id/sefer_text"/>
+                android:text="Sefer" />
 
             <Spinner
-                android:id="@+id/sefer_spinner"
+                android:id="@+id/seferSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sefer_text"/>
+                android:layout_below="@id/seferText" />
 
             <TextView
+                android:id="@+id/beginPerekText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sefer_spinner"
-                android:id="@+id/begin_perek_text"
-                android:text="Begin Perek"/>
+                android:layout_below="@id/seferSpinner"
+                android:text="Begin Perek" />
 
             <Spinner
+                android:id="@+id/beginPerekSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/begin_perek_text"
-                android:id="@+id/begin_perek_spinner"/>
+                android:layout_below="@id/beginPerekText" />
 
             <TextView
+                android:id="@+id/beginPasukText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/begin_perek_spinner"
-                android:id="@+id/begin_pasuk_text"
-                android:text="Begin Pasuk"/>
+                android:layout_below="@id/beginPerekSpinner"
+                android:text="Begin Pasuk" />
 
             <Spinner
+                android:id="@+id/beginPasukSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/begin_pasuk_text"
-                android:id="@+id/begin_pasuk_spinner"
-                />
+                android:layout_below="@id/beginPasukText" />
 
             <TextView
+                android:id="@+id/endPerekText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/begin_pasuk_spinner"
-                android:id="@+id/end_perek_text"
-                android:text="End Perek"/>
+                android:layout_below="@id/beginPasukSpinner"
+                android:text="End Perek" />
 
             <Spinner
+                android:id="@+id/endPerekSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/end_perek_text"
-                android:id="@+id/end_perek_spinner" />
+                android:layout_below="@id/endPerekText" />
 
             <TextView
+                android:id="@+id/endPasukText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/end_perek_spinner"
-                android:id="@+id/end_pasuk_text"
-                android:text="End Pasuk"/>
+                android:layout_below="@id/endPerekSpinner"
+                android:text="End Pasuk" />
 
             <Spinner
+                android:id="@+id/endPasukSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/end_pasuk_text"
-                android:id="@+id/end_pasuk_spinner" />
+                android:layout_below="@id/endPasukText" />
 
             <Button
+                android:id="@+id/goButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/go_button"
-                android:layout_below="@id/end_pasuk_spinner"
-                android:text="GO!"/>
+                android:layout_below="@id/endPasukSpinner"
+                android:text="GO!" />
 
         </RelativeLayout>
 
         <Button
             android:id="@+id/selectorVisibilityButton"
-            android:layout_below="@id/getTextRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show/Hide Selectors"/>
+            android:layout_below="@id/getTextSpinnersContainer"
+            android:text="Show/Hide Selectors" />
 
         <TextView
             android:id="@+id/getTextTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/selectorVisibilityButton"
-            android:textColor="@android:color/black"
             android:maxLines="20"
             android:scrollbars="vertical"
+            android:textColor="@android:color/black"
             android:textDirection="rtl"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
     </RelativeLayout>
 

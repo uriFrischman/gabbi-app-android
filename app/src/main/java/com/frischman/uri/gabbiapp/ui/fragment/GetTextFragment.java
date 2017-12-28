@@ -69,7 +69,7 @@ public class GetTextFragment extends Fragment {
         mBinding.selectorVisibilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideOrShow(mBinding.getTextRelativeLayout);
+                hideOrShow(mBinding.getTextSpinnersContainer);
             }
         });
 
