@@ -58,8 +58,32 @@ public class GetTextFragment extends Fragment {
         mBinding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int seferDatabaseKey;
+
+                switch(mBinding.seferSpinner.getSelectedItem().toString()) {
+                    case "Bereishit":
+                        seferDatabaseKey = R.string.database_key_bereishit;
+                        break;
+                    case "Shmot":
+                        seferDatabaseKey = R.string.database_key_shemot;
+                        break;
+                    case "Vayikra":
+                        seferDatabaseKey = R.string.database_key_vayikra;
+                        break;
+                    case "Bamidbar":
+                        seferDatabaseKey = R.string.database_key_bamidbar;
+                        break;
+                    case "Devarim":
+                        seferDatabaseKey = R.string.database_key_devarim;
+                        break;
+                    default:
+                        seferDatabaseKey = 0;
+                        break;
+                }
+
                 mBinding.getTextTextView.setText("");
-                List<List<String>> fullText = getRangeOfText(getString(R.string.database_key_bereishit), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem());
+                List<List<String>> fullText = getRangeOfText(getString(seferDatabaseKey), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem());
                 for (List<String> perek : fullText) {
                     for (String pasuk : perek) {
                         mBinding.getTextTextView.append(pasuk);
