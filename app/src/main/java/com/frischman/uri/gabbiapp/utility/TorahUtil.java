@@ -70,6 +70,11 @@ public class TorahUtil {
     }
 
     public static List<List<String>> getRangeOfText(String seferKey, int fromPerek, int fromPasuk, int toPerek, int toPasuk) {
+
+        if (!isValidRangeOfText(seferKey, fromPerek, fromPasuk, toPerek, toPasuk)) {
+            return null;
+        }
+
         List<List<String>> listToReturn = new ArrayList<>();
         if (fromPerek == toPerek) {
             listToReturn.add(getPsukimFromPerek(seferKey, fromPerek, fromPasuk, toPasuk));
@@ -114,5 +119,32 @@ public class TorahUtil {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    private static boolean isValidRangeOfText(String seferKey, int fromPerek, int fromPasuk, int toPerek, int toPasuk) {
+        int seferLength = getSeferLength(seferKey);
+
+        if (fromPerek > toPerek ||  fromPerek > seferLength || toPerek > seferLength) {
+            return false;
+        }
+
+        int fromPerekLength, toPerekLength;
+
+        if (fromPerek == toPerek) {
+            fromPerekLength = getPerekLength(seferKey, fromPerek);
+
+            if (fromPasuk > toPasuk || fromPasuk > fromPerekLength || toPasuk > fromPerekLength) {
+                return false;
+            }
+        } else {
+            fromPerekLength = getPerekLength(seferKey, fromPerek);
+            toPerekLength = getPerekLength(seferKey, toPerek);
+
+            if (fromPasuk > fromPerekLength || toPasuk > toPerekLength) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
