@@ -41,7 +41,7 @@ public class GetTextFragment extends Fragment {
         mBinding.beginPasukSpinner.setAdapter(perakimAdapter);
         mBinding.endPasukSpinner.setAdapter(perakimAdapter);
 
-        Typeface font = createFontFromAssets(getActivity().getApplicationContext(), "ShlomoStam.ttf");
+        Typeface font = createFontFromAssets(getActivity().getApplicationContext(), "torah.ttf");
         mBinding.getTextTextView.setTypeface(font);
 
         mBinding.getTextTextView.setMovementMethod(new ScrollingMovementMethod());
