@@ -47,16 +47,16 @@ public class TorahUtil {
         }
     }
 
-    public static String getPasuk(String seferKey, int perek, int pasuk) {
+    private static String getPasuk(String seferKey, int perek, int pasuk) {
         try {
-            return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.get(perek - 1).get(pasuk - 1).toString();
+            return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.get(perek - 1).get(pasuk - 1);
         } catch (SnappydbException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public static List<String> getPerek(String seferKey, int perek) {
+    private static List<String> getPerek(String seferKey, int perek) {
         try {
             return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.get(perek - 1);
         } catch (SnappydbException e) {
@@ -65,7 +65,7 @@ public class TorahUtil {
         }
     }
 
-    public static int getPerekLength(String seferKey, int perek) {
+    private static int getPerekLength(String seferKey, int perek) {
         return getPerek(seferKey, perek).size();
     }
 
@@ -88,14 +88,11 @@ public class TorahUtil {
             int fullPerekStart = fromPerek + 1;
             int fullPerekEnd = toPerek - 1;
 
-            Log.d(TAG, String.format("%d %d", fullPerekStart, fullPerekEnd));
-
             List<String> listOfFromIncompletePerekPsukim = getPsukimFromPerek(seferKey, fromPerek, fromPasuk, getPerekLength(seferKey, fromPerek));
             listToReturn.add(listOfFromIncompletePerekPsukim);
 
             for (int currentPerek = fullPerekStart; currentPerek <= fullPerekEnd; currentPerek++) {
                 listToReturn.add(getPerek(seferKey, currentPerek));
-                Log.d(TAG, getPerek(seferKey, currentPerek).toString());
             }
 
             List<String> listOfToIncompletePerekPsukim = getPsukimFromPerek(seferKey, toPerek, 1, toPasuk);
@@ -112,7 +109,7 @@ public class TorahUtil {
         return listToReturn;
     }
 
-    public static int getSeferLength(String seferKey) {
+    private static int getSeferLength(String seferKey) {
         try {
             return getDBWithName(getString(R.string.database_name_torah)).getObject(seferKey, Sefer.class).text.size();
         } catch (SnappydbException e) {
