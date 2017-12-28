@@ -87,7 +87,7 @@ public class GetTextFragment extends Fragment {
                 mBinding.getTextTextView.setText("");
                 List<List<String>> fullText = getRangeOfText(getString(seferDatabaseKey), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem());
                 if (fullText == null) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Invalid Entry", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Invalid Range Inputted", Toast.LENGTH_LONG).show();
                 } else {
                     for (List<String> perek : fullText) {
                         for (String pasuk : perek) {
