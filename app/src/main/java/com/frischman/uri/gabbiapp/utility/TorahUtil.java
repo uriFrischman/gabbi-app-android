@@ -1,7 +1,5 @@
 package com.frischman.uri.gabbiapp.utility;
 
-import android.util.Log;
-
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.model.Sefer;
 import com.google.gson.Gson;
@@ -124,11 +122,11 @@ public class TorahUtil {
     private static boolean isValidRangeOfText(String seferKey, int fromPerek, int fromPasuk, int toPerek, int toPasuk) {
         int seferLength = getSeferLength(seferKey);
 
-        if (fromPerek > toPerek ||  fromPerek > seferLength || toPerek > seferLength) {
+        if (fromPerek > toPerek || fromPerek > seferLength || toPerek > seferLength) {
             return false;
         }
 
-        int fromPerekLength = getPerekLength(seferKey, fromPerek) ;
+        int fromPerekLength = getPerekLength(seferKey, fromPerek);
 
         if (fromPerek == toPerek) {
             if (fromPasuk > toPasuk || fromPasuk > fromPerekLength || toPasuk > fromPerekLength) {
