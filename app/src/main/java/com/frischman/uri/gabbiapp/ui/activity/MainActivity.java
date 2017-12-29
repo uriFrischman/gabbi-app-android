@@ -9,6 +9,7 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
 import com.frischman.uri.gabbiapp.ui.fragment.EventListFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.GetTextFragment;
+import com.frischman.uri.gabbiapp.ui.fragment.HomeFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.ZmanimFragment;
 
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new EventListFragment(), false);
+        replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new HomeFragment(), false);
 
         initPanelSlideUpMenu();
         initMenuButtons();
@@ -55,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBinding.viewMenu.CloseMenuButton.setOnClickListener(new View.OnClickListener() {
+        mBinding.viewMenu.HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new HomeFragment(), true);
             }
         });
 
