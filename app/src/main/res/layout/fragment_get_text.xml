@@ -1,0 +1,111 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/getTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/getTextSpinnersContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/seferText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sefer" />
+
+            <Spinner
+                android:id="@+id/seferSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seferText" />
+
+            <TextView
+                android:id="@+id/beginPerekText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seferSpinner"
+                android:text="Begin Perek" />
+
+            <Spinner
+                android:id="@+id/beginPerekSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/beginPerekText" />
+
+            <TextView
+                android:id="@+id/beginPasukText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/beginPerekSpinner"
+                android:text="Begin Pasuk" />
+
+            <Spinner
+                android:id="@+id/beginPasukSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/beginPasukText" />
+
+            <TextView
+                android:id="@+id/endPerekText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/beginPasukSpinner"
+                android:text="End Perek" />
+
+            <Spinner
+                android:id="@+id/endPerekSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/endPerekText" />
+
+            <TextView
+                android:id="@+id/endPasukText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/endPerekSpinner"
+                android:text="End Pasuk" />
+
+            <Spinner
+                android:id="@+id/endPasukSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/endPasukText" />
+
+            <Button
+                android:id="@+id/goButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/endPasukSpinner"
+                android:text="GO!" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/selectorVisibilityButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/getTextSpinnersContainer"
+            android:text="Show/Hide Selectors" />
+
+        <TextView
+            android:id="@+id/getTextTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selectorVisibilityButton"
+            android:maxLines="20"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/black"
+            android:textDirection="rtl"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+</layout>
