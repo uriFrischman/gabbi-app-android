@@ -6,13 +6,15 @@ public class UserSignUpResponse {
 
     User user;
     boolean succesfulSignUp;
+    String message;
 
     public UserSignUpResponse() {
     }
 
-    public UserSignUpResponse(User user, boolean succesfulSignUp) {
+    public UserSignUpResponse(User user, boolean succesfulSignUp, String message) {
         this.user = user;
         this.succesfulSignUp = succesfulSignUp;
+        this.message = message;
     }
 
     public User getUser() {
@@ -29,5 +31,13 @@ public class UserSignUpResponse {
 
     public void setSuccesfulSignUp(boolean succesfulSignUp) {
         this.succesfulSignUp = succesfulSignUp;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

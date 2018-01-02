@@ -1,21 +1,32 @@
 package com.frischman.uri.gabbiapp.utility;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SharedPreferencesUtil {
 
-    public static void putObjectInSharedPreferences(Activity activity, String key, Object object) {
-        SharedPreferences.Editor editor = activity.getPreferences(MODE_PRIVATE).edit();
-        editor.putString(key, new Gson().toJson(object));
-        editor.apply();
+    public static void putObjectInSharedPreferences(Context context, String preferencesName, int mode,  String preferencesKey, Object object) {
+        SharedPreferences pref = context.getSharedPreferences(preferencesName, mode);
+        pref.edit().putString(preferencesKey, new Gson().toJson(object)).apply();
     }
 
-    public static boolean checkIfSharedPreferencesContainsKey(Activity activity, String key) {
-        return activity.getPreferences(MODE_PRIVATE).contains(key);
+    public static boolean checkIfSharedPreferencesContainsKey(Context context, String preferencesName, int mode,  String preferencesKey) {
+        return context.getSharedPreferences(preferencesName, mode).contains(preferencesKey);
+    }
+
+    public static Object getObjectInSharedPreferences(Context context, String preferencesName, int mode, String key, Class objectType) {
+        if (checkIfSharedPreferencesContainsKey(context, preferencesName, mode, key)) {
+            String json = context.getSharedPreferences(preferencesName, mode).getString(key, null);
+            return new Gson().fromJson(json, objectType);
+        } else {
+            return null;
+        }
+    }
+
+    public static void removeItemFromSharedPreferences(Context context, String preferencesName, int mode,  String preferencesKey) {
+        SharedPreferences pref = context.getSharedPreferences(preferencesName, mode);
+        pref.edit().remove(preferencesKey).apply();
     }
 }

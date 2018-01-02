@@ -11,7 +11,7 @@
 
         <GridLayout android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rowCount="2"
+                    android:rowCount="3"
                     android:columnCount="2"
                     android:layout_centerInParent="true">
 
@@ -38,6 +38,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Get Text"/>
+
+            <Button
+                android:id="@+id/LogoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"/>
 
         </GridLayout>
 

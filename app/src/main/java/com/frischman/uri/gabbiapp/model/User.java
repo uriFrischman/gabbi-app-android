@@ -12,7 +12,6 @@ import java.util.Random;
 @DynamoDBTable(tableName = "Users")
 public class User implements Parcelable {
     private int userId;
-    private String username;
     private String firstName;
     private String lastName;
     private boolean isGabbi;
@@ -24,9 +23,8 @@ public class User implements Parcelable {
 
     }
 
-    public User(int userId, String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
+    public User(int userId, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
         this.userId = userId;
-        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isGabbi = isGabbi;
@@ -35,8 +33,7 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    public User(String username, String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
-        this.username = username;
+    public User(String firstName, String lastName, boolean isGabbi, String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.isGabbi = isGabbi;
@@ -46,7 +43,7 @@ public class User implements Parcelable {
         this.userId = new Random().nextInt(1000);
     }
 
-    @DynamoDBHashKey(attributeName = "user_id")
+    @DynamoDBHashKey(attributeName = "userId")
     public int getUserId() {
         return userId;
     }
@@ -55,7 +52,7 @@ public class User implements Parcelable {
         this.userId = userId;
     }
 
-    @DynamoDBAttribute(attributeName = "first_name")
+    @DynamoDBAttribute(attributeName = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -64,7 +61,7 @@ public class User implements Parcelable {
         this.firstName = firstName;
     }
 
-    @DynamoDBAttribute(attributeName = "last_name")
+    @DynamoDBAttribute(attributeName = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -73,7 +70,7 @@ public class User implements Parcelable {
         this.lastName = lastName;
     }
 
-    @DynamoDBAttribute(attributeName = "is_gabbi")
+    @DynamoDBAttribute(attributeName = "isGabbi")
     public boolean getIsGabbi() {
         return isGabbi;
     }
@@ -91,7 +88,7 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    @DynamoDBAttribute(attributeName = "phone_number")
+    @DynamoDBAttribute(attributeName = "phoneNumber")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -109,29 +106,10 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    @DynamoDBAttribute(attributeName = "user_name")
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @DynamoDBAttribute(attributeName = "is_gabbi")
-    public boolean isGabbi() {
-        return isGabbi;
-    }
-
-    public void setGabbi(boolean gabbi) {
-        isGabbi = gabbi;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", isGabbi=" + isGabbi +
@@ -143,7 +121,6 @@ public class User implements Parcelable {
 
     protected User(Parcel in) {
         userId = in.readInt();
-        username = in.readString();
         firstName = in.readString();
         lastName = in.readString();
         isGabbi = in.readByte() != 0;
@@ -172,7 +149,6 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(userId);
-        dest.writeString(username);
         dest.writeString(lastName);
         dest.writeString(email);
         dest.writeString(phoneNumber);

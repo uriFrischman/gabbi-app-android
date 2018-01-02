@@ -1,5 +1,6 @@
 package com.frischman.uri.gabbiapp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkIfUserIsLoggedIn() {
-        if (checkIfSharedPreferencesContainsKey(this, getString(R.string.user_info_shared_preferences_key))) {
+        if (checkIfSharedPreferencesContainsKey(getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info))) {
             Log.d(TAG, "onCreate: User is in shared preferences");
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

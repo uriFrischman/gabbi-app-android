@@ -1,5 +1,6 @@
 package com.frischman.uri.gabbiapp.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentSignupBinding;
@@ -38,11 +40,11 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
         mBinding.signupFragmentSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(mBinding.signupFragmentUsername.getText().toString(),
+                User user = new User(
                         mBinding.signupFragmentFirstname.getText().toString(),
                         mBinding.signupFragmentLastname.getText().toString(),
                         mBinding.signupFragmentIsGabbi.isChecked(),
-                        mBinding.signupFragmentEmail.getText().toString(),
+                        mBinding.signupFragmentEmail.getText().toString().toLowerCase(),
                         mBinding.signupFragmentPhoneNumber.getText().toString(),
                         mBinding.signupFragmentPassword.getText().toString()
                 );
@@ -63,8 +65,9 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
 
     @Override
     public void onLoadFinished(Loader<UserSignUpResponse> loader, UserSignUpResponse data) {
+        Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
         if (data.isSuccesfulSignUp()) {
-            putObjectInSharedPreferences(getActivity(), getString(R.string.user_info_shared_preferences_key), data.getUser());
+            putObjectInSharedPreferences(getActivity().getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info), data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
