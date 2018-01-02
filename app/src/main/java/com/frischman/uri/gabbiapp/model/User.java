@@ -106,16 +106,6 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-
-    @DynamoDBAttribute(attributeName = "is_gabbi")
-    public boolean isGabbi() {
-        return isGabbi;
-    }
-
-    public void setGabbi(boolean gabbi) {
-        isGabbi = gabbi;
-    }
-
     @Override
     public String toString() {
         return "User{" +
