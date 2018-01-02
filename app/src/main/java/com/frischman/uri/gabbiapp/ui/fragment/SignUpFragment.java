@@ -11,6 +11,7 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentSignupBinding;
@@ -64,6 +65,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
 
     @Override
     public void onLoadFinished(Loader<UserSignUpResponse> loader, UserSignUpResponse data) {
+        Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
         if (data.isSuccesfulSignUp()) {
             putObjectInSharedPreferences(getActivity().getApplicationContext(), "user_preferences", Context.MODE_PRIVATE, "user_info", data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
