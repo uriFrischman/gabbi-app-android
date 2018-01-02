@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkIfUserIsLoggedIn() {
-        if (checkIfSharedPreferencesContainsKey(getApplicationContext(), "user_preferences", Context.MODE_PRIVATE, "user_info")) {
+        if (checkIfSharedPreferencesContainsKey(getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info))) {
             Log.d(TAG, "onCreate: User is in shared preferences");
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

@@ -46,5 +46,6 @@
     <string name="email_bundle_key">email</string>
     <string name="password_bundle_key">password</string>
 
-    <string name="user_info_shared_preferences_key">user_info</string>
+    <string name="preferences_name_user_preferences">user_preferences</string>
+    <string name="preferences_key_user_info">user_info</string>
 </resources>

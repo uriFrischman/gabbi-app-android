@@ -68,7 +68,7 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
         Log.d(TAG, "onLoadFinished: " + data.toString());
         Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
         if (data.isSuccessfulLogin()) {
-            putObjectInSharedPreferences(getActivity().getApplicationContext(), "user_preferences", Context.MODE_PRIVATE, "user_info", data.getUser());
+            putObjectInSharedPreferences(getActivity().getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info), data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
