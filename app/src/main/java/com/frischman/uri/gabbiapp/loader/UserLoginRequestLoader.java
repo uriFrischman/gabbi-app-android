@@ -11,17 +11,17 @@ import static com.frischman.uri.gabbiapp.utility.AWSLambdaUtil.getLambdaFunction
 
 public class UserLoginRequestLoader extends AsyncTaskLoader<UserLoginResponse> {
 
-    private String username;
+    private String email;
     private String password;
 
-    public UserLoginRequestLoader(Context context, String username, String password) {
+    public UserLoginRequestLoader(Context context, String email, String password) {
         super(context);
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
     @Override
     public UserLoginResponse loadInBackground() {
-        return getLambdaFunctions().userLogin(new UserLoginRequest(username, password));
+        return getLambdaFunctions().userLogin(new UserLoginRequest(email, password));
     }
 }

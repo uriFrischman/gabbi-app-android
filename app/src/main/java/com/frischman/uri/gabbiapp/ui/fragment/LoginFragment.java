@@ -1,5 +1,6 @@
 package com.frischman.uri.gabbiapp.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentLoginBinding;
@@ -20,6 +22,7 @@ import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
 
 import static android.content.ContentValues.TAG;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
+import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.putObjectInSharedPreferences;
 
 public class LoginFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserLoginResponse> {
 
@@ -40,7 +43,7 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                args.putString(getString(R.string.username_bundle_key), mBinding.loginUsernameField.getText().toString());
+                args.putString(getString(R.string.email_bundle_key), mBinding.loginEmailField.getText().toString());
                 args.putString(getString(R.string.password_bundle_key), mBinding.loginPasswordField.getText().toString());
 
                 getActivity().getSupportLoaderManager().restartLoader(1, args, mContext).forceLoad();
@@ -57,13 +60,15 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public Loader<UserLoginResponse> onCreateLoader(int id, Bundle args) {
-        return new UserLoginRequestLoader(getActivity().getApplicationContext(), args.getString(getString(R.string.username_bundle_key)), args.getString(getString(R.string.password_bundle_key)));
+        return new UserLoginRequestLoader(getActivity().getApplicationContext(), args.getString(getString(R.string.email_bundle_key)), args.getString(getString(R.string.password_bundle_key)));
     }
 
     @Override
     public void onLoadFinished(Loader<UserLoginResponse> loader, UserLoginResponse data) {
         Log.d(TAG, "onLoadFinished: " + data.toString());
+        Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
         if (data.isSuccessfulLogin()) {
+            putObjectInSharedPreferences(getActivity().getApplicationContext(), "user_preferences", Context.MODE_PRIVATE, "user_info", data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();

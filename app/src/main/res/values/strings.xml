@@ -43,7 +43,7 @@
     <string name="bundle_argument_event_name">eventName</string>
 
     <string name="user_bundle_key">user</string>
-    <string name="username_bundle_key">username</string>
+    <string name="email_bundle_key">email</string>
     <string name="password_bundle_key">password</string>
 
     <string name="user_info_shared_preferences_key">user_info</string>
