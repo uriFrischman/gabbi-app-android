@@ -40,7 +40,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
         mBinding.signupFragmentSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(mBinding.signupFragmentUsername.getText().toString(),
+                User user = new User(
                         mBinding.signupFragmentFirstname.getText().toString(),
                         mBinding.signupFragmentLastname.getText().toString(),
                         mBinding.signupFragmentIsGabbi.isChecked(),
