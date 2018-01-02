@@ -44,7 +44,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
                         mBinding.signupFragmentFirstname.getText().toString(),
                         mBinding.signupFragmentLastname.getText().toString(),
                         mBinding.signupFragmentIsGabbi.isChecked(),
-                        mBinding.signupFragmentEmail.getText().toString(),
+                        mBinding.signupFragmentEmail.getText().toString().toLowerCase(),
                         mBinding.signupFragmentPhoneNumber.getText().toString(),
                         mBinding.signupFragmentPassword.getText().toString()
                 );
