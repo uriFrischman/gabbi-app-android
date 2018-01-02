@@ -1,5 +1,7 @@
 package com.frischman.uri.gabbiapp.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import com.frischman.uri.gabbiapp.ui.fragment.HomeFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.ZmanimFragment;
 
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
+import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.removeItemFromSharedPreferences;
 import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
@@ -77,7 +80,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
                 replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new GetTextFragment(), true);
+            }
+        });
 
+        mBinding.viewMenu.LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
             }
         });
     }
@@ -103,5 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setFabButtonVisibility(int visibility) {
         mBinding.fabButton.setVisibility(visibility);
+    }
+
+    private void logOut() {
+        removeItemFromSharedPreferences(this, getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info));
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

@@ -24,4 +24,9 @@ public class SharedPreferencesUtil {
             return null;
         }
     }
+
+    public static void removeItemFromSharedPreferences(Context context, String preferencesName, int mode,  String preferencesKey) {
+        SharedPreferences pref = context.getSharedPreferences(preferencesName, mode);
+        pref.edit().remove(preferencesKey).apply();
+    }
 }
