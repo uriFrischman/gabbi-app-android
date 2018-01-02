@@ -1,5 +1,6 @@
 package com.frischman.uri.gabbiapp.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -64,7 +65,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(Loader<UserSignUpResponse> loader, UserSignUpResponse data) {
         if (data.isSuccesfulSignUp()) {
-            putObjectInSharedPreferences(getActivity(), getString(R.string.user_info_shared_preferences_key), data.getUser());
+            putObjectInSharedPreferences(getActivity().getApplicationContext(), "user_preferences", Context.MODE_PRIVATE, "user_info", data.getUser());
             Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
