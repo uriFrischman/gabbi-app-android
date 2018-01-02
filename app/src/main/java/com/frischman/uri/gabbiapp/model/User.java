@@ -43,7 +43,7 @@ public class User implements Parcelable {
         this.userId = new Random().nextInt(1000);
     }
 
-    @DynamoDBHashKey(attributeName = "user_id")
+    @DynamoDBHashKey(attributeName = "userId")
     public int getUserId() {
         return userId;
     }
@@ -52,7 +52,7 @@ public class User implements Parcelable {
         this.userId = userId;
     }
 
-    @DynamoDBAttribute(attributeName = "first_name")
+    @DynamoDBAttribute(attributeName = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -61,7 +61,7 @@ public class User implements Parcelable {
         this.firstName = firstName;
     }
 
-    @DynamoDBAttribute(attributeName = "last_name")
+    @DynamoDBAttribute(attributeName = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -70,7 +70,7 @@ public class User implements Parcelable {
         this.lastName = lastName;
     }
 
-    @DynamoDBAttribute(attributeName = "is_gabbi")
+    @DynamoDBAttribute(attributeName = "isGabbi")
     public boolean getIsGabbi() {
         return isGabbi;
     }
@@ -88,7 +88,7 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    @DynamoDBAttribute(attributeName = "phone_number")
+    @DynamoDBAttribute(attributeName = "phoneNumber")
     public String getPhoneNumber() {
         return phoneNumber;
     }
