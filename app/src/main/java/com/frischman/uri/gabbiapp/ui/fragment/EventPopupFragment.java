@@ -29,7 +29,7 @@ import static com.frischman.uri.gabbiapp.utility.AliyahUtil.claimAliyah;
 import static com.frischman.uri.gabbiapp.utility.AliyahUtil.isAliyahTaken;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 
-public class EventPopupFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Aliyah>> {
+public class EventPopupFragment extends Fragment {
 
     private static final String TAG = "EventPopupFragment";
 
@@ -51,7 +51,24 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
         mBinding.popupTitle.setText(mEventName);
         setFabButtonVisibility(View.GONE);
 
-        getActivity().getSupportLoaderManager().initLoader(new Random().nextInt(), null, this).forceLoad();
+        LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
+            @Override
+            public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
+                return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
+            }
+
+            @Override
+            public void onLoadFinished(Loader<List<Aliyah>> loader, List<Aliyah> data) {
+                mAliyahList = data;
+                mEventPopUpRecyclerViewAdapter.addAliyahs(data);
+            }
+
+            @Override
+            public void onLoaderReset(Loader<List<Aliyah>> loader) {
+            }
+        };
+
+        getLoaderManager().initLoader(ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback).forceLoad();
 
         mBinding.buttonEventPopupClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,21 +98,6 @@ public class EventPopupFragment extends Fragment implements LoaderManager.Loader
                 }
             }
         });
-    }
-
-    @Override
-    public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
-        return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<List<Aliyah>> loader, List<Aliyah> data) {
-        mAliyahList = data;
-        mEventPopUpRecyclerViewAdapter.addAliyahs(data);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<List<Aliyah>> loader) {
     }
 
     @Override
