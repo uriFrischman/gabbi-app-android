@@ -33,13 +33,10 @@ import static com.frischman.uri.gabbiapp.utility.LoaderUtil.restartLoader;
 
 public class EventPopupFragment extends Fragment {
 
-    private static final String TAG = "EventPopupFragment";
-
     private static FragmentEventPopupBinding mBinding;
     private final EventPopupFragment mContext = this;
 
     private String mEventName;
-    private List<Aliyah> mAliyahList;
 
     private final int ALIYAH_LOADER_CALLBACK = 1;
     private final int CLAIM_ALIYAH_LOADER_CALLBACK = 2;
@@ -82,7 +79,6 @@ public class EventPopupFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<List<Aliyah>> loader, List<Aliyah> data) {
-                mAliyahList = data;
                 mEventPopUpRecyclerViewAdapter.addAliyahs(data);
             }
 
