@@ -49,21 +49,21 @@ public class EventPopupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_popup, container, false);
-        mEventName = getArguments().getString(getString(R.string.bundle_argument_event_name));
 
-        initRecyclerView();
-        initializeOnClickListeners();
-
-        mBinding.popupTitle.setText(mEventName);
         setFabButtonVisibility(View.GONE);
 
-        initializeAliyahLoaderCallback();
-        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback);
+        mEventName = getArguments().getString(getString(R.string.bundle_argument_event_name));
+        initializeTitle(mEventName);
+
+        initializeRecyclerView();
+        initializeOnClickListeners();
+
+        loadAliyahs();
 
         return mBinding.getRoot();
     }
 
-    private void initRecyclerView() {
+    private void initializeRecyclerView() {
         mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext());
         mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
@@ -122,14 +122,27 @@ public class EventPopupFragment extends Fragment {
 
         mEventPopUpRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
             @Override
-            public void onClick(View v, final int position) {
-                final Aliyah aliyah = mEventPopUpRecyclerViewAdapter.getAliyah(position);
-                final User user = (User) SharedPreferencesUtil.getObjectInSharedPreferences(getActivity().getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info), User.class);
+            public void onClick(View v, int position) {
+                Aliyah aliyah = mEventPopUpRecyclerViewAdapter.getAliyah(position);
+                User user = (User) SharedPreferencesUtil.getObjectInSharedPreferences(getActivity().getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info), User.class);
 
-                initializeAliyahClaimLoaderCallback(position, user, aliyah);
-                restartLoader(mContext, CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks);
+                claimAliyah(position, aliyah, user);
             }
         });
+    }
+
+    private void loadAliyahs() {
+        initializeAliyahLoaderCallback();
+        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback);
+    }
+
+    private void claimAliyah(int aliyahIndex, Aliyah aliyah, User user) {
+        initializeAliyahClaimLoaderCallback(aliyahIndex, user, aliyah);
+        restartLoader(mContext, CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks);
+    }
+
+    private void initializeTitle(String eventName) {
+        mBinding.popupTitle.setText(eventName);
     }
 
     @Override
