@@ -35,7 +35,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public void onBindViewHolder(ViewHolder holder, int position) {
         String eventName = mEventList.get(position).getEventName();
         String numAliyahsLeft = String.valueOf(mEventList.get(position).getNumberOfAliyahs() - mEventList.get(position).getNumberOfAliyahsTaken());
-        String eventDate = mEventList.get(position).getEventDate();
+        String eventDate = mEventList.get(position).getFormattedDate();
 
         holder.mBinding.eventName.setText(eventName);
         holder.mBinding.numAliyahsLeft.setText(numAliyahsLeft);
