@@ -18,8 +18,9 @@ import android.widget.Toast;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventListBinding;
-import com.frischman.uri.gabbiapp.loader.EventsLoader;
+import com.frischman.uri.gabbiapp.loader.GetEventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
+import com.frischman.uri.gabbiapp.network.response.GetEventsResponse;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
@@ -30,17 +31,42 @@ import java.util.List;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 
-public class EventListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Event>>, SearchView.OnQueryTextListener {
+public class EventListFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private static final String TAG = "EventListFragment";
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
 
     private FragmentEventListBinding mBinding;
 
+    private LoaderManager.LoaderCallbacks<GetEventsResponse> getEventsResponseLoaderCallbacks;
+
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+
+        getEventsResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<GetEventsResponse>() {
+            @Override
+            public Loader<GetEventsResponse> onCreateLoader(int id, Bundle args) {
+                mBinding.eventListProgressText.setVisibility(View.VISIBLE);
+                return new GetEventsLoader(getActivity().getApplicationContext(), false);
+            }
+
+            @Override
+            public void onLoadFinished(Loader<GetEventsResponse> loader, GetEventsResponse data) {
+                Log.d(TAG, "onLoadFinished: " + data.getListOfEvents());
+                mEventRecyclerViewAdapter.initUnFilteredList(data.getListOfEvents());
+                mEventRecyclerViewAdapter.addListOfEvents(data.getListOfEvents());
+                mBinding.eventListProgressText.setVisibility(View.GONE);
+                mBinding.eventSearch.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoaderReset(Loader<GetEventsResponse> loader) {
+
+            }
+        };
+
+        getActivity().getSupportLoaderManager().initLoader(0, null, getEventsResponseLoaderCallbacks).forceLoad();
     }
 
     @Nullable
@@ -97,23 +123,6 @@ public class EventListFragment extends Fragment implements LoaderManager.LoaderC
         mBinding.eventSearch.setOnQueryTextListener(this);
         mBinding.eventSearch.setVisibility(View.GONE);
     }
-
-    @Override
-    public Loader<List<Event>> onCreateLoader(int id, Bundle args) {
-        mBinding.eventListProgressText.setVisibility(View.VISIBLE);
-        return new EventsLoader(getActivity().getApplicationContext(), false);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<List<Event>> loader, List<Event> data) {
-        mEventRecyclerViewAdapter.initUnFilteredList(data);
-        mEventRecyclerViewAdapter.addListOfEvents(data);
-        mBinding.eventListProgressText.setVisibility(View.GONE);
-        mBinding.eventSearch.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<List<Event>> loader) {}
 
     @Override
     public boolean onQueryTextSubmit(String query) {
