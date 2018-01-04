@@ -1,8 +1,8 @@
 package com.frischman.uri.gabbiapp.loader;
 
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.support.v4.content.AsyncTaskLoader;
 
 import com.frischman.uri.gabbiapp.network.request.GetEventsRequest;
 import com.frischman.uri.gabbiapp.network.response.GetEventsResponse;
