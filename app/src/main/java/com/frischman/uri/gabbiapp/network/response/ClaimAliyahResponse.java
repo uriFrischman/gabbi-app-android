@@ -4,7 +4,6 @@ package com.frischman.uri.gabbiapp.network.response;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 
 public class ClaimAliyahResponse {
-    
 
     Aliyah aliyah;
     String message;

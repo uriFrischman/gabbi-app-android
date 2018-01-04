@@ -88,6 +88,7 @@ public class EventPopupFragment extends Fragment {
 
             @Override
             public void onLoaderReset(Loader<List<Aliyah>> loader) {
+
             }
         };
     }
@@ -112,7 +113,6 @@ public class EventPopupFragment extends Fragment {
 
             }
         };
-
     }
 
     private void initializeOnClickListeners() {
@@ -134,8 +134,6 @@ public class EventPopupFragment extends Fragment {
                 restartLoader(mContext, CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks);
             }
         });
-
-
     }
 
     @Override
