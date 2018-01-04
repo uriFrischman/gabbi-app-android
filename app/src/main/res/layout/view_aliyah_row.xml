@@ -20,7 +20,7 @@
         android:paddingTop="40sp"
         android:paddingBottom="40sp"
         android:weightSum="1"
-        android:background="@{intUtil.intToBoolean(aliyah.getAliyahTaken()) ? @color/aliyah_row_aliyah_not_available_background : @color/aliyah_row_aliyah_available_background}">
+        android:background="@{aliyah.getAliyahTaken() ? @color/aliyah_row_aliyah_not_available_background : @color/aliyah_row_aliyah_available_background}">
 
         <TextView
             android:textColor="@android:color/black"

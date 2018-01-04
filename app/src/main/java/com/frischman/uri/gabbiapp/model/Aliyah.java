@@ -8,18 +8,20 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 @DynamoDBTable(tableName = "Aliyahs")
 public class Aliyah {
 
+    private int aliyahId;
     private String aliyahName;
     private String aliyahEvent;
     private String aliyahReader;
-    private int aliyahTaken;
-    private String numPsukim;
+    private boolean aliyahTaken;
+    private int numPsukim;
     private String reading;
     private String aliyahNumber;
 
     public Aliyah() {
     }
 
-    public Aliyah(String aliyahName, String aliyahEvent, String aliyahReader, int aliyahTaken, String numPsukim, String reading, String aliyahNumber) {
+    public Aliyah(int aliyahId, String aliyahName, String aliyahEvent, String aliyahReader, boolean aliyahTaken, int numPsukim, String reading, String aliyahNumber) {
+        this.aliyahId = aliyahId;
         this.aliyahName = aliyahName;
         this.aliyahEvent = aliyahEvent;
         this.aliyahReader = aliyahReader;
@@ -29,7 +31,7 @@ public class Aliyah {
         this.aliyahNumber = aliyahNumber;
     }
 
-    @DynamoDBHashKey(attributeName = "aliyah_name")
+    @DynamoDBHashKey(attributeName = "aliyahName")
     public String getAliyahName() {
         return aliyahName;
     }
@@ -38,7 +40,7 @@ public class Aliyah {
         this.aliyahName = aliyahName;
     }
 
-    @DynamoDBRangeKey(attributeName = "aliyah_event")
+    @DynamoDBRangeKey(attributeName = "aliyahEvent")
     public String getAliyahEvent() {
         return aliyahEvent;
     }
@@ -47,7 +49,7 @@ public class Aliyah {
         this.aliyahEvent = aliyahEvent;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyah_reader")
+    @DynamoDBAttribute(attributeName = "aliyahReader")
     public String getAliyahReader() {
         return aliyahReader;
     }
@@ -56,21 +58,21 @@ public class Aliyah {
         this.aliyahReader = aliyahReader;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyah_taken")
-    public int getAliyahTaken() {
+    @DynamoDBAttribute(attributeName = "aliyahTaken")
+    public boolean getAliyahTaken() {
         return aliyahTaken;
     }
 
-    public void setAliyahTaken(int aliyahTaken) {
+    public void setAliyahTaken(boolean aliyahTaken) {
         this.aliyahTaken = aliyahTaken;
     }
 
-    @DynamoDBAttribute(attributeName = "num_psukim")
-    public String getNumPsukim() {
+    @DynamoDBAttribute(attributeName = "numPsukim")
+    public int getNumPsukim() {
         return numPsukim;
     }
 
-    public void setNumPsukim(String numPsukim) {
+    public void setNumPsukim(int numPsukim) {
         this.numPsukim = numPsukim;
     }
 
@@ -83,7 +85,7 @@ public class Aliyah {
         this.reading = reading;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyah_number")
+    @DynamoDBAttribute(attributeName = "aliyahNumber")
     public String getAliyahNumber() {
         return aliyahNumber;
     }
@@ -95,6 +97,7 @@ public class Aliyah {
     @Override
     public String toString() {
         return "Aliyah{" +
+                "aliyahId='" + aliyahId + '\'' +
                 "aliyahName='" + aliyahName + '\'' +
                 ", aliyahEvent='" + aliyahEvent + '\'' +
                 ", aliyahReader='" + aliyahReader + '\'' +
@@ -102,5 +105,14 @@ public class Aliyah {
                 ", numPsukim=" + numPsukim +
                 ", reading='" + reading + '\'' +
                 '}';
+    }
+
+    @DynamoDBAttribute(attributeName = "aliyahId")
+    public int getAliyahId() {
+        return aliyahId;
+    }
+
+    public void setAliyahId(int aliyahId) {
+        this.aliyahId = aliyahId;
     }
 }
