@@ -44,7 +44,7 @@ public class EventPopupFragment extends Fragment {
     private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
 
     private LoaderManager.LoaderCallbacks<ClaimAliyahResponse> claimAliyahResponseLoaderCallbacks;
-    private LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahLoaderCallback;
+    private LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahsLoaderCallback;
 
     @Nullable
     @Override
@@ -72,7 +72,7 @@ public class EventPopupFragment extends Fragment {
     }
 
     private void initializeAliyahLoaderCallback() {
-        aliyahLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
+        aliyahsLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
             @Override
             public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
                 return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
@@ -134,7 +134,7 @@ public class EventPopupFragment extends Fragment {
 
     private void loadAliyahs() {
         initializeAliyahLoaderCallback();
-        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback);
+        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahsLoaderCallback);
     }
 
     private void claimAliyah(int aliyahIndex, Aliyah aliyah, User user) {
