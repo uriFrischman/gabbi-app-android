@@ -17,15 +17,14 @@ import android.widget.Toast;
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.FragmentEventPopupBinding;
 import com.frischman.uri.gabbiapp.loader.AliyahClaimLoader;
-import com.frischman.uri.gabbiapp.loader.AliyahsLoader;
+import com.frischman.uri.gabbiapp.loader.GetAliyahsLoader;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.network.response.ClaimAliyahResponse;
+import com.frischman.uri.gabbiapp.network.response.GetAliyahsResponse;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 import com.frischman.uri.gabbiapp.ui.adapter.EventPopUpRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil;
-
-import java.util.List;
 
 import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
@@ -44,7 +43,7 @@ public class EventPopupFragment extends Fragment {
     private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
 
     private LoaderManager.LoaderCallbacks<ClaimAliyahResponse> claimAliyahResponseLoaderCallbacks;
-    private LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahsLoaderCallback;
+    private LoaderManager.LoaderCallbacks<GetAliyahsResponse> aliyahsLoaderCallback;
 
     @Nullable
     @Override
@@ -72,19 +71,19 @@ public class EventPopupFragment extends Fragment {
     }
 
     private void initializeAliyahLoaderCallback() {
-        aliyahsLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
+        aliyahsLoaderCallback = new LoaderManager.LoaderCallbacks<GetAliyahsResponse>() {
             @Override
-            public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
-                return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
+            public Loader<GetAliyahsResponse> onCreateLoader(int id, Bundle args) {
+                return new GetAliyahsLoader(getActivity().getApplicationContext(), mEventName);
             }
 
             @Override
-            public void onLoadFinished(Loader<List<Aliyah>> loader, List<Aliyah> data) {
-                mEventPopUpRecyclerViewAdapter.addAliyahs(data);
+            public void onLoadFinished(Loader<GetAliyahsResponse> loader, GetAliyahsResponse data) {
+                mEventPopUpRecyclerViewAdapter.addAliyahs(data.getAliyahList());
             }
 
             @Override
-            public void onLoaderReset(Loader<List<Aliyah>> loader) {
+            public void onLoaderReset(Loader<GetAliyahsResponse> loader) {
 
             }
         };
