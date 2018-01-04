@@ -29,13 +29,14 @@ import java.util.List;
 
 import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
+import static com.frischman.uri.gabbiapp.utility.LoaderUtil.restartLoader;
 
 public class EventPopupFragment extends Fragment {
 
     private static final String TAG = "EventPopupFragment";
 
     private static FragmentEventPopupBinding mBinding;
-    private final EventPopupFragment context = this;
+    private final EventPopupFragment mContext = this;
 
     private String mEventName;
     private List<Aliyah> mAliyahList;
@@ -45,6 +46,7 @@ public class EventPopupFragment extends Fragment {
     private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
 
     private LoaderManager.LoaderCallbacks<ClaimAliyahResponse> claimAliyahResponseLoaderCallbacks;
+    private LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahLoaderCallback;
 
     @Nullable
     @Override
@@ -53,11 +55,26 @@ public class EventPopupFragment extends Fragment {
         mEventName = getArguments().getString(getString(R.string.bundle_argument_event_name));
 
         initRecyclerView();
+        initializeOnClickListeners();
 
         mBinding.popupTitle.setText(mEventName);
         setFabButtonVisibility(View.GONE);
 
-        LoaderManager.LoaderCallbacks<List<Aliyah>> aliyahLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
+        initializeAliyahLoaderCallback();
+        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback);
+
+        return mBinding.getRoot();
+    }
+
+    private void initRecyclerView() {
+        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext());
+        mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
+        mBinding.eventAliyahList.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
+    }
+
+    private void initializeAliyahLoaderCallback() {
+        aliyahLoaderCallback = new LoaderManager.LoaderCallbacks<List<Aliyah>>() {
             @Override
             public Loader<List<Aliyah>> onCreateLoader(int id, Bundle args) {
                 return new AliyahsLoader(getActivity().getApplicationContext(), mEventName);
@@ -73,9 +90,32 @@ public class EventPopupFragment extends Fragment {
             public void onLoaderReset(Loader<List<Aliyah>> loader) {
             }
         };
+    }
 
-        getLoaderManager().initLoader(ALIYAH_LOADER_CALLBACK, null, aliyahLoaderCallback).forceLoad();
+    private void initializeAliyahClaimLoaderCallback(final int aliyahIndex, final User user, final Aliyah aliyah) {
+        claimAliyahResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<ClaimAliyahResponse>() {
+            @Override
+            public Loader<ClaimAliyahResponse> onCreateLoader(int id, Bundle args) {
+                return new AliyahClaimLoader(getActivity().getApplicationContext(), aliyah, user);
+            }
 
+            @Override
+            public void onLoadFinished(Loader<ClaimAliyahResponse> loader, ClaimAliyahResponse data) {
+                Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
+                if(data.isSuccesfullClaim()) {
+                    mEventPopUpRecyclerViewAdapter.setAliyah(aliyahIndex, data.getAliyah());
+                }
+            }
+
+            @Override
+            public void onLoaderReset(Loader<ClaimAliyahResponse> loader) {
+
+            }
+        };
+
+    }
+
+    private void initializeOnClickListeners() {
         mBinding.buttonEventPopupClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,43 +124,18 @@ public class EventPopupFragment extends Fragment {
             }
         });
 
-        return mBinding.getRoot();
-    }
-
-    private void initRecyclerView() {
-        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext());
-        mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
-        mBinding.eventAliyahList.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
         mEventPopUpRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
             @Override
             public void onClick(View v, final int position) {
                 final Aliyah aliyah = mEventPopUpRecyclerViewAdapter.getAliyah(position);
                 final User user = (User) SharedPreferencesUtil.getObjectInSharedPreferences(getActivity().getApplicationContext(), getString(R.string.preferences_name_user_preferences), Context.MODE_PRIVATE, getString(R.string.preferences_key_user_info), User.class);
 
-                claimAliyahResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<ClaimAliyahResponse>() {
-                    @Override
-                    public Loader<ClaimAliyahResponse> onCreateLoader(int id, Bundle args) {
-                        return new AliyahClaimLoader(getActivity().getApplicationContext(), aliyah, user);
-                    }
-
-                    @Override
-                    public void onLoadFinished(Loader<ClaimAliyahResponse> loader, ClaimAliyahResponse data) {
-                        Toast.makeText(getActivity().getApplicationContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
-                        if(data.isSuccesfullClaim()) {
-                            mEventPopUpRecyclerViewAdapter.setAliyah(position, data.getAliyah());
-                        }
-                    }
-
-                    @Override
-                    public void onLoaderReset(Loader<ClaimAliyahResponse> loader) {
-
-                    }
-                };
-                context.getLoaderManager().restartLoader(CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks).forceLoad();
-
+                initializeAliyahClaimLoaderCallback(position, user, aliyah);
+                restartLoader(mContext, CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks);
             }
         });
+
+
     }
 
     @Override
