@@ -40,6 +40,7 @@ public class EventPopupFragment extends Fragment {
 
     private final int ALIYAH_LOADER_CALLBACK = 1;
     private final int CLAIM_ALIYAH_LOADER_CALLBACK = 2;
+
     private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
 
     private LoaderManager.LoaderCallbacks<ClaimAliyahResponse> claimAliyahResponseLoaderCallbacks;
