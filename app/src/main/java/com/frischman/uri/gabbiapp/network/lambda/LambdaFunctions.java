@@ -1,8 +1,10 @@
 package com.frischman.uri.gabbiapp.network.lambda;
 
 import com.amazonaws.mobileconnectors.lambdainvoker.LambdaFunction;
+import com.frischman.uri.gabbiapp.network.request.ClaimAliyahRequest;
 import com.frischman.uri.gabbiapp.network.request.UserLoginRequest;
 import com.frischman.uri.gabbiapp.network.request.UserSignUpRequest;
+import com.frischman.uri.gabbiapp.network.response.ClaimAliyahResponse;
 import com.frischman.uri.gabbiapp.network.response.UserLoginResponse;
 import com.frischman.uri.gabbiapp.network.response.UserSignUpResponse;
 
@@ -13,4 +15,7 @@ public interface LambdaFunctions {
 
     @LambdaFunction(functionName = "user_signup")
     UserSignUpResponse userSignUp(UserSignUpRequest input);
+
+    @LambdaFunction(functionName = "claim_aliyah")
+    ClaimAliyahResponse claimAliyah(ClaimAliyahRequest input);
 }

@@ -73,4 +73,9 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
     public void setItemClickListener(RecyclerViewItemClick itemClickListener) {
         mOnClickListener = itemClickListener;
     }
+
+    public void setAliyah(int index, Aliyah aliyah) {
+        mAliyahList.set(index, aliyah);
+        this.notifyItemChanged(index);
+    }
 }
