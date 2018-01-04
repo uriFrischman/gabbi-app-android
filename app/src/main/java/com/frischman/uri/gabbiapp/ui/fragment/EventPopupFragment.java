@@ -116,8 +116,7 @@ public class EventPopupFragment extends Fragment {
         mBinding.buttonEventPopupClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeFragmentFromView(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container);
-                setFabButtonVisibility(View.VISIBLE);
+                closePopup();
             }
         });
 
@@ -144,6 +143,11 @@ public class EventPopupFragment extends Fragment {
 
     private void initializeTitle(String eventName) {
         mBinding.popupTitle.setText(eventName);
+    }
+
+    private void closePopup() {
+        removeFragmentFromView(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container);
+        setFabButtonVisibility(View.VISIBLE);
     }
 
     @Override
