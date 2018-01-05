@@ -69,6 +69,24 @@ public class Event implements Comparable<Event> {
         this.numberOfAliyahsTaken = numberOfAliyahsTaken;
     }
 
+    @DynamoDBAttribute(attributeName = "eventId")
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
+    @DynamoDBAttribute(attributeName = "formattedDate")
+    public String getFormattedDate() {
+        return formattedDate;
+    }
+
+    public void setFormattedDate(String formattedDate) {
+        this.formattedDate = formattedDate;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -86,23 +104,5 @@ public class Event implements Comparable<Event> {
         Date currentEventDate = getDateFromString(this.getEventDate(), getString(R.string.event_date_format));
         Date otherEventDate = getDateFromString(o.getEventDate(), getString(R.string.event_date_format));
         return currentEventDate.compareTo(otherEventDate);
-    }
-
-    @DynamoDBAttribute(attributeName = "eventId")
-    public int getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
-    }
-
-    @DynamoDBAttribute(attributeName = "formattedDate")
-    public String getFormattedDate() {
-        return formattedDate;
-    }
-
-    public void setFormattedDate(String formattedDate) {
-        this.formattedDate = formattedDate;
     }
 }

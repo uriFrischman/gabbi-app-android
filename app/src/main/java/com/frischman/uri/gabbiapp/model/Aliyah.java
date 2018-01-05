@@ -31,6 +31,15 @@ public class Aliyah {
         this.aliyahNumber = aliyahNumber;
     }
 
+    @DynamoDBAttribute(attributeName = "aliyahId")
+    public int getAliyahId() {
+        return aliyahId;
+    }
+
+    public void setAliyahId(int aliyahId) {
+        this.aliyahId = aliyahId;
+    }
+
     @DynamoDBHashKey(attributeName = "aliyahName")
     public String getAliyahName() {
         return aliyahName;
@@ -105,14 +114,5 @@ public class Aliyah {
                 ", numPsukim=" + numPsukim +
                 ", reading='" + reading + '\'' +
                 '}';
-    }
-
-    @DynamoDBAttribute(attributeName = "aliyahId")
-    public int getAliyahId() {
-        return aliyahId;
-    }
-
-    public void setAliyahId(int aliyahId) {
-        this.aliyahId = aliyahId;
     }
 }
