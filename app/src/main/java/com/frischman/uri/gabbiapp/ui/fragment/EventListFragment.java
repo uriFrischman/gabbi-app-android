@@ -9,7 +9,6 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +32,6 @@ import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFra
 
 public class EventListFragment extends Fragment implements SearchView.OnQueryTextListener {
 
-    private static final String TAG = "EventListFragment";
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
 
     private FragmentEventListBinding mBinding;
@@ -43,68 +41,26 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public void onResume() {
         super.onResume();
-
-        getEventsResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<GetEventsResponse>() {
-            @Override
-            public Loader<GetEventsResponse> onCreateLoader(int id, Bundle args) {
-                mBinding.eventListProgressText.setVisibility(View.VISIBLE);
-                return new GetEventsLoader(getActivity().getApplicationContext(), false);
-            }
-
-            @Override
-            public void onLoadFinished(Loader<GetEventsResponse> loader, GetEventsResponse data) {
-                Log.d(TAG, "onLoadFinished: " + data.getListOfEvents());
-                mEventRecyclerViewAdapter.initUnFilteredList(data.getListOfEvents());
-                mEventRecyclerViewAdapter.addListOfEvents(data.getListOfEvents());
-                mBinding.eventListProgressText.setVisibility(View.GONE);
-                mBinding.eventSearch.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onLoaderReset(Loader<GetEventsResponse> loader) {
-
-            }
-        };
-
-        getActivity().getSupportLoaderManager().initLoader(0, null, getEventsResponseLoaderCallbacks).forceLoad();
+        loadEvents();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_list, container, false);
 
-        View rootView = mBinding.getRoot();
-
         initRecyclerView();
+        initializeOnClickListeners();
         initSearchView();
 
-        return rootView;
+        return mBinding.getRoot();
     }
 
     private void initRecyclerView() {
-
         mEventRecyclerViewAdapter = new EventRecyclerViewAdapter(getActivity().getApplicationContext());
         mBinding.recyclerViewListOfEvents.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.recyclerViewListOfEvents.setAdapter(mEventRecyclerViewAdapter);
         mBinding.recyclerViewListOfEvents.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
-        mEventRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
-            @Override
-            public void onClick(View v, int position) {
-                if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
-                } else {
-                    String eventName = mEventRecyclerViewAdapter.getItem(position).getEventName();
-                    Log.d(TAG, "You clicked on event: " + eventName);
-                    Bundle args = new Bundle();
-                    args.putString(getString(R.string.bundle_argument_event_name), eventName);
-                    EventPopupFragment fragment = new EventPopupFragment();
-                    fragment.setArguments(args);
-                    replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
-                }
-            }
-        });
         mBinding.recyclerViewListOfEvents.setOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
@@ -116,7 +72,6 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
                 mBinding.recyclerViewListOfEvents.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
             }
         });
-
     }
 
     private void initSearchView() {
@@ -138,7 +93,6 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
     }
 
     private List<Event> filterEventList(String query) {
-
         List<Event> queriedList = new ArrayList<>();
 
         if (query.length() != 0) {
@@ -163,5 +117,55 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
                 listToAddEvent.add(event);
             }
         }
+    }
+
+    private void initializeGetEventsLoaderCallback() {
+        getEventsResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<GetEventsResponse>() {
+            @Override
+            public Loader<GetEventsResponse> onCreateLoader(int id, Bundle args) {
+                mBinding.eventListProgressText.setVisibility(View.VISIBLE);
+                return new GetEventsLoader(getActivity().getApplicationContext(), false);
+            }
+
+            @Override
+            public void onLoadFinished(Loader<GetEventsResponse> loader, GetEventsResponse data) {
+                mEventRecyclerViewAdapter.initUnFilteredList(data.getListOfEvents());
+                mEventRecyclerViewAdapter.addListOfEvents(data.getListOfEvents());
+                mBinding.eventListProgressText.setVisibility(View.GONE);
+                mBinding.eventSearch.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoaderReset(Loader<GetEventsResponse> loader) {
+
+            }
+        };
+    }
+
+    private void loadEvents() {
+        initializeGetEventsLoaderCallback();
+        getActivity().getSupportLoaderManager().initLoader(0, null, getEventsResponseLoaderCallbacks).forceLoad();
+    }
+
+    private void openEventPopUp(int index) {
+        if (checkIfViewHasFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
+        } else {
+            String eventName = mEventRecyclerViewAdapter.getItem(index).getEventName();
+            Bundle args = new Bundle();
+            args.putString(getString(R.string.bundle_argument_event_name), eventName);
+            EventPopupFragment fragment = new EventPopupFragment();
+            fragment.setArguments(args);
+            replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
+        }
+    }
+
+    private void initializeOnClickListeners() {
+        mEventRecyclerViewAdapter.setItemClickListener(new RecyclerViewItemClick() {
+            @Override
+            public void onClick(View v, int position) {
+                openEventPopUp(position);
+            }
+        });
     }
 }
