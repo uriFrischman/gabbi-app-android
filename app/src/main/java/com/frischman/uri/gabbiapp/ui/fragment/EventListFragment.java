@@ -38,6 +38,8 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
 
     private LoaderManager.LoaderCallbacks<GetEventsResponse> getEventsResponseLoaderCallbacks;
 
+    private final int GET_EVENTS_LOADER_CALLBACK = 1;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -144,7 +146,7 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
 
     private void loadEvents() {
         initializeGetEventsLoaderCallback();
-        getActivity().getSupportLoaderManager().initLoader(0, null, getEventsResponseLoaderCallbacks).forceLoad();
+        getActivity().getSupportLoaderManager().initLoader(GET_EVENTS_LOADER_CALLBACK, null, getEventsResponseLoaderCallbacks).forceLoad();
     }
 
     private void openEventPopUp(int index) {
