@@ -39,7 +39,7 @@
 
     <string name="event_searchview_query_hint">Search For An Event</string>
 
-    <string name="aliyah_num_psukim">%s psukim</string>
+    <string name="aliyah_num_psukim">%d psukim</string>
     <string name="bundle_argument_event_name">eventName</string>
 
     <string name="user_bundle_key">user</string>

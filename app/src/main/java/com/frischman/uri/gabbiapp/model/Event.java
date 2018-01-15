@@ -18,18 +18,22 @@ public class Event implements Comparable<Event> {
     private String eventDate;
     private int numberOfAliyahs;
     private int numberOfAliyahsTaken;
+    private int eventId;
+    private String formattedDate;
 
     public Event() {
     }
 
-    public Event(String eventName, String eventDate, int numberOfAliyahs, int numberOfAliyahsTaken) {
+    public Event(String eventName, String eventDate, int numberOfAliyahs, int numberOfAliyahsTaken, int eventId, String formattedDate) {
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.numberOfAliyahs = numberOfAliyahs;
         this.numberOfAliyahsTaken = numberOfAliyahsTaken;
+        this.eventId = eventId;
+        this.formattedDate = formattedDate;
     }
 
-    @DynamoDBHashKey(attributeName = "event_name")
+    @DynamoDBHashKey(attributeName = "eventName")
     public String getEventName() {
         return eventName;
     }
@@ -38,7 +42,7 @@ public class Event implements Comparable<Event> {
         this.eventName = eventName;
     }
 
-    @DynamoDBAttribute(attributeName = "event_date")
+    @DynamoDBAttribute(attributeName = "eventDate")
     public String getEventDate() {
         return eventDate;
     }
@@ -47,7 +51,7 @@ public class Event implements Comparable<Event> {
         this.eventDate = eventDate;
     }
 
-    @DynamoDBAttribute(attributeName = "num_aliyahs")
+    @DynamoDBAttribute(attributeName = "numberOfAliyahs")
     public int getNumberOfAliyahs() {
         return numberOfAliyahs;
     }
@@ -56,7 +60,7 @@ public class Event implements Comparable<Event> {
         this.numberOfAliyahs = numberOfAliyahs;
     }
 
-    @DynamoDBAttribute(attributeName = "num_aliyahs_taken")
+    @DynamoDBAttribute(attributeName = "numberOfAliyahsTaken")
     public int getNumberOfAliyahsTaken() {
         return numberOfAliyahsTaken;
     }
@@ -65,13 +69,33 @@ public class Event implements Comparable<Event> {
         this.numberOfAliyahsTaken = numberOfAliyahsTaken;
     }
 
+    @DynamoDBAttribute(attributeName = "eventId")
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
+    @DynamoDBAttribute(attributeName = "formattedDate")
+    public String getFormattedDate() {
+        return formattedDate;
+    }
+
+    public void setFormattedDate(String formattedDate) {
+        this.formattedDate = formattedDate;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
                 "eventName='" + eventName + '\'' +
                 ", eventDate='" + eventDate + '\'' +
+                ", formattedDate=" + formattedDate + '\'' +
                 ", numberOfAliyahs=" + numberOfAliyahs +
                 ", numberOfAliyahsTaken=" + numberOfAliyahsTaken +
+                ", eventId=" + eventId +
                 '}';
     }
 
