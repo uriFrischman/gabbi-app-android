@@ -34,10 +34,29 @@ public class GetTextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_get_text, container, false);
 
+
+
         initializeAdapters();
         initializeFonts();
         initializeOnClickListeners();
         initializeScrolling();
+
+        if (getArguments() != null) {
+            Bundle arguments = getArguments();
+            String reading = arguments.getString("reading");
+            Toast.makeText(getContext(), reading, Toast.LENGTH_LONG).show();
+
+            String[] elements = reading.split(" ");
+            String sefer = elements[0];
+            String[] beginPerekAndPasuk = elements[1].split(":");
+            int beginPerek = Integer.valueOf(beginPerekAndPasuk[0]);
+            int beginPasuk =  Integer.valueOf( beginPerekAndPasuk[1]);
+            String[] endPerekAndPasuk = elements[3].split(":");
+            int endPerek = Integer.valueOf(endPerekAndPasuk[0]);
+            int endPasuk = Integer.valueOf(endPerekAndPasuk[1]);
+            setTextViewWithTorahText(mBinding.getTextTextView, sefer, beginPerek, beginPasuk, endPerek, endPasuk);
+            hideOrShow(mBinding.getTextSpinnersContainer);
+        }
 
         return mBinding.getRoot();
     }
@@ -86,19 +105,19 @@ public class GetTextFragment extends Fragment {
         int seferDatabaseKey;
 
         switch(sefer) {
-            case "Bereishit":
+            case "Genesis":
                 seferDatabaseKey = R.string.database_key_bereishit;
                 break;
-            case "Shmot":
+            case "Exodus":
                 seferDatabaseKey = R.string.database_key_shemot;
                 break;
-            case "Vayikra":
+            case "Leviticus":
                 seferDatabaseKey = R.string.database_key_vayikra;
                 break;
-            case "Bamidbar":
+            case "Numbers":
                 seferDatabaseKey = R.string.database_key_bamidbar;
                 break;
-            case "Devarim":
+            case "Deuteronomy":
                 seferDatabaseKey = R.string.database_key_devarim;
                 break;
             default:

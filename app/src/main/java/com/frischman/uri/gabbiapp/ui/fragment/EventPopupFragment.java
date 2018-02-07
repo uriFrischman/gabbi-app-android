@@ -64,7 +64,7 @@ public class EventPopupFragment extends Fragment {
     }
 
     private void initializeRecyclerView() {
-        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext());
+        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext(), getFragmentManager());
         mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
         mBinding.eventAliyahList.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));
