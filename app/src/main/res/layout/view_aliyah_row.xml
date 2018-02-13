@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,33 +10,84 @@
 
     </data>
 
+    <RelativeLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="40sp"
-        android:paddingBottom="40sp"
-        android:weightSum="1"
         android:background="@{aliyah.getAliyahTaken() ? @color/aliyah_row_aliyah_not_available_background : @color/aliyah_row_aliyah_available_background}">
 
-        <TextView
-            android:textColor="@android:color/black"
-            tools:text="Aliyah Name"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="match_parent"
-            android:id="@+id/aliyahName"
-            android:text="@{aliyah.getAliyahName()}"/>
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/aliyah_num_psukim, aliyah.getNumPsukim())}"
-            tools:text="25 psukim"/>
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:textColor="@android:color/black"
+                tools:text="Aliyah Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/aliyahName"
+                android:textSize="20sp"
+                android:text="@{aliyah.getAliyahName()}"/>
+
+            <TextView
+                android:textColor="@android:color/black"
+                tools:text="Aliyah Reading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/aliyahReading"
+                android:text="@{aliyah.getReading()}"/>
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.format(@string/aliyah_num_psukim, aliyah.getNumPsukim())}"
+                tools:text="25 psukim"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/GetTextButton"
+                android:background="@android:color/transparent"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See Text"/>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_checkmark"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
+
+    </RelativeLayout>
+
+
 
 
 </layout>
