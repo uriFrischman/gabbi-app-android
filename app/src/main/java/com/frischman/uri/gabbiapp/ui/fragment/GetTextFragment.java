@@ -43,7 +43,7 @@ public class GetTextFragment extends Fragment {
 
         if (getArguments() != null) {
             Bundle arguments = getArguments();
-            String reading = arguments.getString("reading");
+            String reading = arguments.getString(getString(R.string.arg_key_reading));
             Toast.makeText(getContext(), reading, Toast.LENGTH_LONG).show();
 
             String[] elements = reading.split(" ");

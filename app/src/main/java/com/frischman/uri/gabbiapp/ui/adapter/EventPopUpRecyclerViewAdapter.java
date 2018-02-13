@@ -20,6 +20,7 @@ import java.util.List;
 
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
+import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPopUpRecyclerViewAdapter.ViewHolder> {
 
@@ -76,7 +77,7 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
                     removeFragmentFromView(mFragmentManager, R.id.framelayout_overlay_container);
                     Fragment getTextFragment = new GetTextFragment();
                     Bundle args = new Bundle();
-                    args.putString("reading", mBinding.getAliyah().getReading());
+                    args.putString(getString(R.string.arg_key_reading), mBinding.getAliyah().getReading());
                     getTextFragment.setArguments(args);
                     replaceViewWithFragment(mFragmentManager, R.id.mainFragment,getTextFragment, true);
                 }
