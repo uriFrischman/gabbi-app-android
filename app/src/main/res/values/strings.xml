@@ -48,4 +48,6 @@
 
     <string name="preferences_name_user_preferences">user_preferences</string>
     <string name="preferences_key_user_info">user_info</string>
+
+    <string name="arg_key_reading">reading</string>
 </resources>
