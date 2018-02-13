@@ -62,7 +62,7 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
 
         ViewAliyahRowBinding mBinding;
 
-        public ViewHolder(final ViewAliyahRowBinding binding) {
+        public ViewHolder(ViewAliyahRowBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
             initializeOnClickListeners();
