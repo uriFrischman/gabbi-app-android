@@ -65,6 +65,10 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
         public ViewHolder(final ViewAliyahRowBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
+            initializeOnClickListeners();
+        }
+
+        private void initializeOnClickListeners() {
             mBinding.getRoot().setOnClickListener(this);
             mBinding.GetTextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
