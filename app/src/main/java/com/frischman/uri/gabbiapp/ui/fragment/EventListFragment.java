@@ -3,6 +3,7 @@ package com.frischman.uri.gabbiapp.ui.fragment;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -27,8 +28,10 @@ import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.utility.ConnectionUtil.doesConenctionExist;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
+import static com.frischman.uri.gabbiapp.utility.SnackbarUtil.showSnackbar;
 
 public class EventListFragment extends Fragment implements SearchView.OnQueryTextListener {
 
@@ -43,7 +46,11 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public void onResume() {
         super.onResume();
-        loadEvents();
+        if (doesConenctionExist(getActivity().getApplicationContext())) {
+            loadEvents();
+        } else {
+            showSnackbar(getView(), R.string.snackbar_need_internet_connection, Snackbar.LENGTH_LONG);
+        }
     }
 
     @Nullable
