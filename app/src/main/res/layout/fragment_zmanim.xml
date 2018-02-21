@@ -2,6 +2,9 @@
 
     <data>
 
+        <variable
+            name="zmanimCandlesAndHavdalah"
+            type="com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse"/>
     </data>
 
 
@@ -9,6 +12,33 @@
         android:id="@+id/zmanimRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Candles"
+            android:id="@+id/candlesTitle"/>
+
+        <TextView
+            android:id="@+id/candlesTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/candlesTitle"
+            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(0).getTitle()}"/>
+
+        <TextView
+            android:id="@+id/havdalahTitle"
+            android:layout_below="@id/candlesTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Havdalah"/>
+
+        <TextView
+            android:id="@+id/havdalahTime"
+            android:layout_below="@id/havdalahTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(1).getTitle()}"/>
 
         <TextView
             android:id="@+id/zmanimTextView"
