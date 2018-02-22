@@ -4,12 +4,14 @@ import com.amazonaws.mobileconnectors.lambdainvoker.LambdaFunction;
 import com.frischman.uri.gabbiapp.network.request.ClaimAliyahRequest;
 import com.frischman.uri.gabbiapp.network.request.GetAliyahsRequest;
 import com.frischman.uri.gabbiapp.network.request.GetEventsRequest;
+import com.frischman.uri.gabbiapp.network.request.NonShabbosZmanimRequest;
 import com.frischman.uri.gabbiapp.network.request.ShabbosZmanimRequest;
 import com.frischman.uri.gabbiapp.network.request.UserLoginRequest;
 import com.frischman.uri.gabbiapp.network.request.UserSignUpRequest;
 import com.frischman.uri.gabbiapp.network.response.ClaimAliyahResponse;
 import com.frischman.uri.gabbiapp.network.response.GetAliyahsResponse;
 import com.frischman.uri.gabbiapp.network.response.GetEventsResponse;
+import com.frischman.uri.gabbiapp.network.response.NonShabbosZmanimResponse;
 import com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse;
 import com.frischman.uri.gabbiapp.network.response.UserLoginResponse;
 import com.frischman.uri.gabbiapp.network.response.UserSignUpResponse;
@@ -33,4 +35,7 @@ public interface LambdaFunctions {
 
     @LambdaFunction(functionName = "get_shabbos_zmanim")
     ShabbosZmanimResponse getShabbosZmanim(ShabbosZmanimRequest input);
+
+    @LambdaFunction(functionName = "get_non_shabbos_zmanim")
+    NonShabbosZmanimResponse getNonShabbosZmanim(NonShabbosZmanimRequest input);
 }
