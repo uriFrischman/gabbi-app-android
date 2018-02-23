@@ -1,0 +1,167 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="nonShabbosZmanim"
+            type="com.frischman.uri.gabbiapp.model.NonShabbosZman"/>
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/zmanimRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/sunriseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zmanim_sunrise"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/sunriseValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sunriseTitle"
+            android:text="@{nonShabbosZmanim.getSunrise()}"/>
+
+        <TextView
+            android:id="@+id/SofZmanShemaMGATitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sunriseValue"
+            android:text="@string/zmanim_sof_zman_shema_mga"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/SofZmanShemaMGAValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SofZmanShemaMGATitle"
+            android:text="@{nonShabbosZmanim.getSofZmanShemaMGA()}"/>
+
+        <TextView
+            android:id="@+id/SofZmanShemaGraTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SofZmanShemaMGAValue"
+            android:text="@string/zmanim_sof_zman_shema_gra"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/SofZmanShemaGraValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SofZmanShemaGraTitle"
+            android:text="@{nonShabbosZmanim.getSofZmanShemaGra()}"/>
+
+        <TextView
+            android:id="@+id/SofZmanTefilahMGATitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanShemaGraValue"
+            android:text="@string/zmanim_sof_zman_tefilah_mga"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/SofZmanTefilahMGAValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahMGATitle"
+            android:text="@{nonShabbosZmanim.getSofZmanTefilahMGA()}"/>
+
+        <TextView
+            android:id="@+id/SofZmanTefilahGraTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahMGAValue"
+            android:text="@string/zmanim_sof_zman_tefilah_gra"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/SofZmanTefilahGraValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahGraTitle"
+            android:text="@{nonShabbosZmanim.getSofZmanTefilahGra()}"/>
+
+        <TextView
+            android:id="@+id/ChatzosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahGraValue"
+            android:text="@string/zmanim_chatzos"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ChatzosValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ChatzosTitle"
+            android:text="@{nonShabbosZmanim.getChatzos()}"/>
+
+        <TextView
+            android:id="@+id/MinchaGedolahTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ChatzosValue"
+            android:text="@string/zmanim_mincha_gedolah"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/MinchaGedolahValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MinchaGedolahTitle"
+            android:text="@{nonShabbosZmanim.getMinchaGedolah()}"/>
+
+        <TextView
+            android:id="@+id/PlagHaminchaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MinchaGedolahValue"
+            android:text="@string/zmanim_plag_hamincha"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/PlagHaminchaValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PlagHaminchaTitle"
+            android:text="@{nonShabbosZmanim.getPlagHamincha()}"/>
+
+        <TextView
+            android:id="@+id/ShkiaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PlagHaminchaValue"
+            android:text="@string/zmanim_shkia"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ShkiaValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ShkiaTitle"
+            android:text="@{nonShabbosZmanim.getShkia()}"/>
+
+        <TextView
+            android:id="@+id/TzaisTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ShkiaValue"
+            android:text="@string/zmamin_tzeis"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TzaisValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TzaisTitle"
+            android:text="@{nonShabbosZmanim.getTzais()}"/>
+
+    </RelativeLayout>
+
+</layout>

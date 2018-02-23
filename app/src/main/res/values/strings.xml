@@ -52,4 +52,17 @@
     <string name="arg_key_reading">reading</string>
 
     <string name="snackbar_need_internet_connection">You must be connected to the internet.</string>
+
+    <string name="zmanim_sunrise">Sunrise</string>
+    <string name="zmanim_sof_zman_shema_mga">Sof Zman Shema MGA</string>
+    <string name="zmanim_sof_zman_shema_gra">Sof Zman Shema Gra</string>
+    <string name="zmanim_sof_zman_tefilah_gra">Sof Zman Tefilah Gra</string>
+    <string name="zmanim_sof_zman_tefilah_mga">Sof Zman Tefilah MGA</string>
+    <string name="zmanim_chatzos">Chatzos</string>
+    <string name="zmanim_mincha_gedolah">Mincha Gedolah</string>
+    <string name="zmanim_plag_hamincha">Plag Hamincha</string>
+    <string name="zmanim_shkia">Shkia</string>
+    <string name="zmamin_tzeis">Tzeis</string>
+    <string name="zmanim_candle_lighting">Candle Lighting</string>
+    <string name="zmanim_havdalah">Havdalah</string>
 </resources>

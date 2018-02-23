@@ -28,6 +28,7 @@ import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.GET_EVENTS_LOADER_ID;
 import static com.frischman.uri.gabbiapp.utility.ConnectionUtil.doesConenctionExist;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
@@ -40,8 +41,6 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
     private FragmentEventListBinding mBinding;
 
     private LoaderManager.LoaderCallbacks<GetEventsResponse> getEventsResponseLoaderCallbacks;
-
-    private final int GET_EVENTS_LOADER_CALLBACK = 1;
 
     @Override
     public void onResume() {
@@ -153,7 +152,7 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
 
     private void loadEvents() {
         initializeGetEventsLoaderCallback();
-        getActivity().getSupportLoaderManager().initLoader(GET_EVENTS_LOADER_CALLBACK, null, getEventsResponseLoaderCallbacks).forceLoad();
+        getActivity().getSupportLoaderManager().initLoader(GET_EVENTS_LOADER_ID, null, getEventsResponseLoaderCallbacks).forceLoad();
     }
 
     private void openEventPopUp(int index) {

@@ -1,0 +1,45 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="shabbosZmanim"
+            type="com.frischman.uri.gabbiapp.model.ShabbosZman"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/candlesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zmanim_candle_lighting"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/candlesTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/candlesTitle"
+            android:text="@{shabbosZmanim.getCandleLighting()}"/>
+
+        <TextView
+            android:id="@+id/havdalahTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/candlesTime"
+            android:text="@string/zmanim_havdalah"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/havdalahTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/havdalahTitle"
+            android:text="@{shabbosZmanim.getHavdalah()}"/>
+
+    </RelativeLayout>
+</layout>

@@ -20,6 +20,7 @@ import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.network.response.UserSignUpResponse;
 import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
 
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.USER_SIGNUP_REQUEST_LOADER_ID;
 import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.putObjectInSharedPreferences;
 
 public class SignUpFragment extends Fragment implements LoaderManager.LoaderCallbacks<UserSignUpResponse> {
@@ -52,7 +53,7 @@ public class SignUpFragment extends Fragment implements LoaderManager.LoaderCall
                 Bundle args = new Bundle();
                 args.putParcelable(getString(R.string.user_bundle_key), user);
 
-                getActivity().getSupportLoaderManager().restartLoader(0, args, mContext).forceLoad();
+                getActivity().getSupportLoaderManager().restartLoader(USER_SIGNUP_REQUEST_LOADER_ID, args, mContext).forceLoad();
 
             }
         });

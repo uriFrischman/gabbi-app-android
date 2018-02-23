@@ -10,13 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/zmanimTextView"
+        <include
+            android:id="@+id/shabbosZmanim"
+            layout="@layout/view_shabbos_zmanim"
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
-            android:textAlignment="center"
+            android:layout_height="wrap_content"/>
+
+        <include
+            android:id="@+id/nonShabbosZmaim"
+            layout="@layout/view_non_shabbos_zmanim"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zmanim"/>
+            android:layout_below="@id/shabbosZmanim"/>
 
     </RelativeLayout>
 

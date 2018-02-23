@@ -26,6 +26,8 @@ import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
 import com.frischman.uri.gabbiapp.ui.adapter.EventPopUpRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil;
 
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.ALIYAH_CLAIM_LOADER_ID;
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.GET_ALIYAHS_LOADER_ID;
 import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 import static com.frischman.uri.gabbiapp.utility.LoaderUtil.restartLoader;
@@ -36,9 +38,6 @@ public class EventPopupFragment extends Fragment {
     private final EventPopupFragment mContext = this;
 
     private String mEventName;
-
-    private final int ALIYAH_LOADER_CALLBACK = 1;
-    private final int CLAIM_ALIYAH_LOADER_CALLBACK = 2;
 
     private EventPopUpRecyclerViewAdapter mEventPopUpRecyclerViewAdapter;
 
@@ -132,12 +131,12 @@ public class EventPopupFragment extends Fragment {
 
     private void loadAliyahs() {
         initializeAliyahLoaderCallback();
-        restartLoader(mContext, ALIYAH_LOADER_CALLBACK, null, aliyahsLoaderCallback);
+        restartLoader(mContext, GET_ALIYAHS_LOADER_ID, null, aliyahsLoaderCallback);
     }
 
     private void claimAliyah(int aliyahIndex, Aliyah aliyah, User user) {
         initializeAliyahClaimLoaderCallback(aliyahIndex, user, aliyah);
-        restartLoader(mContext, CLAIM_ALIYAH_LOADER_CALLBACK, null, claimAliyahResponseLoaderCallbacks);
+        restartLoader(mContext, ALIYAH_CLAIM_LOADER_ID, null, claimAliyahResponseLoaderCallbacks);
     }
 
     private void initializeTitle(String eventName) {

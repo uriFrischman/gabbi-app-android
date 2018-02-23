@@ -21,6 +21,7 @@ import com.frischman.uri.gabbiapp.network.response.UserLoginResponse;
 import com.frischman.uri.gabbiapp.ui.activity.MainActivity;
 
 import static android.content.ContentValues.TAG;
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.USER_LOGIN_REQUEST_LOADER_ID;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.putObjectInSharedPreferences;
 
@@ -46,7 +47,7 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
                 args.putString(getString(R.string.email_bundle_key), mBinding.loginEmailField.getText().toString());
                 args.putString(getString(R.string.password_bundle_key), mBinding.loginPasswordField.getText().toString());
 
-                getActivity().getSupportLoaderManager().restartLoader(1, args, mContext).forceLoad();
+                getActivity().getSupportLoaderManager().restartLoader(USER_LOGIN_REQUEST_LOADER_ID, args, mContext).forceLoad();
             }
         });
 
