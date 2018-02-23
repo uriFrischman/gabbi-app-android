@@ -19,9 +19,9 @@ import com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse;
 
 public class ZmanimFragment extends Fragment {
 
+    private final int SHABBOS_ZMANIM_LOADER_CALLBACK = 1;
+    private final int NON_SHABBOS_ZMANIM_LOADER_CALLBACK = 2;
     private FragmentZmanimBinding mBinding;
-    private static final String TAG = "ZmanimFragment";
-
     private LoaderManager.LoaderCallbacks<ShabbosZmanimResponse> mShabbosZmanimResponseLoaderCallbacks;
     private LoaderManager.LoaderCallbacks<NonShabbosZmanimResponse> mNonShabbosZmanimResponseLoaderCallbacks;
 
@@ -30,8 +30,15 @@ public class ZmanimFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_zmanim, container, false);
 
-        final int geoNameId = 1;
+        loadNonShabbosZmanim();
+        loadShabbosZmanim();
 
+        return mBinding.getRoot();
+    }
+
+    private void initializeShabbosZmanimLoaderCallback() {
+
+        final int geoNameId = 1;
 
         mShabbosZmanimResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<ShabbosZmanimResponse>() {
             @Override
@@ -49,7 +56,9 @@ public class ZmanimFragment extends Fragment {
 
             }
         };
+    }
 
+    private void initializeNonShabbosZmanimLoaderCallback() {
         mNonShabbosZmanimResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<NonShabbosZmanimResponse>() {
             @Override
             public Loader<NonShabbosZmanimResponse> onCreateLoader(int id, Bundle args) {
@@ -66,11 +75,15 @@ public class ZmanimFragment extends Fragment {
 
             }
         };
+    }
 
-        getActivity().getSupportLoaderManager().initLoader(100, null, mShabbosZmanimResponseLoaderCallbacks).forceLoad();
-        getActivity().getSupportLoaderManager().initLoader(200, null, mNonShabbosZmanimResponseLoaderCallbacks).forceLoad();
+    private void loadShabbosZmanim() {
+        initializeShabbosZmanimLoaderCallback();
+        getActivity().getSupportLoaderManager().initLoader(SHABBOS_ZMANIM_LOADER_CALLBACK, null, mShabbosZmanimResponseLoaderCallbacks).forceLoad();
+    }
 
-
-        return mBinding.getRoot();
+    private void loadNonShabbosZmanim() {
+        initializeNonShabbosZmanimLoaderCallback();
+        getActivity().getSupportLoaderManager().initLoader(NON_SHABBOS_ZMANIM_LOADER_CALLBACK, null, mNonShabbosZmanimResponseLoaderCallbacks).forceLoad();
     }
 }
