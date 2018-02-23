@@ -2,9 +2,6 @@
 
     <data>
 
-        <variable
-            name="zmanimCandlesAndHavdalah"
-            type="com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse"/>
     </data>
 
 
@@ -13,40 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Candles"
-            android:id="@+id/candlesTitle"/>
-
-        <TextView
-            android:id="@+id/candlesTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/candlesTitle"
-            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(0).getTitle()}"/>
-
-        <TextView
-            android:id="@+id/havdalahTitle"
-            android:layout_below="@id/candlesTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Havdalah"/>
-
-        <TextView
-            android:id="@+id/havdalahTime"
-            android:layout_below="@id/havdalahTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(1).getTitle()}"/>
-
-        <TextView
-            android:id="@+id/zmanimTextView"
+        <include
+            android:id="@+id/shabbosZmanim"
+            layout="@layout/view_shabbos_zmanim"
             android:layout_width="match_parent"
-            android:layout_centerInParent="true"
-            android:textAlignment="center"
+            android:layout_height="wrap_content"/>
+
+        <include
+            android:id="@+id/nonShabbosZmaim"
+            layout="@layout/view_non_shabbos_zmanim"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zmanim"/>
+            android:layout_below="@id/shabbosZmanim"/>
 
     </RelativeLayout>
 

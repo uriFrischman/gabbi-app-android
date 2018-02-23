@@ -42,7 +42,7 @@ public class ZmanimFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<ShabbosZmanimResponse> loader, ShabbosZmanimResponse data) {
-                mBinding.setZmanimCandlesAndHavdalah(data);
+                mBinding.shabbosZmanim.setZmanimCandlesAndHavdalah(data);
             }
 
             @Override
@@ -59,7 +59,7 @@ public class ZmanimFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<NonShabbosZmanimResponse> loader, NonShabbosZmanimResponse data) {
-                Log.d(TAG, "onLoadFinished: " + data.getNonShabbosZmanim());
+                mBinding.nonShabbosZmaim.setNonShabbosZmanim(data.getNonShabbosZmanim());
             }
 
             @Override
