@@ -53,7 +53,7 @@ public class ZmanimFragment extends Fragment {
         mNonShabbosZmanimResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<NonShabbosZmanimResponse>() {
             @Override
             public Loader<NonShabbosZmanimResponse> onCreateLoader(int id, Bundle args) {
-                return new NonShabbosZmanimLoader(getActivity().getApplicationContext(), "Hard Coded For Now");
+                return new NonShabbosZmanimLoader(getActivity().getApplicationContext());
             }
 
             @Override

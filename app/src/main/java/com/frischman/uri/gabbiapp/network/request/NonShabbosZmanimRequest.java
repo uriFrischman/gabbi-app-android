@@ -3,22 +3,16 @@ package com.frischman.uri.gabbiapp.network.request;
 
 public class NonShabbosZmanimRequest {
 
-    String date;
     int longitude;
     int latitude;
 
-    public NonShabbosZmanimRequest(String date, int longitude, int latitude) {
-        this.date = date;
+    public NonShabbosZmanimRequest() {
+
+    }
+
+    public NonShabbosZmanimRequest(int longitude, int latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public int getLongitude() {

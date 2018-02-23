@@ -11,24 +11,29 @@ import static com.frischman.uri.gabbiapp.utility.AWSLambdaUtil.getLambdaFunction
 
 public class NonShabbosZmanimLoader extends AsyncTaskLoader<NonShabbosZmanimResponse> {
 
-    private String date;
     private int longitude;
     private int  latitude;
+    private boolean longAndLat;
 
-    public NonShabbosZmanimLoader(Context context, String date) {
+    public NonShabbosZmanimLoader(Context context) {
         super(context);
-        this.date = date;
+        longAndLat = false;
     }
 
-    public NonShabbosZmanimLoader(Context context, String date, int longitude, int latitude) {
+    public NonShabbosZmanimLoader(Context context, int longitude, int latitude) {
         super(context);
-        this.date = date;
         this.longitude = longitude;
         this.latitude = latitude;
+        longAndLat = true;
     }
 
     @Override
     public NonShabbosZmanimResponse loadInBackground() {
-        return getLambdaFunctions().getNonShabbosZmanim(new NonShabbosZmanimRequest(date, longitude, latitude));
+        if (longAndLat) {
+            return getLambdaFunctions().getNonShabbosZmanim(new NonShabbosZmanimRequest(longitude, latitude));
+        } else {
+            return getLambdaFunctions().getNonShabbosZmanim(new NonShabbosZmanimRequest());
+        }
+
     }
 }
