@@ -3,21 +3,19 @@ package com.frischman.uri.gabbiapp.network.response;
 
 import com.frischman.uri.gabbiapp.model.ShabbosZman;
 
-import java.util.List;
-
 public class ShabbosZmanimResponse {
 
-    List<ShabbosZman> zmanimInformation;
+    ShabbosZman shabbosZmanim;
 
-    public ShabbosZmanimResponse(List<ShabbosZman> zmanimInformation) {
-        this.zmanimInformation = zmanimInformation;
+    public ShabbosZmanimResponse(ShabbosZman shabbosZmanim) {
+        this.shabbosZmanim = shabbosZmanim;
     }
 
-    public List<ShabbosZman> getZmanimInformation() {
-        return zmanimInformation;
+    public ShabbosZman getShabbosZmanim() {
+        return shabbosZmanim;
     }
 
-    public void setZmanimInformation(List<ShabbosZman> zmanimInformation) {
-        this.zmanimInformation = zmanimInformation;
+    public void setShabbosZmanim(ShabbosZman shabbosZmanim) {
+        this.shabbosZmanim = shabbosZmanim;
     }
 }

@@ -3,37 +3,27 @@ package com.frischman.uri.gabbiapp.model;
 
 public class ShabbosZman {
 
-    String date;
-    String category;
-    String title;
+    private String candleLighting;
+    private String havdalah;
 
-    public ShabbosZman(String date, String category, String title) {
-        this.date = date;
-        this.category = category;
-        this.title = title;
+    public ShabbosZman(String candleLighting, String havdalah) {
+        this.candleLighting = candleLighting;
+        this.havdalah = havdalah;
     }
 
-    public String getDate() {
-        return date;
+    public String getCandleLighting() {
+        return candleLighting;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCandleLighting(String candleLighting) {
+        this.candleLighting = candleLighting;
     }
 
-    public String getCategory() {
-        return category;
+    public String getHavdalah() {
+        return havdalah;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setHavdalah(String havdalah) {
+        this.havdalah = havdalah;
     }
 }

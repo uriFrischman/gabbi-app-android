@@ -3,8 +3,8 @@
     <data>
 
         <variable
-            name="zmanimCandlesAndHavdalah"
-            type="com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse"/>
+            name="shabbosZmanim"
+            type="com.frischman.uri.gabbiapp.model.ShabbosZman"/>
     </data>
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/candlesTitle"
-            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(0).getTitle()}"/>
+            android:text="@{shabbosZmanim.getCandleLighting()}"/>
 
         <TextView
             android:id="@+id/havdalahTitle"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/havdalahTitle"
-            android:text="@{zmanimCandlesAndHavdalah.getZmanimInformation().get(1).getTitle()}"/>
+            android:text="@{shabbosZmanim.getHavdalah()}"/>
 
     </RelativeLayout>
 </layout>
