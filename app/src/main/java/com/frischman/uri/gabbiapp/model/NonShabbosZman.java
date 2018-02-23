@@ -138,22 +138,4 @@ public class NonShabbosZman {
         this.CandleLighting = candleLighting;
     }
 
-    @Override
-    public String toString() {
-        return "NonShabbosZman{" +
-                "Date='" + Date + '\'' +
-                ", Alos16point1Degrees='" + Alos16point1Degrees + '\'' +
-                ", Sunrise='" + Sunrise + '\'' +
-                ", SofZmanShemaMGA='" + SofZmanShemaMGA + '\'' +
-                ", SofZmanShemaGra='" + SofZmanShemaGra + '\'' +
-                ", SofZmanTefilahGra='" + SofZmanTefilahGra + '\'' +
-                ", SofZmanTefilahMGA='" + SofZmanTefilahMGA + '\'' +
-                ", Chatzos='" + Chatzos + '\'' +
-                ", MinchaGedolah='" + MinchaGedolah + '\'' +
-                ", PlagHamincha='" + PlagHamincha + '\'' +
-                ", Shkia='" + Shkia + '\'' +
-                ", Tzais='" + Tzais + '\'' +
-                ", CandleLighting='" + CandleLighting + '\'' +
-                '}';
-    }
 }
