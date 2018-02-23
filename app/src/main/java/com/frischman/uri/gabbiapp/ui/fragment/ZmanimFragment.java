@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,7 @@ public class ZmanimFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<ShabbosZmanimResponse> loader, ShabbosZmanimResponse data) {
-                mBinding.shabbosZmanim.setZmanimCandlesAndHavdalah(data);
+                mBinding.shabbosZmanim.setShabbosZmanim(data.getShabbosZmanim());
             }
 
             @Override
@@ -54,7 +53,7 @@ public class ZmanimFragment extends Fragment {
         mNonShabbosZmanimResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<NonShabbosZmanimResponse>() {
             @Override
             public Loader<NonShabbosZmanimResponse> onCreateLoader(int id, Bundle args) {
-                return new NonShabbosZmanimLoader(getActivity().getApplicationContext(), "hello", 1, 2);
+                return new NonShabbosZmanimLoader(getActivity().getApplicationContext(), "Hard Coded For Now");
             }
 
             @Override

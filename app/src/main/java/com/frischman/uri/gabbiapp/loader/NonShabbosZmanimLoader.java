@@ -15,6 +15,11 @@ public class NonShabbosZmanimLoader extends AsyncTaskLoader<NonShabbosZmanimResp
     private int longitude;
     private int  latitude;
 
+    public NonShabbosZmanimLoader(Context context, String date) {
+        super(context);
+        this.date = date;
+    }
+
     public NonShabbosZmanimLoader(Context context, String date, int longitude, int latitude) {
         super(context);
         this.date = date;
