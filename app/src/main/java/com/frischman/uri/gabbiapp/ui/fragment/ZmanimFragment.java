@@ -21,6 +21,7 @@ public class ZmanimFragment extends Fragment {
 
     private final int SHABBOS_ZMANIM_LOADER_CALLBACK = 1;
     private final int NON_SHABBOS_ZMANIM_LOADER_CALLBACK = 2;
+    private final int GEO_NAME_ID = 1;
     private FragmentZmanimBinding mBinding;
     private LoaderManager.LoaderCallbacks<ShabbosZmanimResponse> mShabbosZmanimResponseLoaderCallbacks;
     private LoaderManager.LoaderCallbacks<NonShabbosZmanimResponse> mNonShabbosZmanimResponseLoaderCallbacks;
@@ -31,15 +32,12 @@ public class ZmanimFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_zmanim, container, false);
 
         loadNonShabbosZmanim();
-        loadShabbosZmanim();
+        loadShabbosZmanim(GEO_NAME_ID);
 
         return mBinding.getRoot();
     }
 
-    private void initializeShabbosZmanimLoaderCallback() {
-
-        final int geoNameId = 1;
-
+    private void initializeShabbosZmanimLoaderCallback(final int geoNameId) {
         mShabbosZmanimResponseLoaderCallbacks = new LoaderManager.LoaderCallbacks<ShabbosZmanimResponse>() {
             @Override
             public Loader<ShabbosZmanimResponse> onCreateLoader(int id, Bundle args) {
@@ -77,8 +75,8 @@ public class ZmanimFragment extends Fragment {
         };
     }
 
-    private void loadShabbosZmanim() {
-        initializeShabbosZmanimLoaderCallback();
+    private void loadShabbosZmanim(int geoNameId) {
+        initializeShabbosZmanimLoaderCallback(geoNameId);
         getActivity().getSupportLoaderManager().initLoader(SHABBOS_ZMANIM_LOADER_CALLBACK, null, mShabbosZmanimResponseLoaderCallbacks).forceLoad();
     }
 
