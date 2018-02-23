@@ -17,7 +17,7 @@
             android:id="@+id/sunriseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sunrise"
+            android:text="@string/zmanim_sunrise"
             android:textStyle="bold"/>
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sunriseValue"
-            android:text="SofZmanShemaMGA"
+            android:text="@string/zmanim_sof_zman_shema_mga"
             android:textStyle="bold"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/SofZmanShemaMGAValue"
-            android:text="SofZmanShemaGra"
+            android:text="@string/zmanim_sof_zman_shema_gra"
             android:textStyle="bold"/>
 
         <TextView
@@ -58,26 +58,11 @@
             android:text="@{nonShabbosZmanim.getSofZmanShemaGra()}"/>
 
         <TextView
-            android:id="@+id/SofZmanTefilahGraTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/SofZmanShemaGraValue"
-            android:text="SofZmanTefilahGra"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/SofZmanTefilahGraValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/SofZmanTefilahGraTitle"
-            android:text="@{nonShabbosZmanim.getSofZmanTefilahGra()}"/>
-
-        <TextView
             android:id="@+id/SofZmanTefilahMGATitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/SofZmanTefilahGraValue"
-            android:text="SofZmanTefilahMGA"
+            android:layout_below="@+id/SofZmanShemaGraValue"
+            android:text="@string/zmanim_sof_zman_tefilah_mga"
             android:textStyle="bold"/>
 
         <TextView
@@ -88,11 +73,26 @@
             android:text="@{nonShabbosZmanim.getSofZmanTefilahMGA()}"/>
 
         <TextView
-            android:id="@+id/ChatzosTitle"
+            android:id="@+id/SofZmanTefilahGraTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/SofZmanTefilahMGAValue"
-            android:text="Chatzos"
+            android:text="@string/zmanim_sof_zman_tefilah_gra"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/SofZmanTefilahGraValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahGraTitle"
+            android:text="@{nonShabbosZmanim.getSofZmanTefilahGra()}"/>
+
+        <TextView
+            android:id="@+id/ChatzosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SofZmanTefilahGraValue"
+            android:text="@string/zmanim_chatzos"
             android:textStyle="bold"/>
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ChatzosValue"
-            android:text="MinchaGedolah"
+            android:text="@string/zmanim_mincha_gedolah"
             android:textStyle="bold"/>
 
         <TextView
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/MinchaGedolahValue"
-            android:text="PlagHamincha"
+            android:text="@string/zmanim_plag_hamincha"
             android:textStyle="bold"/>
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/PlagHaminchaValue"
-            android:text="Shkia"
+            android:text="@string/zmanim_shkia"
             android:textStyle="bold"/>
 
         <TextView
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ShkiaValue"
-            android:text="Tzais"
+            android:text="@string/zmamin_tzeis"
             android:textStyle="bold"/>
 
         <TextView
