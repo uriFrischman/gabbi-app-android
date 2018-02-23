@@ -17,10 +17,11 @@ import com.frischman.uri.gabbiapp.loader.ShabbosZmanimLoader;
 import com.frischman.uri.gabbiapp.network.response.NonShabbosZmanimResponse;
 import com.frischman.uri.gabbiapp.network.response.ShabbosZmanimResponse;
 
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.NON_SHABBOS_ZMANIM_LOADER_ID;
+import static com.frischman.uri.gabbiapp.loader.LoaderConstants.SHABBOS_ZMANIM_LOADER_ID;
+
 public class ZmanimFragment extends Fragment {
 
-    private final int SHABBOS_ZMANIM_LOADER_CALLBACK = 1;
-    private final int NON_SHABBOS_ZMANIM_LOADER_CALLBACK = 2;
     private final int GEO_NAME_ID = 1;
     private FragmentZmanimBinding mBinding;
     private LoaderManager.LoaderCallbacks<ShabbosZmanimResponse> mShabbosZmanimResponseLoaderCallbacks;
@@ -77,11 +78,11 @@ public class ZmanimFragment extends Fragment {
 
     private void loadShabbosZmanim(int geoNameId) {
         initializeShabbosZmanimLoaderCallback(geoNameId);
-        getActivity().getSupportLoaderManager().initLoader(SHABBOS_ZMANIM_LOADER_CALLBACK, null, mShabbosZmanimResponseLoaderCallbacks).forceLoad();
+        getActivity().getSupportLoaderManager().initLoader(SHABBOS_ZMANIM_LOADER_ID, null, mShabbosZmanimResponseLoaderCallbacks).forceLoad();
     }
 
     private void loadNonShabbosZmanim() {
         initializeNonShabbosZmanimLoaderCallback();
-        getActivity().getSupportLoaderManager().initLoader(NON_SHABBOS_ZMANIM_LOADER_CALLBACK, null, mNonShabbosZmanimResponseLoaderCallbacks).forceLoad();
+        getActivity().getSupportLoaderManager().initLoader(NON_SHABBOS_ZMANIM_LOADER_ID, null, mNonShabbosZmanimResponseLoaderCallbacks).forceLoad();
     }
 }
