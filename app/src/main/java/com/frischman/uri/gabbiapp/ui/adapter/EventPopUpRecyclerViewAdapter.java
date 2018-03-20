@@ -45,6 +45,14 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
         holder.mBinding.setAliyah(mAliyahList.get(position));
     }
 
+    public boolean doesAliyahHaveNext(int index) {
+        return index < mAliyahList.size() - 1;
+    }
+
+    public boolean doesAliyahHavePrevious(int index) {
+        return index > 0;
+    }
+
     public void addAliyahs(List<Aliyah> aliyahList) {
         mAliyahList = aliyahList;
         this.notifyDataSetChanged();
@@ -78,6 +86,8 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
                     Fragment getTextFragment = new GetTextFragment();
                     Bundle args = new Bundle();
                     args.putString(getString(R.string.arg_key_reading), mBinding.getAliyah().getReading());
+                    args.putBoolean("hasNext", doesAliyahHaveNext(getAdapterPosition()));
+                    args.putBoolean("hasPrevious", doesAliyahHavePrevious(getAdapterPosition()));
                     getTextFragment.setArguments(args);
                     replaceViewWithFragment(mFragmentManager, R.id.mainFragment,getTextFragment, true);
                 }

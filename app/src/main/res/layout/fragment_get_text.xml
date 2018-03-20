@@ -1,6 +1,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="hasNext"
+            type="Boolean"/>
+        <variable
+            name="hasPrevious"
+            type="Boolean"/>
 
     </data>
 
@@ -85,6 +93,22 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/endPasukSpinner"
                 android:text="GO!" />
+
+            <Button
+                android:id="@+id/hasPrevious"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/goButton"
+                android:visibility="@{hasPrevious ? View.VISIBLE : View.GONE}"
+                android:text="Previous"/>
+
+            <Button
+                android:id="@+id/hasNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hasPrevious"
+                android:visibility="@{hasNext ? View.VISIBLE : View.GONE}"
+                android:text="Next"/>
 
         </RelativeLayout>
 

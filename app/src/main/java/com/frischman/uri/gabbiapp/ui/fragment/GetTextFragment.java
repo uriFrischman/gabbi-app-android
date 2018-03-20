@@ -45,6 +45,8 @@ public class GetTextFragment extends Fragment {
             Bundle arguments = getArguments();
             String reading = arguments.getString(getString(R.string.arg_key_reading));
             Toast.makeText(getContext(), reading, Toast.LENGTH_LONG).show();
+            mBinding.setHasNext(arguments.getBoolean("hasNext"));
+            mBinding.setHasPrevious(arguments.getBoolean("hasPrevious"));
 
             String[] elements = reading.split(" ");
             String sefer = elements[0];
