@@ -40,6 +40,8 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
 
     private FragmentEventListBinding mBinding;
 
+    private Integer mIndexOfSelectedEvent;
+
     private LoaderManager.LoaderCallbacks<GetEventsResponse> getEventsResponseLoaderCallbacks;
 
     @Override
@@ -47,6 +49,9 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
         super.onResume();
         if (doesConenctionExist(getActivity().getApplicationContext())) {
             loadEvents();
+            if (mIndexOfSelectedEvent != null) {
+                openEventPopUp(mIndexOfSelectedEvent);
+            }
         } else {
             showSnackbar(getView(), R.string.snackbar_need_internet_connection, Snackbar.LENGTH_LONG);
         }
@@ -160,6 +165,7 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
             Toast.makeText(getActivity().getApplicationContext(), "Please close the menu", Toast.LENGTH_SHORT).show();
         } else {
             String eventName = mEventRecyclerViewAdapter.getItem(index).getEventName();
+            mIndexOfSelectedEvent = index;
             Bundle args = new Bundle();
             args.putString(getString(R.string.bundle_argument_event_name), eventName);
             EventPopupFragment fragment = new EventPopupFragment();
