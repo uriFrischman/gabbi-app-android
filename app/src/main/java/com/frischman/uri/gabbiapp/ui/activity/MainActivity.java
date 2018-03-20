@@ -14,6 +14,8 @@ import com.frischman.uri.gabbiapp.ui.fragment.GetTextFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.HomeFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.ZmanimFragment;
 
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.checkIfViewHasFragment;
+import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
 import static com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil.removeItemFromSharedPreferences;
 import static com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mBinding.slidingLayout.getPanelState() == PanelState.EXPANDED) {
             mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+        } else if (checkIfViewHasFragment(getSupportFragmentManager(), R.id.framelayout_overlay_container)) {
+            removeFragmentFromView(getSupportFragmentManager(), R.id.framelayout_overlay_container);
         } else {
             super.onBackPressed();
         }
