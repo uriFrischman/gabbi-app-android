@@ -29,6 +29,13 @@ public class GetTextFragment extends Fragment {
 
     private FragmentGetTextBinding mBinding;
 
+    private boolean mHasVowels;
+    private String mCurrentSefer;
+    private int mCurrentBeginPerek;
+    private int mCurrentBeginPasuk;
+    private int mCurrentEndPerek;
+    private int mCurrentEndPasuk;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,14 +56,14 @@ public class GetTextFragment extends Fragment {
             Toast.makeText(getContext(), reading, Toast.LENGTH_LONG).show();
 
             String[] elements = reading.split(" ");
-            String sefer = elements[0];
+            mCurrentSefer = elements[0];
             String[] beginPerekAndPasuk = elements[1].split(":");
-            int beginPerek = Integer.valueOf(beginPerekAndPasuk[0]);
-            int beginPasuk =  Integer.valueOf( beginPerekAndPasuk[1]);
+            mCurrentBeginPerek = Integer.valueOf(beginPerekAndPasuk[0]);
+            mCurrentBeginPasuk =  Integer.valueOf( beginPerekAndPasuk[1]);
             String[] endPerekAndPasuk = elements[3].split(":");
-            int endPerek = Integer.valueOf(endPerekAndPasuk[0]);
-            int endPasuk = Integer.valueOf(endPerekAndPasuk[1]);
-            setTextViewWithTorahText(mBinding.getTextTextView, sefer, beginPerek, beginPasuk, endPerek, endPasuk);
+            mCurrentEndPerek = Integer.valueOf(endPerekAndPasuk[0]);
+            mCurrentEndPasuk = Integer.valueOf(endPerekAndPasuk[1]);
+            setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, mHasVowels);
             hideOrShow(mBinding.getTextSpinnersContainer);
         }
 
