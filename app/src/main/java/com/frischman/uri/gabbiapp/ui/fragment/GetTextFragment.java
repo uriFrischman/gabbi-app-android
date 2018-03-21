@@ -41,6 +41,8 @@ public class GetTextFragment extends Fragment {
         initializeOnClickListeners();
         initializeScrolling();
 
+        setFabButtonVisibility(View.GONE);
+
         if (getArguments() != null) {
             Bundle arguments = getArguments();
             String reading = arguments.getString(getString(R.string.arg_key_reading));
