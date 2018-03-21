@@ -41,7 +41,7 @@ public class GetTextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_get_text, container, false);
 
-
+        mHasVowels = true;
 
         initializeAdapters();
         initializeFonts();
@@ -104,35 +104,59 @@ public class GetTextFragment extends Fragment {
         mBinding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTextViewWithTorahText(mBinding.getTextTextView, mBinding.seferSpinner.getSelectedItem().toString(), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem());
+                setTextViewWithTorahText(mBinding.getTextTextView, mBinding.seferSpinner.getSelectedItem().toString(), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem(), mHasVowels);
             }
         });
 
     }
 
-    private void setTextViewWithTorahText(TextView textView, String sefer, int beginPerek, int beginPasuk, int endPerek, int endPasuk) {
+    private void setTextViewWithTorahText(TextView textView, String sefer, int beginPerek, int beginPasuk, int endPerek, int endPasuk, boolean hasVowels) {
         int seferDatabaseKey;
 
-        switch(sefer) {
-            case "Genesis":
-                seferDatabaseKey = R.string.database_key_bereishit;
-                break;
-            case "Exodus":
-                seferDatabaseKey = R.string.database_key_shemot;
-                break;
-            case "Leviticus":
-                seferDatabaseKey = R.string.database_key_vayikra;
-                break;
-            case "Numbers":
-                seferDatabaseKey = R.string.database_key_bamidbar;
-                break;
-            case "Deuteronomy":
-                seferDatabaseKey = R.string.database_key_devarim;
-                break;
-            default:
-                seferDatabaseKey = 0;
-                break;
+        if (hasVowels) {
+            switch(sefer) {
+                case "Genesis":
+                    seferDatabaseKey = R.string.database_key_bereishit;
+                    break;
+                case "Exodus":
+                    seferDatabaseKey = R.string.database_key_shemot;
+                    break;
+                case "Leviticus":
+                    seferDatabaseKey = R.string.database_key_vayikra;
+                    break;
+                case "Numbers":
+                    seferDatabaseKey = R.string.database_key_bamidbar;
+                    break;
+                case "Deuteronomy":
+                    seferDatabaseKey = R.string.database_key_devarim;
+                    break;
+                default:
+                    seferDatabaseKey = 0;
+                    break;
+            }
+        } else {
+            switch(sefer) {
+                case "Genesis":
+                    seferDatabaseKey = R.string.database_key_bereishit_no_vowels;
+                    break;
+                case "Exodus":
+                    seferDatabaseKey = R.string.database_key_shemot_no_vowels;
+                    break;
+                case "Leviticus":
+                    seferDatabaseKey = R.string.database_key_vayikra_no_vowels;
+                    break;
+                case "Numbers":
+                    seferDatabaseKey = R.string.database_key_bamidbar_no_vowels;
+                    break;
+                case "Deuteronomy":
+                    seferDatabaseKey = R.string.database_key_devarim_no_vowels;
+                    break;
+                default:
+                    seferDatabaseKey = 0;
+                    break;
+            }
         }
+
 
         textView.setText("");
         List<List<String>> fullText = getRangeOfText(getString(seferDatabaseKey), beginPerek, beginPasuk, endPerek, endPasuk);
