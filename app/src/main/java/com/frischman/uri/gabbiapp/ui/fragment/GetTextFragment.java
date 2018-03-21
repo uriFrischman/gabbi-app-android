@@ -165,7 +165,7 @@ public class GetTextFragment extends Fragment {
         } else {
             for (List<String> perek : fullText) {
                 for (String pasuk : perek) {
-                    textView.append(pasuk);
+                    textView.append(pasuk + " ");
                 }
             }
         }
