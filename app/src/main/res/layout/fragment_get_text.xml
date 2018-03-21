@@ -95,16 +95,24 @@
             android:layout_below="@id/getTextSpinnersContainer"
             android:text="Show/Hide Selectors" />
 
-        <TextView
-            android:id="@+id/getTextTextView"
+        <ScrollView
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/selectorVisibilityButton"
-            android:maxLines="20"
-            android:scrollbars="vertical"
-            android:textColor="@android:color/black"
-            android:textDirection="rtl"
-            android:textSize="20dp" />
+            android:scrollbars="none">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/getTextTextView"
+                android:textColor="@android:color/black"
+                android:textDirection="rtl"
+                android:textSize="20dp" />
+
+        </ScrollView>
+
+
 
     </RelativeLayout>
 
