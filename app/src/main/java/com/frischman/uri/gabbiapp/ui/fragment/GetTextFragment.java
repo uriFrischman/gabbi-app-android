@@ -34,6 +34,7 @@ public class GetTextFragment extends Fragment {
 
     private GestureDetector mTextGestureDetector;
 
+    private String mReading;
     private boolean mHasVowels;
     private String mCurrentSefer;
     private int mCurrentBeginPerek;
@@ -57,23 +58,31 @@ public class GetTextFragment extends Fragment {
         setFabButtonVisibility(View.GONE);
 
         if (getArguments() != null) {
-            Bundle arguments = getArguments();
-            String reading = arguments.getString(getString(R.string.arg_key_reading));
-            Toast.makeText(getContext(), reading, Toast.LENGTH_LONG).show();
+            extractTextVariablesFromBundle(getArguments());
 
-            String[] elements = reading.split(" ");
-            mCurrentSefer = elements[0];
-            String[] beginPerekAndPasuk = elements[1].split(":");
-            mCurrentBeginPerek = Integer.valueOf(beginPerekAndPasuk[0]);
-            mCurrentBeginPasuk =  Integer.valueOf( beginPerekAndPasuk[1]);
-            String[] endPerekAndPasuk = elements[3].split(":");
-            mCurrentEndPerek = Integer.valueOf(endPerekAndPasuk[0]);
-            mCurrentEndPasuk = Integer.valueOf(endPerekAndPasuk[1]);
+            Toast.makeText(getContext(), mReading, Toast.LENGTH_LONG).show();
+
             setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, mHasVowels);
+
             hideOrShow(mBinding.getTextSpinnersContainer);
         }
 
         return mBinding.getRoot();
+    }
+
+    private void extractTextVariablesFromBundle(Bundle arguments){
+        mReading = arguments.getString(getString(R.string.arg_key_reading));
+
+        String[] elements = mReading.split(" ");
+        mCurrentSefer = elements[0];
+
+        String[] beginPerekAndPasuk = elements[1].split(":");
+        mCurrentBeginPerek = Integer.valueOf(beginPerekAndPasuk[0]);
+        mCurrentBeginPasuk =  Integer.valueOf( beginPerekAndPasuk[1]);
+
+        String[] endPerekAndPasuk = elements[3].split(":");
+        mCurrentEndPerek = Integer.valueOf(endPerekAndPasuk[0]);
+        mCurrentEndPasuk = Integer.valueOf(endPerekAndPasuk[1]);
     }
 
     private void initializeAdapters() {
