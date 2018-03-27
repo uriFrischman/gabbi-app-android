@@ -171,7 +171,6 @@ public class GetTextFragment extends Fragment {
                 return true;
             }
         });
-
     }
 
     private void setTextViewWithTorahText(TextView textView, String sefer, int beginPerek, int beginPasuk, int endPerek, int endPasuk, boolean hasVowels) {
