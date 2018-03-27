@@ -32,6 +32,8 @@ public class GetTextFragment extends Fragment {
 
     private FragmentGetTextBinding mBinding;
 
+    private GestureDetector mTextGestureDetector;
+
     private boolean mHasVowels;
     private String mCurrentSefer;
     private int mCurrentBeginPerek;
@@ -48,6 +50,7 @@ public class GetTextFragment extends Fragment {
 
         initializeAdapters();
         initializeFonts();
+        initializeGestureDetector();
         initializeOnClickListeners();
         initializeScrolling();
 
@@ -95,23 +98,8 @@ public class GetTextFragment extends Fragment {
         mBinding.getTextTextView.setTypeface(createFontFromAssets(getActivity().getApplicationContext(), "torah.ttf"));
     }
 
-    private void initializeOnClickListeners() {
-
-        mBinding.selectorVisibilityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideOrShow(mBinding.getTextSpinnersContainer);
-            }
-        });
-
-        mBinding.goButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setTextViewWithTorahText(mBinding.getTextTextView, mBinding.seferSpinner.getSelectedItem().toString(), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem(), mHasVowels);
-            }
-        });
-
-        final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new GestureDetector.OnGestureListener() {
+    private void initializeGestureDetector() {
+        mTextGestureDetector = new GestureDetector(getActivity().getApplicationContext(), new GestureDetector.OnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
                 return false;
@@ -124,13 +112,13 @@ public class GetTextFragment extends Fragment {
 
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
-                    if (mHasVowels) {
-                        setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, false);
-                        mHasVowels = false;
-                    } else {
-                        setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, true);
-                        mHasVowels = true;
-                    }
+                if (mHasVowels) {
+                    setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, false);
+                    mHasVowels = false;
+                } else {
+                    setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, true);
+                    mHasVowels = true;
+                }
                 return true;
             }
 
@@ -149,11 +137,28 @@ public class GetTextFragment extends Fragment {
                 return false;
             }
         });
-        
+    }
+
+    private void initializeOnClickListeners() {
+
+        mBinding.selectorVisibilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideOrShow(mBinding.getTextSpinnersContainer);
+            }
+        });
+
+        mBinding.goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTextViewWithTorahText(mBinding.getTextTextView, mBinding.seferSpinner.getSelectedItem().toString(), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem(), mHasVowels);
+            }
+        });
+
         mBinding.getTextTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                gestureDetector.onTouchEvent(event);
+                mTextGestureDetector.onTouchEvent(event);
                 return true;
             }
         });
@@ -206,7 +211,6 @@ public class GetTextFragment extends Fragment {
                     break;
             }
         }
-
 
         textView.setText("");
         List<List<String>> fullText = getRangeOfText(getString(seferDatabaseKey), beginPerek, beginPasuk, endPerek, endPasuk);
