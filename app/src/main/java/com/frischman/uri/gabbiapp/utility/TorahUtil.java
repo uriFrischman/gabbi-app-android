@@ -27,6 +27,12 @@ public class TorahUtil {
         String bamidbar = rawFileToString(R.raw.bamidbar);
         String devarim = rawFileToString(R.raw.devarim);
 
+        String bereishitNoVowels = rawFileToString(R.raw.bereishit_no_vowels);
+        String shemotNoVowels = rawFileToString(R.raw.shemot_no_vowels);
+        String vayikraNoVowels = rawFileToString(R.raw.vayikra_no_vowels);
+        String bamidbarNoVowels = rawFileToString(R.raw.bamidbar_no_vowels);
+        String devarimNoVowels = rawFileToString(R.raw.devarim_no_vowels);
+
         Gson gson = new Gson();
 
         Sefer seferBereishit = gson.fromJson(bereishit, Sefer.class);
@@ -34,6 +40,12 @@ public class TorahUtil {
         Sefer seferVayikra = gson.fromJson(vayikra, Sefer.class);
         Sefer seferBamidbar = gson.fromJson(bamidbar, Sefer.class);
         Sefer seferDevarim = gson.fromJson(devarim, Sefer.class);
+
+        Sefer seferBereishitNoVowels = gson.fromJson(bereishitNoVowels, Sefer.class);
+        Sefer seferShemotNoVowels = gson.fromJson(shemotNoVowels, Sefer.class);
+        Sefer seferVayikraNoVowels = gson.fromJson(vayikraNoVowels, Sefer.class);
+        Sefer seferBamidbarNoVowels = gson.fromJson(bamidbarNoVowels, Sefer.class);
+        Sefer seferDevarimNoVowels = gson.fromJson(devarimNoVowels, Sefer.class);
 
         DB torahDatabse = getDBWithName(getString(R.string.database_name_torah));
 
@@ -43,6 +55,12 @@ public class TorahUtil {
             torahDatabse.put(getString(R.string.database_key_vayikra), seferVayikra);
             torahDatabse.put(getString(R.string.database_key_bamidbar), seferBamidbar);
             torahDatabse.put(getString(R.string.database_key_devarim), seferDevarim);
+
+            torahDatabse.put(getString(R.string.database_key_bereishit_no_vowels), seferBereishitNoVowels);
+            torahDatabse.put(getString(R.string.database_key_shemot_no_vowels), seferShemotNoVowels);
+            torahDatabse.put(getString(R.string.database_key_vayikra_no_vowels), seferVayikraNoVowels);
+            torahDatabse.put(getString(R.string.database_key_bamidbar_no_vowels), seferBamidbarNoVowels);
+            torahDatabse.put(getString(R.string.database_key_devarim_no_vowels), seferDevarimNoVowels);
         } catch (SnappydbException e) {
             e.printStackTrace();
         }

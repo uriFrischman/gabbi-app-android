@@ -19,72 +19,72 @@
                 android:id="@+id/seferText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sefer" />
+                android:text="Sefer"/>
 
             <Spinner
                 android:id="@+id/seferSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/seferText" />
+                android:layout_below="@id/seferText"/>
 
             <TextView
                 android:id="@+id/beginPerekText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/seferSpinner"
-                android:text="Begin Perek" />
+                android:text="Begin Perek"/>
 
             <Spinner
                 android:id="@+id/beginPerekSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/beginPerekText" />
+                android:layout_below="@id/beginPerekText"/>
 
             <TextView
                 android:id="@+id/beginPasukText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/beginPerekSpinner"
-                android:text="Begin Pasuk" />
+                android:text="Begin Pasuk"/>
 
             <Spinner
                 android:id="@+id/beginPasukSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/beginPasukText" />
+                android:layout_below="@id/beginPasukText"/>
 
             <TextView
                 android:id="@+id/endPerekText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/beginPasukSpinner"
-                android:text="End Perek" />
+                android:text="End Perek"/>
 
             <Spinner
                 android:id="@+id/endPerekSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/endPerekText" />
+                android:layout_below="@id/endPerekText"/>
 
             <TextView
                 android:id="@+id/endPasukText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/endPerekSpinner"
-                android:text="End Pasuk" />
+                android:text="End Pasuk"/>
 
             <Spinner
                 android:id="@+id/endPasukSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/endPasukText" />
+                android:layout_below="@id/endPasukText"/>
 
             <Button
                 android:id="@+id/goButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/endPasukSpinner"
-                android:text="GO!" />
+                android:text="GO!"/>
 
         </RelativeLayout>
 
@@ -93,18 +93,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/getTextSpinnersContainer"
-            android:text="Show/Hide Selectors" />
+            android:text="Show/Hide Selectors"/>
 
-        <TextView
-            android:id="@+id/getTextTextView"
+        <ScrollView
+            android:id="@+id/getTextScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/selectorVisibilityButton"
-            android:maxLines="20"
-            android:scrollbars="vertical"
-            android:textColor="@android:color/black"
-            android:textDirection="rtl"
-            android:textSize="20dp" />
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/getTextTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textDirection="rtl"
+                android:textSize="20dp"/>
+
+        </ScrollView>
+
 
     </RelativeLayout>
 
