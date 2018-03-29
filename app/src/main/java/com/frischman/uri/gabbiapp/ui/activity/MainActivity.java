@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ActivityMainBinding;
+import com.frischman.uri.gabbiapp.ui.fragment.DafYomiFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.EventListFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.GetTextFragment;
 import com.frischman.uri.gabbiapp.ui.fragment.HomeFragment;
@@ -80,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
                 replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new GetTextFragment(), true);
+            }
+        });
+
+        mBinding.viewMenu.DafYomiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
+                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new DafYomiFragment(), true);
             }
         });
 
