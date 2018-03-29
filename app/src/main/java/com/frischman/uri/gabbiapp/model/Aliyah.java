@@ -1,11 +1,5 @@
 package com.frischman.uri.gabbiapp.model;
 
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBRangeKey;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
-
-@DynamoDBTable(tableName = "Aliyahs")
 public class Aliyah {
 
     private int aliyahId;
@@ -31,7 +25,6 @@ public class Aliyah {
         this.aliyahNumber = aliyahNumber;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyahId")
     public int getAliyahId() {
         return aliyahId;
     }
@@ -40,7 +33,6 @@ public class Aliyah {
         this.aliyahId = aliyahId;
     }
 
-    @DynamoDBHashKey(attributeName = "aliyahName")
     public String getAliyahName() {
         return aliyahName;
     }
@@ -49,7 +41,6 @@ public class Aliyah {
         this.aliyahName = aliyahName;
     }
 
-    @DynamoDBRangeKey(attributeName = "aliyahEvent")
     public String getAliyahEvent() {
         return aliyahEvent;
     }
@@ -58,7 +49,6 @@ public class Aliyah {
         this.aliyahEvent = aliyahEvent;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyahReader")
     public String getAliyahReader() {
         return aliyahReader;
     }
@@ -67,7 +57,6 @@ public class Aliyah {
         this.aliyahReader = aliyahReader;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyahTaken")
     public boolean getAliyahTaken() {
         return aliyahTaken;
     }
@@ -76,7 +65,6 @@ public class Aliyah {
         this.aliyahTaken = aliyahTaken;
     }
 
-    @DynamoDBAttribute(attributeName = "numPsukim")
     public int getNumPsukim() {
         return numPsukim;
     }
@@ -85,7 +73,6 @@ public class Aliyah {
         this.numPsukim = numPsukim;
     }
 
-    @DynamoDBAttribute(attributeName = "reading")
     public String getReading() {
         return reading;
     }
@@ -94,7 +81,6 @@ public class Aliyah {
         this.reading = reading;
     }
 
-    @DynamoDBAttribute(attributeName = "aliyahNumber")
     public String getAliyahNumber() {
         return aliyahNumber;
     }

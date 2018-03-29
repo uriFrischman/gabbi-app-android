@@ -2,9 +2,6 @@ package com.frischman.uri.gabbiapp.model;
 
 import android.support.annotation.NonNull;
 
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.frischman.uri.gabbiapp.R;
 
 import java.util.Date;
@@ -12,7 +9,6 @@ import java.util.Date;
 import static com.frischman.uri.gabbiapp.utility.DateUtil.getDateFromString;
 import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
-@DynamoDBTable(tableName = "Events")
 public class Event implements Comparable<Event> {
     private String eventName;
     private String eventDate;
@@ -33,7 +29,6 @@ public class Event implements Comparable<Event> {
         this.formattedDate = formattedDate;
     }
 
-    @DynamoDBHashKey(attributeName = "eventName")
     public String getEventName() {
         return eventName;
     }
@@ -42,7 +37,6 @@ public class Event implements Comparable<Event> {
         this.eventName = eventName;
     }
 
-    @DynamoDBAttribute(attributeName = "eventDate")
     public String getEventDate() {
         return eventDate;
     }
@@ -51,7 +45,6 @@ public class Event implements Comparable<Event> {
         this.eventDate = eventDate;
     }
 
-    @DynamoDBAttribute(attributeName = "numberOfAliyahs")
     public int getNumberOfAliyahs() {
         return numberOfAliyahs;
     }
@@ -60,7 +53,6 @@ public class Event implements Comparable<Event> {
         this.numberOfAliyahs = numberOfAliyahs;
     }
 
-    @DynamoDBAttribute(attributeName = "numberOfAliyahsTaken")
     public int getNumberOfAliyahsTaken() {
         return numberOfAliyahsTaken;
     }
@@ -69,7 +61,6 @@ public class Event implements Comparable<Event> {
         this.numberOfAliyahsTaken = numberOfAliyahsTaken;
     }
 
-    @DynamoDBAttribute(attributeName = "eventId")
     public int getEventId() {
         return eventId;
     }
@@ -78,7 +69,6 @@ public class Event implements Comparable<Event> {
         this.eventId = eventId;
     }
 
-    @DynamoDBAttribute(attributeName = "formattedDate")
     public String getFormattedDate() {
         return formattedDate;
     }

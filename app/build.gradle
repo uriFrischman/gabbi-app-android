@@ -37,10 +37,6 @@ dependencies {
     // AWS SDK
     compile 'com.amazonaws:aws-android-sdk-core:2.4.4'
     compile 'com.amazonaws:aws-android-sdk-s3:2.4.4'
-    //DynamoDB
-    compile 'com.amazonaws:aws-android-sdk-ddb:2.4.4'
-    compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.4.4'
-    compile 'com.amazonaws:aws-android-sdk-ddb-document:2.4.4'
     // Timber
     compile 'com.jakewharton.timber:timber:4.5.1'
     //Gson

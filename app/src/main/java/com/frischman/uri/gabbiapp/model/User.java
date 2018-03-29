@@ -3,13 +3,8 @@ package com.frischman.uri.gabbiapp.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
-
 import java.util.Random;
 
-@DynamoDBTable(tableName = "Users")
 public class User implements Parcelable {
     private int userId;
     private String firstName;
@@ -43,7 +38,6 @@ public class User implements Parcelable {
         this.userId = new Random().nextInt(1000);
     }
 
-    @DynamoDBHashKey(attributeName = "userId")
     public int getUserId() {
         return userId;
     }
@@ -52,7 +46,6 @@ public class User implements Parcelable {
         this.userId = userId;
     }
 
-    @DynamoDBAttribute(attributeName = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -61,7 +54,6 @@ public class User implements Parcelable {
         this.firstName = firstName;
     }
 
-    @DynamoDBAttribute(attributeName = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -70,7 +62,6 @@ public class User implements Parcelable {
         this.lastName = lastName;
     }
 
-    @DynamoDBAttribute(attributeName = "isGabbi")
     public boolean getIsGabbi() {
         return isGabbi;
     }
@@ -79,7 +70,6 @@ public class User implements Parcelable {
         this.isGabbi = isGabbi;
     }
 
-    @DynamoDBAttribute(attributeName = "email")
     public String getEmail() {
         return email;
     }
@@ -88,7 +78,6 @@ public class User implements Parcelable {
         this.email = email;
     }
 
-    @DynamoDBAttribute(attributeName = "phoneNumber")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -97,7 +86,6 @@ public class User implements Parcelable {
         this.phoneNumber = phoneNumber;
     }
 
-    @DynamoDBAttribute(attributeName = "password")
     public String getPassword() {
         return password;
     }
