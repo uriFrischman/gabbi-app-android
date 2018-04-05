@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
     buildTypes {
         release {
@@ -41,6 +44,8 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.5.1'
     //Gson
     compile 'com.google.code.gson:gson:2.8.1'
+    //PDF Viewer
+    compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
     //SnappyDB
     compile 'com.snappydb:snappydb-lib:0.4.0'
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
