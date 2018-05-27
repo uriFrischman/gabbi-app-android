@@ -160,7 +160,12 @@ public class GetTextFragment extends Fragment {
         mBinding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTextViewWithTorahText(mBinding.getTextTextView, mBinding.seferSpinner.getSelectedItem().toString(), (int) mBinding.beginPerekSpinner.getSelectedItem(), (int) mBinding.beginPasukSpinner.getSelectedItem(), (int) mBinding.endPerekSpinner.getSelectedItem(), (int) mBinding.endPasukSpinner.getSelectedItem(), mHasVowels);
+                mCurrentSefer = mBinding.seferSpinner.getSelectedItem().toString();
+                mCurrentBeginPerek = (int) mBinding.beginPerekSpinner.getSelectedItem();
+                mCurrentBeginPasuk = (int) mBinding.beginPasukSpinner.getSelectedItem();
+                mCurrentEndPerek = (int) mBinding.endPerekSpinner.getSelectedItem();
+                mCurrentEndPasuk = (int) mBinding.endPasukSpinner.getSelectedItem();
+                setTextViewWithTorahText(mBinding.getTextTextView, mCurrentSefer, mCurrentBeginPerek, mCurrentBeginPasuk, mCurrentEndPerek, mCurrentEndPasuk, mHasVowels);
             }
         });
 
