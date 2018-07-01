@@ -23,12 +23,12 @@ import com.frischman.uri.gabbiapp.model.User;
 import com.frischman.uri.gabbiapp.network.response.ClaimAliyahResponse;
 import com.frischman.uri.gabbiapp.network.response.GetAliyahsResponse;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
+import com.frischman.uri.gabbiapp.ui.activity.GabbiAppBaseActivity;
 import com.frischman.uri.gabbiapp.ui.adapter.EventPopUpRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.utility.SharedPreferencesUtil;
 
 import static com.frischman.uri.gabbiapp.loader.LoaderConstants.ALIYAH_CLAIM_LOADER_ID;
 import static com.frischman.uri.gabbiapp.loader.LoaderConstants.GET_ALIYAHS_LOADER_ID;
-import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
 import static com.frischman.uri.gabbiapp.utility.LoaderUtil.restartLoader;
 
@@ -36,6 +36,7 @@ public class EventPopupFragment extends Fragment {
 
     private static FragmentEventPopupBinding mBinding;
     private final EventPopupFragment mContext = this;
+    private GabbiAppBaseActivity mActivity;
 
     private String mEventName;
 
@@ -43,6 +44,10 @@ public class EventPopupFragment extends Fragment {
 
     private LoaderManager.LoaderCallbacks<ClaimAliyahResponse> claimAliyahResponseLoaderCallbacks;
     private LoaderManager.LoaderCallbacks<GetAliyahsResponse> aliyahsLoaderCallback;
+
+    public EventPopupFragment(GabbiAppBaseActivity activity) {
+        mActivity = activity;
+    }
 
     @Nullable
     @Override
@@ -62,7 +67,7 @@ public class EventPopupFragment extends Fragment {
     }
 
     private void initializeRecyclerView() {
-        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(getActivity().getApplicationContext(), getFragmentManager());
+        mEventPopUpRecyclerViewAdapter = new EventPopUpRecyclerViewAdapter(mActivity, getActivity().getApplicationContext(), getFragmentManager());
         mBinding.eventAliyahList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         mBinding.eventAliyahList.setAdapter(mEventPopUpRecyclerViewAdapter);
         mBinding.eventAliyahList.addItemDecoration(new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL));

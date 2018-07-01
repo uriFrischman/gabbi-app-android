@@ -2,8 +2,6 @@ package com.frischman.uri.gabbiapp.ui.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,13 +12,10 @@ import com.frischman.uri.gabbiapp.R;
 import com.frischman.uri.gabbiapp.databinding.ViewAliyahRowBinding;
 import com.frischman.uri.gabbiapp.model.Aliyah;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
-import com.frischman.uri.gabbiapp.ui.fragment.GetTextFragment;
+import com.frischman.uri.gabbiapp.ui.activity.GabbiAppBaseActivity;
+import com.frischman.uri.gabbiapp.utility.NavigationUtil;
 
 import java.util.List;
-
-import static com.frischman.uri.gabbiapp.utility.FragmentUtil.removeFragmentFromView;
-import static com.frischman.uri.gabbiapp.utility.FragmentUtil.replaceViewWithFragment;
-import static com.frischman.uri.gabbiapp.utility.StringUtil.getString;
 
 public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPopUpRecyclerViewAdapter.ViewHolder> {
 
@@ -28,10 +23,14 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
     private List<Aliyah> mAliyahList;
     private RecyclerViewItemClick mOnClickListener;
     private FragmentManager mFragmentManager;
+    private Context mContext;
+    private GabbiAppBaseActivity mActivity;
 
-    public EventPopUpRecyclerViewAdapter(Context context, FragmentManager fragmentManager) {
+    public EventPopUpRecyclerViewAdapter(GabbiAppBaseActivity activity, Context context, FragmentManager fragmentManager) {
         mLayoutInflater = LayoutInflater.from(context);
         mFragmentManager = fragmentManager;
+        mContext = context;
+        mActivity = activity;
     }
 
     @Override
@@ -74,12 +73,7 @@ public class EventPopUpRecyclerViewAdapter extends RecyclerView.Adapter<EventPop
             mBinding.GetTextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    removeFragmentFromView(mFragmentManager, R.id.framelayout_overlay_container);
-                    Fragment getTextFragment = new GetTextFragment();
-                    Bundle args = new Bundle();
-                    args.putString(getString(R.string.arg_key_reading), mBinding.getAliyah().getReading());
-                    getTextFragment.setArguments(args);
-                    replaceViewWithFragment(mFragmentManager, R.id.mainFragment,getTextFragment, true);
+                    NavigationUtil.goToGetTextActivityWithReading(mActivity ,mBinding.getAliyah().getReading());
                 }
             });
         }

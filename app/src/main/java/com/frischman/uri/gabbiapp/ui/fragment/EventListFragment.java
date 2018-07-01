@@ -22,6 +22,7 @@ import com.frischman.uri.gabbiapp.loader.GetEventsLoader;
 import com.frischman.uri.gabbiapp.model.Event;
 import com.frischman.uri.gabbiapp.network.response.GetEventsResponse;
 import com.frischman.uri.gabbiapp.ui.RecyclerViewItemClick;
+import com.frischman.uri.gabbiapp.ui.activity.GabbiAppBaseActivity;
 import com.frischman.uri.gabbiapp.ui.adapter.EventRecyclerViewAdapter;
 import com.frischman.uri.gabbiapp.ui.listener.HidingScrollListener;
 
@@ -38,9 +39,15 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
 
     private EventRecyclerViewAdapter mEventRecyclerViewAdapter;
 
+    private GabbiAppBaseActivity mActivity;
+
     private FragmentEventListBinding mBinding;
 
     private LoaderManager.LoaderCallbacks<GetEventsResponse> getEventsResponseLoaderCallbacks;
+
+    public EventListFragment(GabbiAppBaseActivity activity) {
+        mActivity = activity;
+    }
 
     @Override
     public void onResume() {
@@ -162,7 +169,7 @@ public class EventListFragment extends Fragment implements SearchView.OnQueryTex
             String eventName = mEventRecyclerViewAdapter.getItem(index).getEventName();
             Bundle args = new Bundle();
             args.putString(getString(R.string.bundle_argument_event_name), eventName);
-            EventPopupFragment fragment = new EventPopupFragment();
+            EventPopupFragment fragment = new EventPopupFragment(mActivity);
             fragment.setArguments(args);
             replaceViewWithFragment(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container, fragment, false);
         }
