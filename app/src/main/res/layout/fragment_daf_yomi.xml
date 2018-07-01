@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/dafYomiFragmentContainer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download A"
+        android:id="@+id/downloadAButton"/>
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_toRightOf="@id/downloadAButton"
+         android:text="Download B"
+         android:id="@+id/downloadBButton"/>
+
+       <com.github.barteksc.pdfviewer.PDFView
+           android:layout_below="@id/downloadBButton"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/pdfViewer"></com.github.barteksc.pdfviewer.PDFView>
+
+
+
+
+    </RelativeLayout>
+
+</layout>

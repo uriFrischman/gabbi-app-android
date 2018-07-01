@@ -40,6 +40,12 @@
                 android:text="Get Text"/>
 
             <Button
+                android:id="@+id/DafYomiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daf Yomi"/>
+
+            <Button
                 android:id="@+id/LogoutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
