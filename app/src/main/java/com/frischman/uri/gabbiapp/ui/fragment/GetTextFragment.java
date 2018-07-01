@@ -19,7 +19,6 @@ import com.frischman.uri.gabbiapp.databinding.FragmentGetTextBinding;
 
 import java.util.List;
 
-import static com.frischman.uri.gabbiapp.ui.activity.MainActivity.setFabButtonVisibility;
 import static com.frischman.uri.gabbiapp.utility.FontUtil.createFontFromAssets;
 import static com.frischman.uri.gabbiapp.utility.IntegerUtil.getRange;
 import static com.frischman.uri.gabbiapp.utility.TorahUtil.MAX_NUMBER_OF_PERAKIM_IN_TORAH;
@@ -55,7 +54,6 @@ public class GetTextFragment extends Fragment {
         initializeOnClickListeners();
         initializeScrolling();
 
-        setFabButtonVisibility(View.GONE);
 
         if (getArguments() != null) {
             extractTextVariablesFromBundle(getArguments());

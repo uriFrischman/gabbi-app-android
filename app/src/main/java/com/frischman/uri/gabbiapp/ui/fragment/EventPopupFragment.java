@@ -49,7 +49,6 @@ public class EventPopupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_popup, container, false);
 
-        setFabButtonVisibility(View.GONE);
 
         mEventName = getArguments().getString(getString(R.string.bundle_argument_event_name));
         initializeTitle(mEventName);
@@ -145,12 +144,10 @@ public class EventPopupFragment extends Fragment {
 
     private void closePopup() {
         removeFragmentFromView(getActivity().getSupportFragmentManager(), R.id.framelayout_overlay_container);
-        setFabButtonVisibility(View.VISIBLE);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        setFabButtonVisibility(View.VISIBLE);
     }
 }
