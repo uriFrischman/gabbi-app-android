@@ -22,6 +22,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.DafYomiActivity"/>
+        <activity android:name=".ui.activity.EventListActivity"/>
+        <activity android:name=".ui.activity.ZmanimActivity" />
+        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name=".ui.activity.GetTextActivity" />
     </application>
 
 </manifest>
