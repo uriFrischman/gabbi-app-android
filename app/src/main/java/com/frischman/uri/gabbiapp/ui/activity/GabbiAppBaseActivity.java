@@ -42,9 +42,6 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
 
     public void addFragmentToActivity(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment);
-//        if (addToBackStack) {
-//            transaction.addToBackStack(null);
-//        }
         transaction.commit();
     }
 
@@ -88,8 +85,6 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
         mBinding.viewMenu.eventsFragmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-//                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new EventListFragment(), true);
                 Intent intent = new Intent(mContext, EventListActivity.class);
                 startActivity(intent);
             }
@@ -98,19 +93,14 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
         mBinding.viewMenu.HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-//                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new HomeFragment(), true);
                 Intent intent = new Intent(mContext, HomeActivity.class);
                 startActivity(intent);
-
             }
         });
 
         mBinding.viewMenu.ZmanimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-//                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new ZmanimFragment(), true);
                 Intent intent = new Intent(mContext, ZmanimActivity.class);
                 startActivity(intent);
             }
@@ -120,8 +110,6 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
         mBinding.viewMenu.GetTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
-//                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new GetTextFragment(), true);
                 Intent intent = new Intent(mContext, GetTextActivity.class);
                 startActivity(intent);
             }
@@ -129,12 +117,9 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
 
         mBinding.viewMenu.DafYomiButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-//                replaceViewWithFragment(getSupportFragmentManager(), R.id.mainFragment, new DafYomiFragment(), true);
+            public void onClick(View v) {
                 Intent intent = new Intent(mContext, DafYomiActivity.class);
                 startActivity(intent);
-//                mBinding.slidingLayout.setPanelState(PanelState.COLLAPSED);
             }
         });
 
@@ -152,8 +137,4 @@ public abstract class GabbiAppBaseActivity extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
-
-//    public void setFabButtonVisibility(int visibility) {
-//        mBinding.fabButton.setVisibility(visibility);
-//    }
 }
