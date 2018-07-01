@@ -16,7 +16,6 @@ public class GetTextActivity extends GabbiAppBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        FragmentUtil.replaceViewWithFragment(getSupportFragmentManager(), R.id.container, getTextFragment, false);
         Intent intent = getIntent();
         if (intent.getStringExtra(EXTRA_GET_TEXT_READING) == null) {
             addFragmentToActivity(new GetTextFragment());

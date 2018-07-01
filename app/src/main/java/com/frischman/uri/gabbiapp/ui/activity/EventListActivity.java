@@ -11,10 +11,6 @@ public class EventListActivity extends GabbiAppBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        EventListFragment eventListFragment = new EventListFragment();
-//        FragmentUtil.replaceViewWithFragment(getSupportFragmentManager(), R.id.container, eventListFragment, false);
-
         addFragmentToActivity(new EventListFragment(this));
     }
 }

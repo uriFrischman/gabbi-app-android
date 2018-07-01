@@ -11,9 +11,6 @@ public class ZmanimActivity extends GabbiAppBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        ZmanimFragment zmanimFragment = new ZmanimFragment();
-//        FragmentUtil.replaceViewWithFragment(getSupportFragmentManager(), R.id.container, zmanimFragment, false);
         addFragmentToActivity(new ZmanimFragment());
     }
 }
