@@ -1,6 +1,8 @@
 package com.frischman.uri.gabbiapp;
 
 import android.app.Application;
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -9,6 +11,8 @@ import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.regions.Regions;
+import com.frischman.uri.gabbiapp.dataBase.dao.DataBase;
+import com.frischman.uri.gabbiapp.dataBase.dao.SessionDao;
 import com.frischman.uri.gabbiapp.utility.SnappyDBUtil;
 import com.frischman.uri.gabbiapp.utility.StringUtil;
 import com.frischman.uri.gabbiapp.utility.TorahUtil;
@@ -36,6 +40,7 @@ public class GabbiApp extends Application {
 
     public static void loadRunnableOnToMainLooper(Runnable runnable) {
         new Handler(getAppMainLooper()).post(runnable);
+
     }
 
     @Override
